@@ -27,4 +27,9 @@ public class SortingAlgorithms {
             }
         }
     }
+
+    public void insertionSort(String[] arr)
+    {
+        //do smth..
+    }
 }
