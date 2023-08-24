@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class FileHandling {
     public String[] fileRead(String fileName) throws FileNotFoundException{
@@ -12,7 +13,6 @@ public class FileHandling {
         }
         return data;
     }
-
     public int countLines(File file)throws FileNotFoundException{
         Scanner counter = new Scanner(file);
         int count = 0;
@@ -22,5 +22,13 @@ public class FileHandling {
         }
         counter.close();
         return count;
+    }
+
+    public void fileRead(String fileName, ArrayList<String[]> arrayList) throws FileNotFoundException{
+        File file = new File(fileName);
+        Scanner reader = new Scanner(file);
+        while(reader.hasNext()){
+            arrayList.add(reader.nextLine().split(","));
+        }
     }
 }
