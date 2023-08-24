@@ -19,9 +19,8 @@ public class Main {
         boolean valid = true;
         ArrayList<String[]> data = new ArrayList<>();
         do {
-            Scanner input = new Scanner(System.in);
             System.out.print("Enter file name: ");
-            String fileName = input.nextLine();
+            String fileName = kInput.nextLine();
             try {
                 fileHandler.fileRead(fileName, data);
                 valid = true;
@@ -30,6 +29,12 @@ public class Main {
             }
         }while(!valid);
         return data;
+    }
+
+    public void printArray(ArrayList array){
+        for (Object o : array) {
+            System.out.println(o);
+        }
     }
 
 
