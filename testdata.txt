@@ -1,0 +1,6 @@
+Name,Age,Location,Occupation
+John Smith,28,New York,Engineer
+Jane Doe,35,Los Angeles,Doctor
+Michael Johnson,22,Chicago,Student
+Emily Williams,40,San Francisco,Designer
+David Brown,31,Miami,Accountant
