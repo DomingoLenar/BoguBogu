@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
@@ -12,7 +13,11 @@ public class Main {
     }
 
     public void run(){
+
         ArrayList<String[]> data = processFile();
+        int verticalSize = data.size();
+        String[] toSearch = new String[verticalSize];
+        populateArray(data, toSearch, 2);
     }
 
     public ArrayList<String[]> processFile(){
@@ -25,6 +30,7 @@ public class Main {
                 fileHandler.fileRead(fileName, data);
                 valid = true;
             }catch(FileNotFoundException fileException){
+                System.out.println("File not FOUND\n\n\n");
                 valid = false;
             }
         }while(!valid);
@@ -34,6 +40,13 @@ public class Main {
     public void printArray(ArrayList array){
         for (Object o : array) {
             System.out.println(o);
+        }
+    }
+
+
+    public void populateArray(ArrayList<String[]> arrayList, String[] arrayToPopu, int horizontalIndex){
+        for(int x = 0; x < arrayList.size(); x++){
+            arrayToPopu[x] = arrayList.get(x)[horizontalIndex];
         }
     }
 
