@@ -11,7 +11,7 @@ public class Main extends SortingAlgorithms implements Runnable {
     public static void main(String[] args) {
         Main program = new Main();
         program.run();
-    }
+    }//End of main method
 
     @Override
     public void run() {
@@ -22,7 +22,7 @@ public class Main extends SortingAlgorithms implements Runnable {
         promptMessage();
         printArray(toSearch);
 
-    }
+    }//End of run method
 
     private void promptMessage() { // method binding (dynamic)
         System.out.println("Below are the categories for each datum in a data set");
@@ -51,8 +51,13 @@ public class Main extends SortingAlgorithms implements Runnable {
         populateSubArray(data, toSearch, category_number - 1);
         sortingProcess(sortingType, toSearch);
 
+
     }
 
+    /**
+     * Method for checking the file with exception handling
+     * @return data
+     */
     private ArrayList<String[]> processFile(){
         boolean valid;
         ArrayList<String[]> data = new ArrayList<>();
@@ -68,18 +73,31 @@ public class Main extends SortingAlgorithms implements Runnable {
             }
         }while(!valid);
         return data;
-    }
+    }//End of processFile method
 
+    /**
+     * Method for printing an array
+     * @param array
+     */
     private void printArray(String[] array){
         for (Object o : array) {
             System.out.println(o);
         }
-    }
+    }//End of printArray method
 
+    /**
+     * Method for populating an array
+     * @param arrayList
+     * @param arrayToPopu
+     * @param horizontalIndex
+     **/
     private void populateSubArray(ArrayList<String[]> arrayList, String[] arrayToPopulate, int columnIndex){
         for(int x = 0; x < arrayList.size(); x++){
             arrayToPopulate[x] = arrayList.get(x)[columnIndex];
         }
     }
+    }//End of populateArray method
 
-}
+
+
+}//End of main class
