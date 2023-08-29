@@ -88,8 +88,8 @@ public class Main extends SortingAlgorithms implements Runnable {
     /**
      * Method for populating an array
      * @param arrayList
-     * @param arrayToPopu
-     * @param horizontalIndex
+     * @param arrayToPopulate
+     * @param columnIndex
      **/
     private void populateSubArray(ArrayList<String[]> arrayList, String[] arrayToPopulate, int columnIndex){
         for(int x = 0; x < arrayList.size(); x++){
@@ -100,4 +100,4 @@ public class Main extends SortingAlgorithms implements Runnable {
 
 
 
-}//End of main class
+
