@@ -92,10 +92,14 @@ public class Main extends SortingAlgorithms implements Runnable {
      * @param columnIndex
      **/
     private void populateSubArray(ArrayList<String[]> arrayList, String[] arrayToPopulate, int columnIndex){
-        for(String[] stringItem; arrayList){
-            String data = stringItem[columnIndex];
-            arrayToPopulate = data;
-        }
+            for(int x = 0; x < arrayList.size(); x++){
+                String[] data = arrayList.get(x);
+                if(data == null || data.length == 0){
+                    arrayToPopulate[x] = "Null";
+                }else {
+                    arrayToPopulate[x] = data[columnIndex];
+                }
+            }
     }
     }//End of populateArray method
 
