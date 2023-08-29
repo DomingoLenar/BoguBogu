@@ -16,7 +16,7 @@ public class SortingAlgorithms {
                         array[x] = array[minIndex];
                         array[minIndex] = temp;
                     }
-                }
+                } // end of selection sort
 
             case 2: // bubble sort
                 for (int x = 0; x < length - 1; x++) {
@@ -27,7 +27,7 @@ public class SortingAlgorithms {
                             array[y] = temp;
                         }
                     }
-                }
+                } // end of bubble sort
 
             case 3: // insertion sort
                 for (int i = 1; i < length; ++i) {
@@ -41,7 +41,5 @@ public class SortingAlgorithms {
                     array[j + 1] = key;
                 }
         }
-
-
     }
-}
+} // end of insertion sort
