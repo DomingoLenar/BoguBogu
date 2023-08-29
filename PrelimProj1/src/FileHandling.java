@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class FileHandling {
     public String[] fileRead(String fileName) throws FileNotFoundException{
         File file = new File(fileName);
@@ -13,7 +14,7 @@ public class FileHandling {
         }
         return data;
     }
-    public int countLines(File file)throws FileNotFoundException{
+    private int countLines(File file)throws FileNotFoundException{
         Scanner counter = new Scanner(file);
         int count = 0;
         while(counter.hasNext()){
