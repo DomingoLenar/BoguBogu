@@ -43,7 +43,9 @@ public class FileHandling {
     }
 
     /**
-     * This part of the code
+     * This part of the code input a "fileName' string specifying the name of the file to be read, and an "ArrayList" used to store the read
+     * data. Next is that this method will create a 'File' object using the provided 'fileName' and initialize a scanner named 'reader'
+     * to read data from the file. After it uses the loop it will close the 'reader' scanner.
      */
     public void fileRead(String fileName, ArrayList<String[]> arrayList) throws FileNotFoundException{
         File file = new File(fileName);
