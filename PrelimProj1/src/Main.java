@@ -10,7 +10,7 @@ public class Main extends SortingAlgorithms implements Runnable {
 
     public static void main(String[] args) {
         Main program = new Main();
-        program.run();
+        program.run()
     }//End of main method
 
     @Override
@@ -24,8 +24,11 @@ public class Main extends SortingAlgorithms implements Runnable {
 
     }//End of run method
 
+    /**
+     * Method for displaying the datasets' categories and what sorting algorithms is to be used
+     */
     private void promptMessage() { // method binding (dynamic)
-        System.out.println("Below are the categories for each datum in a data set");
+        System.out.println("Below are the categories for each datum in a data set"); // Display available categories for data
         String[] arr_header = data.get(0); // header
         data.remove(0); // remove header in data set
         for(int i = 0; i < arr_header.length; i++)
@@ -36,10 +39,10 @@ public class Main extends SortingAlgorithms implements Runnable {
 
         int category_number;
         int sortingType;
-        do {
-            System.out.println("\nPlease input the category number to be sort: ");
+        do { // Get user input for category number and sorting algorithm
+            System.out.println("\nPlease input the category number to be sorted: ");
             category_number = kInput.nextInt();
-            System.out.println("Enter the sorting algorithm to be apply in data: 1. Bubble Sort | 2. Selection Sort | 3. Insertion Sort");
+            System.out.println("Enter the sorting algorithm to be used on the data: 1. Bubble Sort | 2. Selection Sort | 3. Insertion Sort");
             sortingType = kInput.nextInt();
 
             if (!(category_number > 0  && category_number <= arr_header.length) || !(sortingType > 0  && sortingType < 4))
@@ -86,7 +89,7 @@ public class Main extends SortingAlgorithms implements Runnable {
     }//End of printArray method
 
     /**
-     * Method for populating an array
+     * Method for populating a dynamic array
      * @param arrayList
      * @param arrayToPopulate
      * @param columnIndex
