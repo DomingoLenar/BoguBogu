@@ -1,11 +1,22 @@
-public class SortingAlgorithms {
+abstract class SortingAlgorithms {
     void sortingProcess(int sortingType, String[] array)
     {
         int length = array.length;
 
         switch (sortingType)
         {
-            case 1: // selection sort
+            case 1: // bubble sort
+                for (int x = 0; x < length - 1; x++) {
+                    for (int y = x + 1; y < length; y++) {
+                        if (array[x].compareTo(array[y]) > 0) {
+                            String temp = array[x];
+                            array[x] = array[y];
+                            array[y] = temp;
+                        }
+                    }
+                }
+
+            case 2: // selection sort
                 for (int x = 0; x < length - 1; x++) {
                     int minIndex = x;
                     for (int y = x + 1; y < length; y++) {
@@ -15,17 +26,6 @@ public class SortingAlgorithms {
                         String temp = array[x];
                         array[x] = array[minIndex];
                         array[minIndex] = temp;
-                    }
-                }
-
-            case 2: // bubble sort
-                for (int x = 0; x < length - 1; x++) {
-                    for (int y = x + 1; y < length; y++) {
-                        if (array[x].compareTo(array[y]) > 0) {
-                            String temp = array[x];
-                            array[x] = array[y];
-                            array[y] = temp;
-                        }
                     }
                 }
 
@@ -41,7 +41,5 @@ public class SortingAlgorithms {
                     array[j + 1] = key;
                 }
         }
-
-
     }
 }
