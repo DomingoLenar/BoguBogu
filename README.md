@@ -34,7 +34,7 @@ Solution:
 > Relating the Gauss Formula to x, we have, <br>
 > = (n - 1) (n - 1 + 1) / 2 <br>
 > = n(n - 1) / 2 <br>
-
+    
 *Inner Loop Run Time*
 * (n - 1) + (x + 1) + x
 * x + x + x + x
@@ -50,14 +50,33 @@ Solution:
 
 ## Selection Sort
 
-- [ ] Best-Case Scenario 
--  Time Complexity: #TODO
+- [x] Best-Case Scenario // No swapping and assigning value to var
+-  Time Complexity: O(n)
 
 - [ ] Average-Case Scenario
 -  Time Complexity: #TODO
 
-- [ ] Worst-Case Scenario
--  Time Complexity: #TODO
+- [x] Worst-Case Scenario
+-  Time Complexity: O(n^2)
+
+Solution:
+* Outer loop: 1 + n + n - 1 
+* Body of Outer loop: n - 1 + n - 1 + n + n + n 
+> equal to 7n
+* Inner Loop: Consider all cases of the outer loop, thus, <br/>
+> Relating the Gauss Formula to x, we have, <br>
+> = (n - 1) (n - 1 + 1) / 2 <br>
+> = n(n - 1) / 2 <br>
+* Inner loop: 1 + x + x - 1
+* Body of Inner loop: x + x
+> equal to 4x 
+
+*Time Complexity T(n)* <br>
+> Outer loop + Inner loop = 4x + 7n <br>
+> Replace x with n since Time Complexity is in terms of n, <br>
+> = 4(n^2 - n / 2) + 7n <br>
+> = 2n^2 + 5n <br>
+> T(n) is O(n^2) <br>
 
 
 ## Insertion Sort
