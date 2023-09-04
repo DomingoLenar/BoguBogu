@@ -5,8 +5,21 @@
 - [x] Best-Case Scenario //Compare elements but no swap
 -  Time Complexity: O(n) 
 
-- [ ] Average-Case Scenario
--  Time Complexity: #TODO 
+- [x] Average-Case Scenario
+-  Time Complexity: O(n^2) <br/> 
+> The amount of swapping depends on the elements of an array, thus we use the concept of probability (i.e., expected value formula),<br>
+> E[x] = sum of possibilities * likelihood to occur <br>
+> E[x] = (0 + 1) * 1/2 = 1/2 <br>
+
+> Average-case and Worst-case are the same however the main difference is that; worst-case we always swap; in average-case
+> it depends on how sorted the array, therefore,
+> > *Time Complexity T(n)* <br>
+> Expected value * [Outer loop + Inner loop] = 1/2*(6x + 3n) <br>
+> Replace x with n since Time Complexity is in terms of n, <br>
+> = 1/2*(6(n(n - 1 ) / 2) + 3n) <br>
+> = 1/2*(3n^2) <br>
+> = 3n^2/2 <br>
+> T(n) is O(n^2) <br>
 
 - [x] Worst-Case Scenario
 -  Time Complexity: O(n^2) <br/>
