@@ -53,8 +53,19 @@ Solution:
 - [x] Best-Case Scenario // No swapping and assigning value to var
 -  Time Complexity: O(n)
 
-- [ ] Average-Case Scenario
+- [x] Average-Case Scenario
 -  Time Complexity: #TODO
+
+Solution: Use the concept of probability (i.e., expected value formula),<br>
+> E[x] = sum of possibilities * likelihood to occur <br>
+> E[x] = (0 + 1) * 1/2 = 1/2 <br>
+
+> > *Time Complexity T(n)* <br>
+> Expected value * [Outer loop + Inner loop] = 1/2(4 ((n^2 - n) / 2) + 7n) <br>
+> Replace x with n since Time Complexity is in terms of n, <br>
+> = 1/2(2n^2 + 5n) <br>
+> = n^2 + 5n/2 <br>
+> T(n) is O(n^2) <br>
 
 - [x] Worst-Case Scenario
 -  Time Complexity: O(n^2)
