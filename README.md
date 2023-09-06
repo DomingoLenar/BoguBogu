@@ -1,6 +1,7 @@
 # Algorithm Analysis of Bubble, Selection, and Insertion Sorting Algorithm
 
 ## Bubble Sort
+//Note: bubbles up the elements by swap and compare
 
 - [x] Best-Case Scenario //Compare elements but no swap
 -  Time Complexity: O(n) 
@@ -49,6 +50,7 @@ Solution:
 
 
 ## Selection Sort
+//Note: swap and compare in efficient action 
 
 - [x] Best-Case Scenario // No swapping and assigning value to var
 -  Time Complexity: O(n)
@@ -91,12 +93,23 @@ Solution:
 
 
 ## Insertion Sort
+//Note: slowly shift/move elements in array (build-up) -> grows the sorting process of elements
 
-- [ ] Best-Case Scenario
--  Time Complexity: #TODO
+- [x] Best-Case Scenario // Linear
+-  Time Complexity: O(n)
+
+Solution:
+* Outer loop: 1 + n + n - 1 = 2n
+* Body of Outer loop: 3(n-1) = 3n - 3 
+* Inner loop: 3(n-1) = 3n - 3 <br>
+
+*Time Complexity T(n)* <br>
+> Outer loop + Inner loop = 2n + 3n - 3 + 3n - 3 <br>
+> = 8n - 6 <br>
+> T(n) is O(n) <br>
 
 - [ ] Average-Case Scenario
--  Time Complexity: #TODO
+-  Time Complexity: O(n^2)
 
 - [ ] Worst-Case Scenario
--  Time Complexity: #TODO
+-  Time Complexity: O(n^2)
