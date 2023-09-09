@@ -108,8 +108,47 @@ Solution:
 > = 8n - 6 <br>
 > T(n) is O(n) <br>
 
-- [ ] Average-Case Scenario
--  Time Complexity: O(n^2)
+- [x] Average-Case Scenario
+-  Time Complexity: O(n^2) <br>
+- Expected Value E[x] in Probability and Statistics is used to determine T(n) <br>
+- Formula for getting T(n) is, <br>
+> E[x] (Outer loop + Inner loop) <br>
+
+*Assumption: Indexed of off 1* <br>
+// Note: Index i is "extracted" and store in a temporary variable (i.e., key) while index j is behind the index i and perform comparison for each shift/move of index j such that the item on index i
+is in appropriate position.
+* The number of times the for loop execute is expressed in terms of sigma, that is, <br>
+> Summation from i = 2 to n
+* The number of comparison in the while loop is linear (i.e., 1), thus, we add 1 as a parameterized value of the summation
+> Summation from j = 1 to i and 1 as parameterized value
+> To include one of the bounds, subtract the high bound - low bound + 1, <br>
+> > i - 1 + 1 which is equal to i <br>
+> > The summation then becomes, <br>
+> >> Summation with lower bound from i = 2, higher bound from n, and parameterized value i <br>
+> >> Expressing in terms of a series this becomes,
+> >>> 2 + 3 +...+ n-2 + n-1 + n <br>
+> >>> We need a series/summation similar to gauss sum of natural numbers, if we add 1 and -1 on each side of the series, that is, <br>
+> >>> [1 + (2 + 3 +...+ n-2 + n-1 + n)] - 1 <br>
+> >>> which is identical to gauss formula <br>
+> >>> The summation then becomes, <br>
+> >>>> Summation from i = 1 to n, parameterized value i, - 1 or, <br>
+> >>>> The formula for the number of comparison executed given n <br>
+> >>>> (n(n+1)/2) - 1 <br>
+> >>>> By applying the rules of algebra, setting this equal to x, that is, <br>
+> >>>> x = (n(n+1)/2) - 1 <br>
+
+
+*Time Complexity T(n)* <br>
+* Outer loop: 1 + n + n - 1
+* Body of Outer loop: 3(n - 1)
+> => 5n - 1
+* Inner loop: 3x + 1
+* Body of Inner loop: 3x
+> => 6x + 1
+> E[x] (Outer loop + Inner loop) = 5n + 6x    
+> 1/2 (5n + 6 ((n^2 + n)/2 - 1))
+> 3n^2 + 8n - 6
+> T(n) is O(n^2) <br>
 
 - [ ] Worst-Case Scenario
 -  Time Complexity: O(n^2)
