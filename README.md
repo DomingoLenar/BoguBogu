@@ -144,11 +144,12 @@ is in appropriate position.
 > => 5n - 1
 * Inner loop: 3x + 1
 * Body of Inner loop: 3x
-> => 6x + 1
-> E[x] (Outer loop + Inner loop) = 5n + 6x    
-> 1/2 (5n + 6 ((n^2 + n)/2 - 1))
-> 3n^2/2 + 4n - 3
-> T(n) is O(n^2) <br>
+> => 6x + 1 <br>
+
+T(n) is E[x] (Outer loop + Inner loop) = 5n + 6x <br>    
+> = 1/2 (5n + 6 ((n^2 + n)/2 - 1)) <br>
+> = 3n^2/2 + 4n - 3 <br>
+> = T(n) is O(n^2) <br>
 
 - [x] Worst-Case Scenario
 -  Time Complexity: O(n^2) <br>
@@ -161,8 +162,9 @@ Solution: The worst-case of insertion is the same as the average-case excluding 
 > => 5n - 1
 * Inner loop: 3x + 1
 * Body of Inner loop: 3x
-> => 6x + 1
+> => 6x + 1 <br>
+
 > (Outer loop + Inner loop) = 5n + 6x    
-> (5n + 6 ((n^2 + n)/2 - 1))
-> 3n^2 + 8n - 6
-> T(n) is O(n^2) <br>
+> = (5n + 6 ((n^2 + n)/2 - 1)) <br>
+> = 3n^2 + 8n - 6 <br>
+> = T(n) is O(n^2) <br>
