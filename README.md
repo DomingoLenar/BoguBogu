@@ -147,7 +147,7 @@ is in appropriate position.
 > => 6x + 1
 > E[x] (Outer loop + Inner loop) = 5n + 6x    
 > 1/2 (5n + 6 ((n^2 + n)/2 - 1))
-> 3n^2 + 8n - 6
+> 3n^2/2 + 4n - 3
 > T(n) is O(n^2) <br>
 
 - [x] Worst-Case Scenario
