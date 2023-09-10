@@ -150,5 +150,19 @@ is in appropriate position.
 > 3n^2 + 8n - 6
 > T(n) is O(n^2) <br>
 
-- [ ] Worst-Case Scenario
--  Time Complexity: O(n^2)
+- [x] Worst-Case Scenario
+-  Time Complexity: O(n^2) <br>
+
+Solution: The worst-case of insertion is the same as the average-case excluding the Expected Value, that is, <br>
+
+*Time Complexity T(n)* <br>
+* Outer loop: 1 + n + n - 1
+* Body of Outer loop: 3(n - 1)
+> => 5n - 1
+* Inner loop: 3x + 1
+* Body of Inner loop: 3x
+> => 6x + 1
+> (Outer loop + Inner loop) = 5n + 6x    
+> (5n + 6 ((n^2 + n)/2 - 1))
+> 3n^2 + 8n - 6
+> T(n) is O(n^2) <br>
