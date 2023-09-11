@@ -1,92 +1,183 @@
-# algorithmsprelims
+# Algorithm Analysis of Bubble, Selection, and Insertion Sorting Algorithm
+
+## Bubble Sort
+//Note: bubbles up the elements by swap and compare
+
+- [x] Best-Case Scenario //Compare elements but no swap
+-  Time Complexity: O(n) <br>
+
+Solution: The comparison will always break (i.e., if statement is false) <br>
+* Outer loop: 1 + n + (n - 1) = 2n
+* Inner loop: (n - 1) + (x + 1) + x = 2x + n
+* Body of Inner loop: x <br>
+
+> *Time Complexity T(n)* <br>
+> Outer loop + Inner loop = 3n + 3x <br>
+> Replace x with n (Time Complexity is in terms of n), <br>
+> = 3(n(n - 1 ) / 2) + 3n <br>
+> = 3n^/2 - 3n/2 + 3n <br>
+> = 3n^/2 + 3n/2 <br>
+> T(n) is O(n^2) <br>
+
+- [x] Average-Case Scenario
+-  Time Complexity: O(n^2) <br/> 
+> The amount of swapping depends on the elements of an array, thus we use the concept of probability (i.e., expected value formula),<br>
+> E[x] = sum of possibilities * likelihood to occur <br>
+> E[x] = (0 + 1) * 1/2 = 1/2 <br>
+
+> Average-case and Worst-case are the same however the main difference is that; worst-case we always swap; in average-case
+> it depends on how sorted the array, therefore,
+> > *Time Complexity T(n)* <br>
+> Expected value * [Outer loop + Inner loop] = 1/2*(6x + 3n) <br>
+> Replace x with n since Time Complexity is in terms of n, <br>
+> = 1/2*(6(n(n - 1 ) / 2) + 3n) <br>
+> = 1/2*(3n^2) <br>
+> = 3n^2/2 <br>
+> T(n) is O(n^2) <br>
+
+- [x] Worst-Case Scenario
+-  Time Complexity: O(n^2) <br/>
+
+Solution: 
+* Outer Loop: 1 + [(n-1) + 1] + (n - 1) = 2n
+* Inner Loop: Consider all cases of the outer loop, thus, <br/>
+> 1 + 2 + 3+...+(n-1) = x [times inner loop is executed]<br/>
+> This is a series which is similar to Gauss sum of natural numbers, that is, <br/>
+> * n(n+1)/2 <br/> 
+
+> Relating the Gauss Formula to x, we have, <br>
+> = (n - 1) (n - 1 + 1) / 2 <br>
+> = n(n - 1) / 2 <br>
+    
+*Inner Loop Run Time*
+* (n - 1) + (x + 1) + x
+* x + x + x + x
+> 6x + n 
+
+> *Time Complexity T(n)* <br>
+> Outer loop + Inner loop = 6x + 3n <br>
+> Replace x with n since Time Complexity is in terms of n, <br>
+> = 6(n(n - 1 ) / 2) + 3n <br>
+> = 3n^2 <br>
+> T(n) is O(n^2) <br>
 
 
+## Selection Sort
+//Note: swap and compare in efficient action 
 
-## Getting started
+- [x] Best-Case Scenario // No swapping and assigning value to var
+-  Time Complexity: O(n)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- [x] Average-Case Scenario
+-  Time Complexity: #TODO
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Solution: Use the concept of probability (i.e., expected value formula),<br>
+> E[x] = sum of possibilities * likelihood to occur <br>
+> E[x] = (0 + 1) * 1/2 = 1/2 <br>
 
-## Add your files
+> > *Time Complexity T(n)* <br>
+> Expected value * [Outer loop + Inner loop] = 1/2(4 ((n^2 - n) / 2) + 7n) <br>
+> Replace x with n since Time Complexity is in terms of n, <br>
+> = 1/2(2n^2 + 5n) <br>
+> = n^2 + 5n/2 <br>
+> T(n) is O(n^2) <br>
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- [x] Worst-Case Scenario
+-  Time Complexity: O(n^2)
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/2233915/algorithmsprelims.git
-git branch -M main
-git push -uf origin main
-```
+Solution:
+* Outer loop: 1 + n + n - 1 
+* Body of Outer loop: n - 1 + n - 1 + n + n + n 
+> equal to 7n
+* Inner Loop: Consider all cases of the outer loop, thus, <br/>
+> Relating the Gauss Formula to x, we have, <br>
+> = (n - 1) (n - 1 + 1) / 2 <br>
+> = n(n - 1) / 2 <br>
+* Inner loop: 1 + x + x - 1
+* Body of Inner loop: x + x
+> equal to 4x 
 
-## Integrate with your tools
+*Time Complexity T(n)* <br>
+> Outer loop + Inner loop = 4x + 7n <br>
+> Replace x with n since Time Complexity is in terms of n, <br>
+> = 4(n^2 - n / 2) + 7n <br>
+> = 2n^2 + 5n <br>
+> T(n) is O(n^2) <br>
 
-- [ ] [Set up project integrations](https://gitlab.com/2233915/algorithmsprelims/-/settings/integrations)
 
-## Collaborate with your team
+## Insertion Sort
+//Note: slowly shift/move elements in array (build-up) -> grows the sorting process of elements
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+- [x] Best-Case Scenario // Linear
+-  Time Complexity: O(n)
 
-## Test and Deploy
+Solution:
+* Outer loop: 1 + n + n - 1 = 2n
+* Body of Outer loop: 3(n-1) = 3n - 3 
+* Inner loop: 3(n-1) = 3n - 3 <br>
 
-Use the built-in continuous integration in GitLab.
+*Time Complexity T(n)* <br>
+> Outer loop + Inner loop = 2n + 3n - 3 + 3n - 3 <br>
+> = 8n - 6 <br>
+> T(n) is O(n) <br>
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- [x] Average-Case Scenario
+-  Time Complexity: O(n^2) <br>
+- Expected Value E[x] in Probability and Statistics is used to determine T(n) <br>
+- Formula for getting T(n) is, <br>
+> E[x] (Outer loop + Inner loop) <br>
 
-***
+*Assumption: Indexed of off 1* <br>
+// Note: Index i is "extracted" and store in a temporary variable (i.e., key) while index j is behind the index i and perform comparison for each shift/move of index j such that the item on index i
+is in appropriate position.
+* The number of times the for loop execute is expressed in terms of sigma, that is, <br>
+> Summation from i = 2 to n
+* The number of comparison in the while loop is linear (i.e., 1), thus, we add 1 as a parameterized value of the summation
+> Summation from j = 1 to i and 1 as parameterized value
+> To include one of the bounds, subtract the high bound - low bound + 1, <br>
+> > i - 1 + 1 which is equal to i <br>
+> > The summation then becomes, <br>
+> >> Summation with lower bound from i = 2, higher bound from n, and parameterized value i <br>
+> >> Expressing in terms of a series this becomes,
+> >>> 2 + 3 +...+ n-2 + n-1 + n <br>
+> >>> We need a series/summation similar to gauss sum of natural numbers, if we add 1 and -1 on each side of the series, that is, <br>
+> >>> [1 + (2 + 3 +...+ n-2 + n-1 + n)] - 1 <br>
+> >>> which is identical to gauss formula <br>
+> >>> The summation then becomes, <br>
+> >>>> Summation from i = 1 to n, parameterized value i, - 1 or, <br>
+> >>>> The formula for the number of comparison executed given n <br>
+> >>>> (n(n+1)/2) - 1 <br>
+> >>>> By applying the rules of algebra, setting this equal to x, that is, <br>
+> >>>> x = (n(n+1)/2) - 1 <br>
 
-# Editing this README
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+*Time Complexity T(n)* <br>
+* Outer loop: 1 + n + n - 1
+* Body of Outer loop: 3(n - 1)
+> => 5n - 1
+* Inner loop: 3x + 1
+* Body of Inner loop: 3x
+> => 6x + 1 <br>
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+T(n) is E[x] (Outer loop + Inner loop) = 5n + 6x <br>    
+> = 1/2 (5n + 6 ((n^2 + n)/2 - 1)) <br>
+> = 3n^2/2 + 4n - 3 <br>
+> = T(n) is O(n^2) <br>
 
-## Name
-Choose a self-explaining name for your project.
+- [x] Worst-Case Scenario
+-  Time Complexity: O(n^2) <br>
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Solution: The worst-case of insertion is the same as the average-case excluding the Expected Value, that is, <br>
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+*Time Complexity T(n)* <br>
+* Outer loop: 1 + n + n - 1
+* Body of Outer loop: 3(n - 1)
+> => 5n - 1
+* Inner loop: 3x + 1
+* Body of Inner loop: 3x
+> => 6x + 1 <br>
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+> (Outer loop + Inner loop) = 5n + 6x    
+> = (5n + 6 ((n^2 + n)/2 - 1)) <br>
+> = 3n^2 + 8n - 6 <br>
+> = T(n) is O(n^2) <br>
