@@ -1,4 +1,4 @@
-public class SortingAlgorithms {
+abstract class SortingAlgorithms {
     void sortingProcess(int sortingType, String[] array)
     {
         int length = array.length;
