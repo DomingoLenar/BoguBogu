@@ -7,7 +7,7 @@ abstract class SortingAlgorithms {
         {
             case 1: // bubble sort
                 for (int x = 0; x < length - 1; x++) {
-                    for (int y = 0; y < length - x - 1; y++) {
+                    for (int y = 1; y < x - 1; y++) {
                         if (array[x].compareTo(array[y]) > 0) {
                             String temp = array[x];
                             array[x] = array[y];
