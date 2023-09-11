@@ -4,7 +4,20 @@
 //Note: bubbles up the elements by swap and compare
 
 - [x] Best-Case Scenario //Compare elements but no swap
--  Time Complexity: O(n) 
+-  Time Complexity: O(n) <br>
+
+Solution: The comparison will always break (i.e., if statement is false) <br>
+* Outer loop: 1 + n + (n - 1) = 2n
+* Inner loop: (n - 1) + (x + 1) + x = 2x + n
+* Body of Inner loop: x <br>
+
+> *Time Complexity T(n)* <br>
+> Outer loop + Inner loop = 3n + 3x <br>
+> Replace x with n (Time Complexity is in terms of n), <br>
+> = 3(n(n - 1 ) / 2) + 3n <br>
+> = 3n^/2 - 3n/2 + 3n <br>
+> = 3n^/2 + 3n/2 <br>
+> T(n) is O(n^2) <br>
 
 - [x] Average-Case Scenario
 -  Time Complexity: O(n^2) <br/> 
