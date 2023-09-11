@@ -62,24 +62,45 @@ Solution:
 > T(n) is O(n^2) <br>
 
 
-## Selection Sort
+## Selection Sort 
+
 //Note: swap and compare in efficient action 
 
-- [x] Best-Case Scenario // No swapping and assigning value to var
+- [x] Best-Case Scenario // No swapping only comparison but always false
 -  Time Complexity: O(n)
 
+Solution:
+* Outer loop: 1 + n + n - 1
+* Body of Outer loop: n - 1 + n - 1 
+> equal to 4n - 2
+* Inner Loop: Consider all cases of the outer loop, thus, <br/>
+> Relating the Gauss Formula to x, we have, <br>
+> = (n - 1) (n - 1 + 1) / 2 <br>
+> = n(n - 1) / 2 <br>
+* Inner loop: (n - 1) + x + x - 1
+* Body of Inner loop: x + x
+> equal to 4x + n - 2
+
+*Time Complexity T(n)* <br>
+> Outer loop + Inner loop = 4x + 5n - 4 <br>
+> Replace x with n since Time Complexity is in terms of n, <br>
+> = 4(n^2 - n / 2) + 5n - 4 <br>
+> = 2n^2 + 7n - 4<br>
+> T(n) is O(n^2) <br>
+
 - [x] Average-Case Scenario
--  Time Complexity: #TODO
+-  Time Complexity: O(n^2)
 
 Solution: Use the concept of probability (i.e., expected value formula),<br>
 > E[x] = sum of possibilities * likelihood to occur <br>
 > E[x] = (0 + 1) * 1/2 = 1/2 <br>
 
 > > *Time Complexity T(n)* <br>
-> Expected value * [Outer loop + Inner loop] = 1/2(4 ((n^2 - n) / 2) + 7n) <br>
+> Expected value * [Outer loop + Inner loop] = 1/2(4x + 8n - 2) <br>
 > Replace x with n since Time Complexity is in terms of n, <br>
-> = 1/2(2n^2 + 5n) <br>
-> = n^2 + 5n/2 <br>
+> = 1/2(4((n^2 + n / 2) - 1) + 8n - 2) <br>
+> = 1/2(2n^2 + 10n - 6) <br>
+> = n^2 + 5n - 3) <br>
 > T(n) is O(n^2) <br>
 
 - [x] Worst-Case Scenario
@@ -87,21 +108,19 @@ Solution: Use the concept of probability (i.e., expected value formula),<br>
 
 Solution:
 * Outer loop: 1 + n + n - 1 
-* Body of Outer loop: n - 1 + n - 1 + n + n + n 
-> equal to 7n
+* Body of Outer loop: 5(n - 1)
+> equal to 7n - 5
 * Inner Loop: Consider all cases of the outer loop, thus, <br/>
-> Relating the Gauss Formula to x, we have, <br>
-> = (n - 1) (n - 1 + 1) / 2 <br>
-> = n(n - 1) / 2 <br>
-* Inner loop: 1 + x + x - 1
+> x = n(n + 1) / 2 - 1 <br>
+* Inner loop: (n - 1) + x + x - 1
 * Body of Inner loop: x + x
-> equal to 4x 
+> equal to 4x + n - 2
 
 *Time Complexity T(n)* <br>
-> Outer loop + Inner loop = 4x + 7n <br>
+> Outer loop + Inner loop = 4x + 8n - 2 <br>
 > Replace x with n since Time Complexity is in terms of n, <br>
-> = 4(n^2 - n / 2) + 7n <br>
-> = 2n^2 + 5n <br>
+> = 4((n^2 + n / 2) - 1) + 8n - 2 <br>
+> = 2n^2 + 10n - 6 <br>
 > T(n) is O(n^2) <br>
 
 
