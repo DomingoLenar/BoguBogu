@@ -1,4 +1,4 @@
-abstract class SortingAlgorithms {
+public class SortingAlgorithms {
     void sortingProcess(int sortingType, String[] array)
     {
         int length = array.length;
@@ -27,7 +27,7 @@ abstract class SortingAlgorithms {
                         array[x] = array[minIndex];
                         array[minIndex] = temp;
                     }
-                }
+                } // end of selection sort
 
             case 3: // insertion sort
                 for (int i = 1; i < length; ++i) {
@@ -39,7 +39,7 @@ abstract class SortingAlgorithms {
                         j = j - 1;
                     }
                     array[j + 1] = key;
-                }
+                }// end of insertion sort
         }
     }
 }
