@@ -5,12 +5,11 @@ abstract class SortingAlgorithms {
         switch (sortingType) {
             case 1: // bubble Sort
                 for (int x = 0; x < length - 1; x++) {
-                    for (int y = 0; y < length - x - 1; y++) {
-                        if (array[y].compareTo(array[y + 1]) > 0) {
-                            // swap elements if they are in the wrong order
-                            String temp = array[y];
-                            array[y] = array[y + 1];
-                            array[y + 1] = temp;
+                    for (int y = 1; y < x - 1; y++) {
+                        if (array[x].compareTo(array[y]) > 0) {
+                            String temp = array[x];
+                            array[x] = array[y];
+                            array[y] = temp;
                         }
                     }
                 }
