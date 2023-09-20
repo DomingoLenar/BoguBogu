@@ -7,7 +7,6 @@ public interface List <T>{
     void add();
     void insert (T element, int index);
     void deleteAt (int index);
-
     void deleteAtHead();
     void deleteAtTail();//
     void clear();
