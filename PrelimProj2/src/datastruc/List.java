@@ -1,7 +1,7 @@
 /**
  * September 20, 2023
  */
-package tools;
+package datastruc;
 
 public interface List <T>{
     void add();

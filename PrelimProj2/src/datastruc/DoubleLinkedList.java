@@ -3,8 +3,6 @@
  */
 package datastruc;
 
-import tools.List;
-
 public class DoubleLinkedList <T> implements List {
 
     /**

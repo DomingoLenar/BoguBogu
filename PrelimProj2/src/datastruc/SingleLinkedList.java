@@ -3,8 +3,6 @@
  */
 package datastruc;
 
-import tools.List;
-
 public class SingleLinkedList <T> implements List {
 
     /**
