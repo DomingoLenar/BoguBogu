@@ -3,6 +3,7 @@ package models;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
 
 public class User {
     private String username;
@@ -14,7 +15,7 @@ public class User {
 
     public User(String username, String password) {
         this.username = username;
-        this.password = hashString(password);
+        setPassword(password);
     }
 
     private String hashString(String toHash) {
@@ -32,6 +33,15 @@ public class User {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+        updatePasswordHash();
+    }
+
+    private void updatePasswordHash() {
+        this.password = hashString(this.password);
     }
 
     public boolean isPassValid(String pass) {
@@ -60,6 +70,28 @@ public class User {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    // Test Code
+    public static void main(String[] args) {
+        User user1 = new User("user1", "");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Password: ");
+        String password = scanner.nextLine();
+        user1.setPassword(password);
+
+        System.out.println("User 1 Hash: " + user1.password);
+
+        System.out.print("Verify Password: ");
+        String inputPassword = scanner.nextLine();
+
+        if (user1.isPassValid(inputPassword)) {
+            System.out.println("Password is Valid.");
+            user1.createUserFile();
+        } else {
+            System.out.println("Password is Invalid. User File is not Created.");
         }
     }
 }
