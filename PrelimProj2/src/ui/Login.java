@@ -4,18 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Login {
-    private JButton signUpButton;
+    private JButton sign_up_buttn;
     private JTextField usernameTextField;
     private JPasswordField passwordPasswordField;
     private JCheckBox rememberMeCheckBox;
     private JPanel cardPanel;
     private JPanel mainPanel;
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
+    private JButton login_buttn;
 
     public Login()
     {
@@ -24,7 +23,7 @@ public class Login {
         
         initPanel();
 
-        signUpButton.addActionListener(new ActionListener() {
+        sign_up_buttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -35,6 +34,15 @@ public class Login {
         });
 
         setUpFrame();
+        login_buttn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+
+
+            }
+        });
     }
 
     private void displaySignUpComponent() {
@@ -50,6 +58,14 @@ public class Login {
     }
 
     private void changeScreen() {
+    }
+
+    public JButton getLogin_buttn() {
+        return login_buttn;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
     }
 
 }
