@@ -92,15 +92,6 @@
                       <text value="Inbox"/>
                     </properties>
                   </component>
-                  <component id="76a9" class="javax.swing.JList" binding="list1" default-binding="true">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="50"/>
-                      </grid>
-                      <gridbag top="0" left="10" bottom="0" right="10" weightx="0.0" weighty="1.0"/>
-                    </constraints>
-                    <properties/>
-                  </component>
                   <component id="8fd10" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -109,6 +100,23 @@
                     <properties>
                       <foreground color="-16777216"/>
                       <text value="Show more"/>
+                    </properties>
+                  </component>
+                  <component id="73341" class="javax.swing.JTable" binding="receivedMailsTable">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <gridbag top="0" left="10" bottom="0" right="10" weightx="0.0" weighty="1.0"/>
+                    </constraints>
+                    <properties>
+                      <autoCreateColumnsFromModel value="false"/>
+                      <cellSelectionEnabled value="false"/>
+                      <inheritsPopupMenu value="false"/>
+                      <opaque value="true"/>
+                      <rowSelectionAllowed value="true"/>
+                      <toolTipText value=""/>
+                      <visible value="true"/>
                     </properties>
                   </component>
                 </children>
@@ -210,16 +218,6 @@
               </grid>
             </children>
           </grid>
-          <grid id="89fa" binding="sentPanel" layout-manager="GridBagLayout">
-            <constraints>
-              <card name="Card2"/>
-            </constraints>
-            <properties>
-              <background color="-13619185"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
           <grid id="6e3fa" binding="settingsPanel" layout-manager="GridBagLayout">
             <constraints>
               <card name="Card3"/>
@@ -229,6 +227,59 @@
             </properties>
             <border type="none"/>
             <children/>
+          </grid>
+          <grid id="7ec05" binding="sentPanel" layout-manager="GridBagLayout">
+            <constraints>
+              <card name="Card4"/>
+            </constraints>
+            <properties>
+              <background color="-10918"/>
+              <foreground color="-1"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="6f39d" class="javax.swing.JTextField">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <gridbag top="10" left="10" bottom="0" right="10" weightx="1.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <background color="-7236708"/>
+                  <text value="Seach"/>
+                </properties>
+              </component>
+              <component id="40025" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="10" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <foreground color="-16777216"/>
+                  <text value="Inbox"/>
+                </properties>
+              </component>
+              <component id="93443" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="10" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <foreground color="-16777216"/>
+                  <text value="Show more"/>
+                </properties>
+              </component>
+              <component id="c1918" class="javax.swing.JTable" binding="sentMailsTable">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                  <gridbag top="0" left="10" bottom="0" right="10" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties/>
+              </component>
+            </children>
           </grid>
         </children>
       </grid>

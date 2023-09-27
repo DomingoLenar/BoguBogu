@@ -2,10 +2,7 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 
 public class Inbox {
@@ -30,9 +27,10 @@ public class Inbox {
     private JPanel attachImgPanel;
     private JPanel attachFilePanel;
     private JTextField searchField;
-    private JList list1;
     private JPanel sentPanel;
     private JPanel settingsPanel;
+    private JTable receivedMailsTable;
+    private JTable sentMailsTable;
 
     public JPanel getCardPanel() {
         return cardPanel;
@@ -93,7 +91,13 @@ public class Inbox {
 
         // show the main panel
         ((CardLayout) cardPanel.getLayout()).show(cardPanel, inboxID);
-        
+
+        searchField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+            }
+        });
     }
 
     private void setUpFrame() {
@@ -126,5 +130,9 @@ public class Inbox {
 
     public JButton getSettingsButton() {
         return settingsButton;
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
