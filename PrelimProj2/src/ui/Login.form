@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ui.Login">
   <grid id="27dc6" binding="mainPanel" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="67" y="46" width="784" height="602"/>
+      <xy x="67" y="46" width="1063" height="1926"/>
     </constraints>
     <properties>
       <background color="-1"/>
@@ -21,21 +21,57 @@
           <text value="Bogu-Bogu Mail"/>
         </properties>
       </component>
-      <component id="d41a3" class="javax.swing.JLabel">
+      <component id="f70e0" class="javax.swing.JButton" binding="sign_up_buttn">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="50" left="50" bottom="0" right="0" weightx="0.5" weighty="0.0"/>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="0" right="25" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <background color="-10918"/>
-          <font name="Segoe UI Black" size="14" style="1"/>
+          <font name="Roboto Light" style="1"/>
           <foreground color="-16777216"/>
-          <text value="Welcome back!"/>
+          <text value="Sign-up"/>
+        </properties>
+      </component>
+      <component id="17166" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="30" bottom="10" right="0" weightx="0.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <font name="SansSerif" size="14" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="  Log-in with"/>
+        </properties>
+      </component>
+      <component id="1b636" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <font name="Roboto Light" size="12" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Forgot Password?"/>
+          <verticalAlignment value="3"/>
+          <verticalTextPosition value="3"/>
+        </properties>
+      </component>
+      <component id="df97f" class="javax.swing.JLabel" binding="icon">
+        <constraints>
+          <grid row="1" column="0" row-span="9" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <icon value="resources/icons/Bogu Mail 1.jpg"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="1f732" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="50" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -46,9 +82,21 @@
           <verticalAlignment value="0"/>
         </properties>
       </component>
+      <component id="d41a3" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="50" left="50" bottom="0" right="0" weightx="0.5" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-10918"/>
+          <font name="Segoe UI Black" size="14" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Welcome back!"/>
+        </properties>
+      </component>
       <component id="79966" class="javax.swing.JTextField" binding="usernameTextField" default-binding="true">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="6" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag top="0" left="50" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -62,7 +110,7 @@
       </component>
       <component id="9c791" class="javax.swing.JPasswordField" binding="passwordPasswordField" default-binding="true">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="7" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag top="0" left="50" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
@@ -76,7 +124,7 @@
       </component>
       <component id="65d38" class="javax.swing.JCheckBox" binding="rememberMeCheckBox" default-binding="true">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="50" bottom="175" right="0" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -86,21 +134,9 @@
           <text value="Remember Me"/>
         </properties>
       </component>
-      <component id="f70e0" class="javax.swing.JButton" binding="sign_up_buttn">
-        <constraints>
-          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="0" bottom="0" right="25" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <background color="-10918"/>
-          <font name="Roboto Light" style="1"/>
-          <foreground color="-16777216"/>
-          <text value="Sign-up"/>
-        </properties>
-      </component>
       <component id="2a96d" class="javax.swing.JButton" binding="login_buttn">
         <constraints>
-          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="0" bottom="175" right="0" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -111,30 +147,6 @@
           <foreground color="-16777216"/>
           <maximumSize width="78" height="30"/>
           <text value="Login-in"/>
-        </properties>
-      </component>
-      <component id="17166" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="30" bottom="20" right="0" weightx="0.0" weighty="1.0"/>
-        </constraints>
-        <properties>
-          <background color="-1"/>
-          <font name="SansSerif" size="14" style="1"/>
-          <foreground color="-16777216"/>
-          <text value="  Log-in with"/>
-        </properties>
-      </component>
-      <component id="1b636" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="0" bottom="100" right="0" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <background color="-16777216"/>
-          <font name="Roboto Light" size="12" style="1"/>
-          <foreground color="-16777216"/>
-          <text value="Forgot Password?"/>
         </properties>
       </component>
     </children>
