@@ -1,11 +1,14 @@
 package ui;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 
 
 public class Inbox {
+    private final String[] columnTitle = {"YEAR", "SEMESTER" ,"COURSE CODE", "COMPUTER SCIENCE", "UNITS"};
     private final String mainPanelID = "main_ID";
 
     private final String inboxID = "inbox_ID";
@@ -31,18 +34,8 @@ public class Inbox {
     private JPanel settingsPanel;
     private JTable receivedMailsTable;
     private JTable sentMailsTable;
-
-    public JPanel getCardPanel() {
-        return cardPanel;
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public JPanel getSentPanel() {
-        return sentPanel;
-    }
+    private DefaultTableModel model;
+    private JButton buttn_active = null;
 
     public Inbox()
     {
@@ -62,16 +55,15 @@ public class Inbox {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                // display inbox panel
                 displayInboxComponents();
+                composeLetterPanel.setVisible(false);
             }
         });
-
         sentButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                // display the sent panel
+                setUpSentMailsTable();
                 displaySentComponents();
             }
         });
@@ -79,7 +71,6 @@ public class Inbox {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                // display the settings panel
                 displaySettingsComponents();
             }
         });
@@ -96,8 +87,58 @@ public class Inbox {
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
+                searchFilter(searchField.getText());
             }
         });
+        receivedMailsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                composeLetterPanel.setVisible(true); // display content of a mail
+            }
+        });
+        sentMailsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });
+    }
+
+    private void searchFilter(String searchTerm) {
+        DefaultTableModel filteredItems = new DefaultTableModel();
+
+        Arrays.stream(columnTitle).forEach(item -> {
+            String letter = item.toLowerCase();
+            if (letter.contains(searchTerm.toLowerCase())){
+                filteredItems.addColumn(item);
+            }
+        });
+
+        model = filteredItems;
+        receivedMailsTable.setModel(model);
+    }
+
+    private void setUpSentMailsTable() {
+        model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // which set JTable non-editable
+            }
+        };
+        model.addColumn("Test1", columnTitle);
+        sentMailsTable = new JTable(model);
+    }
+
+    private void setUpReceivedMailsTable() {
+        model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // which set JTable non-editable
+            }
+        };
+        model.addColumn("Test1", columnTitle);
+        receivedMailsTable = new JTable(model);
     }
 
     private void setUpFrame() {
@@ -105,12 +146,15 @@ public class Inbox {
         cardPanel.add(sentPanel, sentID);
         cardPanel.add(settingsPanel, settingsID);
     }
+
     private void displaySettingsComponents() {
         changeScreen(settingsID);
     }
+
     private void displayInboxComponents() {
         changeScreen(inboxID);
     }
+
     private void displaySentComponents() {
         changeScreen(sentID);
     }
@@ -132,7 +176,22 @@ public class Inbox {
         return settingsButton;
     }
 
+    public JPanel getCardPanel() {
+        return cardPanel;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public JPanel getSentPanel() {
+        return sentPanel;
+    }
+
     private void createUIComponents() {
         // TODO: place custom component creation code here
+        setUpReceivedMailsTable();
+        setUpSentMailsTable();
+
     }
 }
