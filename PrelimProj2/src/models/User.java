@@ -4,6 +4,7 @@ import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
+import tools.FileHandling;
 
 public class User {
     private String username;
@@ -36,13 +37,9 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
-        updatePasswordHash();
+        this.password = hashString(password);
     }
 
-    private void updatePasswordHash() {
-        this.password = hashString(this.password);
-    }
 
     public boolean isPassValid(String pass) {
         String hashedPass = hashString(pass);
@@ -58,19 +55,28 @@ public class User {
     }
 
     public void createUserFile() {
-        try {
-            File file = new File(this.username + ".txt");
-            if (file.createNewFile()) {
-                FileWriter writer = new FileWriter(file);
-                writer.write(this.username + " , " + this.password);
-                writer.close();
-                System.out.println("User file created: " + file.getName());
-            } else {
-                System.out.println("User file already exists.");
+        FileHandling fileHandler = new FileHandling();
+        String userFolder = "PrelimProj2/src/data/"+username;
+        if(!fileHandler.directoryExists(userFolder)){
+            try {
+                fileHandler.createDirectory(userFolder);
+            }catch(Exception directoryCreation){
+                directoryCreation.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+            try {
+                File file = new File(userFolder+"/credentials.txt");
+                if (file.createNewFile()) {
+                    FileWriter writer = new FileWriter(file);
+                    writer.write(this.username + " , " + this.password);
+                    writer.close();
+                    System.out.println("User file created: " + file.getName());
+                } else {
+                    System.out.println("User file already exists.");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
     // Test Code
