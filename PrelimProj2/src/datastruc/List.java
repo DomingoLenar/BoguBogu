@@ -4,12 +4,11 @@
 package datastruc;
 
 public interface List <T>{
-    void add();
-    void insert (T element, int index);
+    void add(T data);
     void deleteAt (int index);
     void deleteAtHead();
     void deleteAtTail();//
     void clear();
-    boolean contains();
-    int size();
-}//End of interface
+    int getSize();
+    boolean contains(T data);
+}//end of interface

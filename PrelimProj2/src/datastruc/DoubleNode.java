@@ -52,4 +52,4 @@ public class DoubleNode <T>{
         this.leftLink = leftLink;
     }
 
-}//End of class
+}//end of class

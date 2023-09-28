@@ -45,4 +45,4 @@ public class SingleNode <T> {
         this.link = link;
     }
 
-}//End of class
+}//end of class
