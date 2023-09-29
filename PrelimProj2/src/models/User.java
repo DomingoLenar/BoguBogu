@@ -4,6 +4,8 @@ import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
+
+import datastruc.SingleLinkedList;
 import tools.FileHandling;
 
 public class User {
@@ -78,6 +80,43 @@ public class User {
                 e.printStackTrace();
             }
     }
+
+
+    public SingleLinkedList<SingleLinkedList<Email>> fetchMails(String user, String type){
+
+        Scanner dataScanner = null;
+
+        SingleLinkedList<Email> thread = new SingleLinkedList<>();
+        SingleLinkedList<SingleLinkedList<Email>> listOfThreads = new SingleLinkedList<>();
+
+        File data = new File("PrelimProj2/src/data/"+user+"/"+type+".txt");
+        try{
+            dataScanner = new Scanner(data);
+        }catch(FileNotFoundException fNFE){
+            fNFE.printStackTrace();
+        }
+        String currentS = null;
+        while(dataScanner.hasNext()){
+            String[] rawData = dataScanner.nextLine().split(",");
+            String sender, reciever, subject, body;
+            sender = rawData[0];
+            reciever = rawData[1];
+            subject = rawData[2];
+            body = rawData[3];
+            Email mail = new Email(sender, reciever,subject, body);
+            if(!subject.equals(currentS) || currentS == null){
+                thread.add(mail);
+                currentS = subject;
+            }else{
+                listOfThreads.add(thread);
+                currentS = subject;
+                thread = null;
+                thread.add(mail);
+            }
+        }
+        return listOfThreads;
+    }
+
 
     // Test Code
     public static void main(String[] args) {
