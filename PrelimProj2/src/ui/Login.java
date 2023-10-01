@@ -15,7 +15,6 @@ public class Login {
     private JPanel cardPanel;
     private JPanel mainPanel;
     private JButton login_buttn;
-    private JLabel icon;
 
     public Login()
     {
