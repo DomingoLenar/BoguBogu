@@ -2,13 +2,20 @@ package ui;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
+import tools.TableActionCellEditor;
+import tools.TableActionCellRender;
+import tools.TableActionEvent;
+
 
 public class Inbox {
-    private final String[] columnTitle = {"YEAR", "SEMESTER" ,"COURSE CODE", "COMPUTER SCIENCE", "UNITS"};
+    private final String[] columnTitle = {"YEAR", "SEMESTER"};
+    private final String[][] sampleData = {{"YEAR", "SEMESTER"},
+    {"YEAR", "SEMESTER"}, {"YEAR", "SEMESTER"}, {"YEAR", "SEMESTER"}};
     private final String mainPanelID = "main_ID";
 
     private final String inboxID = "inbox_ID";
@@ -34,47 +41,14 @@ public class Inbox {
     private JPanel settingsPanel;
     private JTable receivedMailsTable;
     private JTable sentMailsTable;
+    private JTextArea letterBody;
+    private JScrollPane scrollPane;
     private DefaultTableModel model;
-    private JButton buttn_active = null;
 
     public Inbox()
     {
-        replyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        initComponents();
 
-            }
-        });
-        forwardButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        inboxButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                displayInboxComponents();
-                composeLetterPanel.setVisible(false);
-            }
-        });
-        sentButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                setUpSentMailsTable();
-                displaySentComponents();
-            }
-        });
-        settingsButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                displaySettingsComponents();
-            }
-        });
-        
         setUpFrame();
 
         // add the card panel in the main frame
@@ -83,6 +57,12 @@ public class Inbox {
         // show the main panel
         ((CardLayout) cardPanel.getLayout()).show(cardPanel, inboxID);
 
+    }
+
+    private void initComponents() {
+        initTables();
+        initButtons();
+
         searchField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -90,20 +70,115 @@ public class Inbox {
                 searchFilter(searchField.getText());
             }
         });
+
+    }
+
+    private void initButtons() {
+        replyButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+            }
+        });
+
+        forwardButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+            }
+        });
+
+        inboxButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                displayInboxComponents();
+                composeLetterPanel.setVisible(false);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+            }
+        });
+
+        sentButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                setUpSentMailsTable();
+                displaySentComponents();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+            }
+        });
+
+        settingsButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                displaySettingsComponents();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+            }
+        });
+    }
+
+    private void initTables() {
+
         receivedMailsTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                composeLetterPanel.setVisible(true); // display content of a mail
+                letterBody.append("LOLOLOLOLOL"); // TODO: display content of mail
+                composeLetterPanel.setVisible(true);
             }
         });
+
+        receivedMailsTable.getColumnModel().getColumn(1).setCellRenderer(new TableActionCellRender());
+        receivedMailsTable.getColumnModel().getColumn(1).setCellEditor(new TableActionCellEditor());
+
         sentMailsTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
             }
         });
+
+        sentMailsTable.getColumnModel().getColumn(1).setCellRenderer(new TableActionCellRender());
+        sentMailsTable.getColumnModel().getColumn(1).setCellEditor(new TableActionCellEditor());
+
+        TableActionEvent event = new TableActionEvent(){
+            @Override
+            public void onDelete(int row) {
+
+            }
+
+            @Override
+            public void onView(int row) {
+
+            }
+
+        };
+
     }
+
 
     private void searchFilter(String searchTerm) {
         DefaultTableModel filteredItems = new DefaultTableModel();
@@ -120,25 +195,35 @@ public class Inbox {
     }
 
     private void setUpSentMailsTable() {
-        model = new DefaultTableModel() {
+        boolean[] canEdit = new boolean[]{
+                false, true
+        };
+        model = new DefaultTableModel(sampleData, columnTitle) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // which set JTable non-editable
+                return canEdit[column]; // set JTable column non-editable
             }
         };
-        model.addColumn("Test1", columnTitle);
         sentMailsTable = new JTable(model);
+
+        TableColumn column = sentMailsTable.getColumnModel().getColumn(0);
+        column.setPreferredWidth(600);
     }
 
     private void setUpReceivedMailsTable() {
-        model = new DefaultTableModel() {
+        boolean[] canEdit = new boolean[]{
+                false, true
+        };
+        model = new DefaultTableModel(sampleData, columnTitle) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // which set JTable non-editable
+                return canEdit[column]; // set JTable column non-editable
             }
         };
-        model.addColumn("Test1", columnTitle);
         receivedMailsTable = new JTable(model);
+
+        TableColumn column = receivedMailsTable.getColumnModel().getColumn(0);
+        column.setPreferredWidth(600);
     }
 
     private void setUpFrame() {
