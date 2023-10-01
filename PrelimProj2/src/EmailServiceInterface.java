@@ -27,13 +27,13 @@ public class EmailServiceInterface extends JFrame {
                 super.mouseClicked(e);
 
                 // validation processing
+                initComponents();
                 setUpSubFrame();
                 changeScreen(mainID);
             }
         });
 
         this.inbox = new Inbox();
-
 
         CardLayout cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
@@ -49,6 +49,10 @@ public class EmailServiceInterface extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+    }
+
+    private void initComponents() {
+
     }
 
     private void displayInboxComponents() {
