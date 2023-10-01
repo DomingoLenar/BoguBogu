@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 import datastruc.SingleLinkedList;
+import datastruc.SingleNode;
 import tools.FileHandling;
 
 public class User {
@@ -115,6 +116,31 @@ public class User {
             }
         }
         return listOfThreads;
+    }
+
+    public void saveRuntimeMails(SingleLinkedList<SingleLinkedList<Email>> listOfThreads, String type){
+        FileHandling handler = new FileHandling();
+        if(handler.directoryExists("PrelimProj2/src/data/"+username)){
+            File dataFile = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
+            try{
+                PrintWriter output = new PrintWriter(dataFile);
+                if(dataFile.exists()){
+                    SingleNode<SingleLinkedList<Email>> currentThreadNode = listOfThreads.getHead();
+                    SingleNode<Email> threadPointer = currentThreadNode.getData().getHead();
+                    for(int x = 0; x < listOfThreads.getSize();x++){
+                        for(int y = 0; y < currentThreadNode.getData().getSize(); y++){
+                            output.println(threadPointer.getData().toString());
+                            output.flush();
+                            threadPointer = threadPointer.getLink();
+                        }
+                        currentThreadNode = currentThreadNode.getLink();
+                    }
+                    output.close();
+                }
+            }catch(FileNotFoundException outputError){
+                outputError.printStackTrace();
+            }
+        }
     }
 
 
