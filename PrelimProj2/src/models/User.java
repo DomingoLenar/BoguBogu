@@ -44,9 +44,12 @@ public class User {
     }
 
 
-    public boolean isPassValid(String pass) {
-        String hashedPass = hashString(pass);
-        return hashedPass.equals(this.password);
+    public boolean isPassValid() throws FileNotFoundException {
+        FileHandling handler = new FileHandling();
+        File creds = new File("PrelimProj2/src/data/" + username + "/credentials.txt");
+        Scanner in = new Scanner(creds);
+        String[] data = in.nextLine().split(",");
+        return (password.equals(data[1]));
     }
 
     public String getUsername() {
@@ -140,29 +143,6 @@ public class User {
             }catch(FileNotFoundException outputError){
                 outputError.printStackTrace();
             }
-        }
-    }
-
-
-    // Test Code
-    public static void main(String[] args) {
-        User user1 = new User("user1", "");
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Password: ");
-        String password = scanner.nextLine();
-        user1.setPassword(password);
-
-        System.out.println("User 1 Hash: " + user1.password);
-
-        System.out.print("Verify Password: ");
-        String inputPassword = scanner.nextLine();
-
-        if (user1.isPassValid(inputPassword)) {
-            System.out.println("Password is Valid.");
-            user1.createUserFile();
-        } else {
-            System.out.println("Password is Invalid. User File is not Created.");
         }
     }
 }
