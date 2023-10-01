@@ -158,4 +158,8 @@ public class SingleLinkedList <T> implements List {
         }
         return false;
     }
+
+    public SingleNode<T> getHead(){
+        return head;
+    }
 }//end of class
