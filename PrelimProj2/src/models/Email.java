@@ -37,6 +37,13 @@ public class Email {
         return body;
     }
 
+    public String getSender(){
+        return sender;
+    }
+    public String getReceiver(){
+        return receiver;
+    }
+
     @Override
     public String toString() {
         return "Sender: " + sender + "\n" +
