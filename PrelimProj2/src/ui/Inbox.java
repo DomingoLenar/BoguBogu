@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
+import datastruc.SingleLinkedList;
+import datastruc.SingleNode;
 import models.Email;
 import tools.TableActionCellEditor;
 import tools.TableActionCellRender;
@@ -60,9 +62,13 @@ public class Inbox {
     private JTextArea body;
     private JButton sentReplyButton;
     private DefaultTableModel model;
+    private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
 
-    public Inbox()
+    public Inbox(SingleLinkedList<SingleLinkedList<Email>> inboxMails, SingleLinkedList<SingleLinkedList<Email>> sentMails)
     {
+        this.inboxMails = inboxMails;
+        this.sentMails = sentMails;
+
         initComponents();
 
         setUpFrame();
@@ -227,7 +233,7 @@ public class Inbox {
                 false, false, true
         };
 
-        fetchSentMails();
+        fetchSentMails(sentMails);
         model = new DefaultTableModel(sampleData, columnTitle) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -240,7 +246,20 @@ public class Inbox {
         column.setPreferredWidth(600);
     }
 
-    private void fetchSentMails() {
+    private void fetchSentMails(SingleLinkedList<SingleLinkedList<Email>> sentMails) {
+        SingleNode<SingleLinkedList<Email>> currentNode = sentMails.getHead(); // outer first pointer
+
+        while (currentNode != null) {
+            SingleLinkedList<Email> emailSingleLinkedList = currentNode.getData();
+            SingleNode<Email> emailSingleNode = emailSingleLinkedList.getHead();
+            while (emailSingleNode != null) {
+                Email email = emailSingleNode.getData();
+                model.addRow(new Object[]{email.getSubject(), email.getSender()});
+                emailSingleNode = emailSingleNode.getLink();
+            }
+            currentNode = currentNode.getLink();
+        }
+
     }
 
     private void setUpReceivedMailsTable() {
@@ -248,21 +267,46 @@ public class Inbox {
                 false, false, true
         };
 
-        fetchReceivedMails();
+        fetchReceivedMails(inboxMails);
+
+        // DefaultTableModel with column names
         model = new DefaultTableModel(sampleData, columnTitle) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return canEdit[column]; // set JTable column non-editable
             }
         };
+        //         SingleLinkedList<SingleLinkedList<Email>> linkedListOfLists = new SingleLinkedList<>();
+
+
         receivedMailsTable = new JTable(model);
 
         TableColumn column = receivedMailsTable.getColumnModel().getColumn(1);
         column.setPreferredWidth(600);
     }
 
-    private void fetchReceivedMails() {
-        Email email = new Email();
+    private void fetchReceivedMails(SingleLinkedList<SingleLinkedList<Email>> inboxMail) {
+        SingleNode<SingleLinkedList<Email>> currentNode = inboxMail.getHead(); // outer first pointer
+
+        while (currentNode != null) {
+           SingleLinkedList<Email> emailSingleLinkedList = currentNode.getData();
+           SingleNode<Email> emailSingleNode = emailSingleLinkedList.getHead();
+           while (emailSingleNode != null) {
+               Email email = emailSingleNode.getData();
+               model.addRow(new Object[]{email.getSubject(), email.getSender()});
+               emailSingleNode = emailSingleNode.getLink();
+           }
+           currentNode = currentNode.getLink();
+        }
+
+//        while (currentList != null){
+//            SingleNode<Email> currentNode = currentList.ge;
+//            while (currentNode != null){
+//                Email email = currentNode.getData();
+//                model.addRow(new Object[]{email.getSubject(), email.getBody()});
+//            }
+//        }
+
     }
 
     private void setUpFrame() {
