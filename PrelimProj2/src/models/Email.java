@@ -14,7 +14,7 @@ public class Email {
         body = null;
     }
 
-    public Email(String sender, String receiver,String subject, String body) {
+    public Email(String sender, String receiver, String subject, String body) {
         this.sender = sender;
         this.receiver = receiver;
         this.subject = subject;

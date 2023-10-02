@@ -102,12 +102,12 @@ public class User {
         String currentS = null;
         while(dataScanner.hasNext()){
             String[] rawData = dataScanner.nextLine().split(",");
-            String sender, reciever, subject, body;
+            String sender, receiver, subject, body;
             sender = rawData[0];
-            reciever = rawData[1];
+            receiver = rawData[1];
             subject = rawData[2];
             body = rawData[3];
-            Email mail = new Email(sender, reciever,subject, body);
+            Email mail = new Email(sender, receiver,subject, body);
             if(!subject.equals(currentS) || currentS == null){
                 thread.add(mail);
                 currentS = subject;
