@@ -10,10 +10,13 @@ import javax.imageio.ImageIO;
 
 public class Forgot {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, FontFormatException {
         // JFrame container
         JFrame frame = new JFrame("Forgot Password");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Load the custom font
+        Font customFont = loadCustomFont("PrelimProj2/src/JosefinSans-Regular.ttf");
 
         // Panel to hold the UI components
         JPanel panel = new JPanel();
@@ -39,7 +42,7 @@ public class Forgot {
         headerPanel.add(imageLabel, headerGbc);
 
         JLabel titleLabel = new JLabel("Forgot your password?");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setFont(customFont.deriveFont(Font.BOLD, 24f));
 
         // Title label to the header panel using GridBagConstraints
         headerGbc.gridx = 0;
@@ -52,25 +55,25 @@ public class Forgot {
         gbc.insets = new Insets(10, 70, 10, 70);
 
         // Text field for the phone number
-        JTextField emailField = new JTextField("Phone Number", 20);
-        emailField.setFont(new Font("Arial", Font.PLAIN, 18));
-        emailField.setHorizontalAlignment(JTextField.LEFT);
-        emailField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        emailField.setOpaque(false);
+        JTextField phoneNumber = new JTextField("Phone Number", 20);
+        phoneNumber.setFont(customFont.deriveFont(Font.PLAIN, 18));
+        phoneNumber.setHorizontalAlignment(JTextField.LEFT);
+        phoneNumber.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        phoneNumber.setOpaque(false);
 
         // FocusListener to clear the text when clicked
-        emailField.addFocusListener(new FocusListener() {
+        phoneNumber.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (emailField.getText().equals("Phone Number")) {
-                    emailField.setText("");
+                if (phoneNumber.getText().equals("Phone Number")) {
+                    phoneNumber.setText("");
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (emailField.getText().isEmpty()) {
-                    emailField.setText("Phone Number");
+                if (phoneNumber.getText().isEmpty()) {
+                    phoneNumber.setText("Phone Number");
                 }
             }
         });
@@ -85,11 +88,12 @@ public class Forgot {
         gbc.gridy = 0;
         bodyPanel.add(initialFocusLabel, gbc); // Set initial focus to the label
         gbc.gridy = 1; // Move to the next row
-        bodyPanel.add(emailField, gbc);
+        bodyPanel.add(phoneNumber, gbc);
 
         // Footer panel
         JPanel footerPanel = new JPanel();
         JButton recoverButton = new JButton("Recover");
+        recoverButton.setFont(customFont.deriveFont(Font.PLAIN, 18));
         recoverButton.setBackground(new Color(0xffd55a));
         footerPanel.add(recoverButton);
 
@@ -106,5 +110,11 @@ public class Forgot {
         frame.setVisible(true);
 
     } // End of main method
+
+    // Load a custom font from a file
+    private static Font loadCustomFont(String fontPath) throws IOException, FontFormatException {
+        File fontFile = new File(fontPath);
+        return Font.createFont(Font.TRUETYPE_FONT, fontFile);
+    }
 
 } // End of Forgot class
