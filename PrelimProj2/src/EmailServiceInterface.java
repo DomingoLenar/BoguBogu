@@ -40,8 +40,8 @@ public class EmailServiceInterface extends JFrame {
                         initComponents();
                         setUpSubFrame();
                         changeScreen(mainID);
-                        inboxMails = currentUser.fetchMails("inbox");
-                        sentMails = currentUser.fetchMails("sent");
+                        inboxMails = currentUser.fetchMails("inbox", currentUser.getUsername());
+                        sentMails = currentUser.fetchMails("sent", currentUser.getUsername());
                     }else{
                         //display invalid credentials
                     }
