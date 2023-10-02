@@ -1,3 +1,6 @@
+import datastruc.SingleLinkedList;
+import models.Email;
+import models.User;
 import ui.Inbox;
 import ui.Login;
 
@@ -5,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 
 public class EmailServiceInterface extends JFrame {
     private final String loginID = "login_id";
@@ -15,6 +19,8 @@ public class EmailServiceInterface extends JFrame {
     private Login login;
     private Inbox inbox;
     private JPanel cardPanel;
+    private User currentUser;
+    private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
 
     EmailServiceInterface()
     {
@@ -25,11 +31,24 @@ public class EmailServiceInterface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-
-                // validation processing
-                initComponents();
-                setUpSubFrame();
-                changeScreen(mainID);
+                String username = login.getUsernameFieldString();
+                String password = login.getPasswordFieldString();
+                currentUser = new User(username, password);
+                try {
+                    if(currentUser.isPassValid()) {
+                        // validation processing
+                        initComponents();
+                        setUpSubFrame();
+                        changeScreen(mainID);
+                        inboxMails = currentUser.fetchMails("inbox", currentUser.getUsername());
+                        sentMails = currentUser.fetchMails("sent", currentUser.getUsername());
+                    }else{
+                        //display invalid credentials
+                    }
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                    // display no such user
+                }
             }
         });
 

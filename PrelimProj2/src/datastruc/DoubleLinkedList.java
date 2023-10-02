@@ -3,7 +3,7 @@
  */
 package datastruc;
 
-public class DoubleLinkedList <T> implements List {
+public class DoubleLinkedList<T> implements List {
 
     /**
      * Fields

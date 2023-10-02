@@ -3,7 +3,7 @@
  */
 package datastruc;
 
-public interface List <T>{
+public interface List<T>{
     void add(T data);
     void deleteAt (int index);
     void deleteAtHead();
