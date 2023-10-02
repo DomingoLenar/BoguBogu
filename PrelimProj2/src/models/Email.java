@@ -10,9 +10,11 @@ public class Email {
         // Default constructor
     }
 
-    public Email(String sender, String receiver) {
+    public Email(String sender, String receiver,String subject, String body) {
         this.sender = sender;
         this.receiver = receiver;
+        this.subject = subject;
+        this.body = body;
     }
 
     public void setSubject(String subject) {
