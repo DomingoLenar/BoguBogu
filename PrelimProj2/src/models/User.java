@@ -74,7 +74,7 @@ public class User {
                 File file = new File(userFolder+"/credentials.txt");
                 if (file.createNewFile()) {
                     FileWriter writer = new FileWriter(file);
-                    writer.write(this.username + " , " + this.password);
+                    writer.write(this.username + "," + this.password);
                     writer.close();
                     System.out.println("User file created: " + file.getName());
                 } else {
@@ -144,5 +144,10 @@ public class User {
                 outputError.printStackTrace();
             }
         }
+    }
+
+    public static void main(String[] args) {
+        User testUser = new User("Lestat","Lestat10");
+        testUser.createUserFile();
     }
 }
