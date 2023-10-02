@@ -3,13 +3,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
+import java.io.IOException;
 
 public class Signup {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, FontFormatException {
         // JFrame container
         JFrame frame = new JFrame("Sign Up");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Load the custom font
+        Font customFont = loadCustomFont("PrelimProj2/src/JosefinSans-Regular.ttf");
 
         // Panel to hold the UI components
         JPanel panel = new JPanel();
@@ -20,7 +25,7 @@ public class Signup {
         GridBagConstraints headerGbc = new GridBagConstraints();
         headerGbc.insets = new Insets(15, 0, 5, 0);
         JLabel titleLabel = new JLabel("Sign Up");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setFont(customFont.deriveFont(Font.BOLD, 24f));
 
         // Title label to the header panel using GridBagConstraints
         headerGbc.gridx = 0;
@@ -35,10 +40,12 @@ public class Signup {
         // Text fields for the email and password
         JTextField emailField = new JTextField("Email", 20);
         JTextField passwordField = new JTextField("Password", 20);
-        emailField.setFont(new Font("Arial", Font.PLAIN, 18));
-        passwordField.setFont(new Font("Arial", Font.PLAIN, 18));
+        emailField.setFont(customFont.deriveFont(Font.PLAIN, 18));
+        passwordField.setFont(customFont.deriveFont(Font.PLAIN, 18));
         emailField.setHorizontalAlignment(JTextField.LEFT);
         passwordField.setHorizontalAlignment(JTextField.LEFT);
+        emailField.setBorder(null);
+        passwordField.setBorder(null);
         emailField.setBackground(new Color(0x6dd47e));
         passwordField.setBackground(new Color(0x6dd47e));
 
@@ -92,6 +99,7 @@ public class Signup {
         // Footer panel
         JPanel footerPanel = new JPanel();
         JButton signUpButton = new JButton("Sign-Up");
+        signUpButton.setFont(customFont.deriveFont(Font.PLAIN, 16f));
         signUpButton.setBackground(new Color(0xffd55a));
         footerPanel.add(signUpButton);
 
@@ -108,5 +116,11 @@ public class Signup {
         frame.setVisible(true);
 
     }  // End of main method
+
+    // Load a custom font from a file
+    private static Font loadCustomFont(String fontPath) throws IOException, FontFormatException {
+            File fontFile = new File(fontPath);
+            return Font.createFont(Font.TRUETYPE_FONT, fontFile);
+    }
 
 }  // End of Signup class
