@@ -9,7 +9,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="fe653" class="javax.swing.JLabel">
+      <component id="fe653" class="javax.swing.JLabel" binding="bogu">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="25" left="20" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
@@ -33,7 +33,7 @@
           <text value="Sign-up"/>
         </properties>
       </component>
-      <component id="17166" class="javax.swing.JLabel">
+      <component id="17166" class="javax.swing.JLabel" binding="login">
         <constraints>
           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="30" bottom="10" right="0" weightx="0.0" weighty="1.0"/>
@@ -45,7 +45,7 @@
           <text value="  Log-in with"/>
         </properties>
       </component>
-      <component id="1b636" class="javax.swing.JLabel">
+      <component id="1b636" class="javax.swing.JLabel" binding="forgot">
         <constraints>
           <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="0" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
@@ -61,15 +61,15 @@
       </component>
       <component id="df97f" class="javax.swing.JLabel" binding="icon">
         <constraints>
-          <grid row="1" column="0" row-span="9" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="8" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <icon value="resources/icons/Bogu Mail 1.jpg"/>
+          <icon value="resources/icons/Bogu Mail Alt.jpg"/>
           <text value=""/>
         </properties>
       </component>
-      <component id="1f732" class="javax.swing.JLabel">
+      <component id="1f732" class="javax.swing.JLabel" binding="log">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="50" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
@@ -82,7 +82,7 @@
           <verticalAlignment value="0"/>
         </properties>
       </component>
-      <component id="d41a3" class="javax.swing.JLabel">
+      <component id="d41a3" class="javax.swing.JLabel" binding="welcome">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="50" left="50" bottom="0" right="0" weightx="0.5" weighty="0.0"/>

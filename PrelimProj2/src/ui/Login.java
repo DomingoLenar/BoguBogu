@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
 public class Login {
     private JButton sign_up_buttn;
@@ -16,9 +18,23 @@ public class Login {
     private JPanel mainPanel;
     private JButton login_buttn;
     private JLabel icon;
+    private JLabel welcome;
+    private JLabel bogu;
+    private JLabel login;
+    private JLabel forgot;
+    private JLabel log;
 
-    public Login()
-    {
+    public Login() throws IOException, FontFormatException {
+
+        // Load the custom font
+        Font customFont = loadCustomFont("PrelimProj2/src/font/JosefinSans-Regular.ttf");
+
+        welcome.setFont(customFont.deriveFont(Font.BOLD, 24f));
+        bogu.setFont(customFont.deriveFont(Font.BOLD, 24f));
+        login.setFont(customFont.deriveFont(Font.BOLD, 24f));
+        forgot.setFont(customFont.deriveFont(Font.BOLD, 24f));
+        log.setFont(customFont.deriveFont(Font.BOLD, 24f));
+
         CardLayout cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
         
@@ -67,6 +83,11 @@ public class Login {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    private static Font loadCustomFont(String fontPath) throws IOException, FontFormatException {
+        File fontFile = new File(fontPath);
+        return Font.createFont(Font.TRUETYPE_FONT, fontFile);
     }
 
 }

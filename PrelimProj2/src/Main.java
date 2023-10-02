@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
 
 public class Main implements Runnable{
     public static void main(String[] args) {
@@ -12,7 +14,13 @@ public class Main implements Runnable{
 
     @Override
     public void run() {
-        new EmailServiceInterface();
+        try {
+            new EmailServiceInterface();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

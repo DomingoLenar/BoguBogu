@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class EmailServiceInterface extends JFrame {
     private final String loginID = "login_id";
@@ -16,8 +17,7 @@ public class EmailServiceInterface extends JFrame {
     private Inbox inbox;
     private JPanel cardPanel;
 
-    EmailServiceInterface()
-    {
+    EmailServiceInterface() throws IOException, FontFormatException {
         this.login = new Login();
         JButton login_buttn = login.getLogin_buttn();
         initButton(login_buttn);
