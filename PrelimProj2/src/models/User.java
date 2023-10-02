@@ -86,14 +86,14 @@ public class User {
     }
 
 
-    public SingleLinkedList<SingleLinkedList<Email>> fetchMails(String user, String type){
+    public SingleLinkedList<SingleLinkedList<Email>> fetchMails(String type){
 
         Scanner dataScanner = null;
 
         SingleLinkedList<Email> thread = new SingleLinkedList<>();
         SingleLinkedList<SingleLinkedList<Email>> listOfThreads = new SingleLinkedList<>();
 
-        File data = new File("PrelimProj2/src/data/"+user+"/"+type+".txt");
+        File data = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
         try{
             dataScanner = new Scanner(data);
         }catch(FileNotFoundException fNFE){
@@ -124,21 +124,28 @@ public class User {
     public void saveRuntimeMails(SingleLinkedList<SingleLinkedList<Email>> listOfThreads, String type){
         FileHandling handler = new FileHandling();
         if(handler.directoryExists("PrelimProj2/src/data/"+username)){
-            File dataFile = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
+            File inboxFile = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
+            File sentFile = new File("PrelimProj2/src/data/"+username+"/sent.txt");
             try{
-                PrintWriter output = new PrintWriter(dataFile);
-                if(dataFile.exists()){
+                PrintWriter inboxOutput = new PrintWriter(inboxFile);
+                PrintWriter sentOutput = new PrintWriter(sentFile);
+                if(inboxFile.exists()){
                     SingleNode<SingleLinkedList<Email>> currentThreadNode = listOfThreads.getHead();
                     SingleNode<Email> threadPointer = currentThreadNode.getData().getHead();
                     for(int x = 0; x < listOfThreads.getSize();x++){
                         for(int y = 0; y < currentThreadNode.getData().getSize(); y++){
-                            output.println(threadPointer.getData().toString());
-                            output.flush();
+                            inboxOutput.println(threadPointer.getData().toString());
+                            inboxOutput.flush();
+                            if(threadPointer.getData().getSender().equals(username)){
+                                sentOutput.println(threadPointer.getData().toString());
+                                sentOutput.flush();
+                            }
                             threadPointer = threadPointer.getLink();
                         }
                         currentThreadNode = currentThreadNode.getLink();
                     }
-                    output.close();
+                    sentOutput.close();
+                    inboxOutput.close();
                 }
             }catch(FileNotFoundException outputError){
                 outputError.printStackTrace();
