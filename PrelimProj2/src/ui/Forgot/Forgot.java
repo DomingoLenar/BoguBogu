@@ -107,4 +107,4 @@ public class Forgot {
 
     } // End of main method
 
-} // End of ForgotPassword class
+} // End of Forgot class
