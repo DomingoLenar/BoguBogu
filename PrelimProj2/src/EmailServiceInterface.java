@@ -22,6 +22,7 @@ public class EmailServiceInterface extends JFrame {
     private User currentUser;
     private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
 
+
     EmailServiceInterface()
     {
         this.login = new Login();
@@ -52,7 +53,7 @@ public class EmailServiceInterface extends JFrame {
             }
         });
 
-        this.inbox = new Inbox();
+        this.inbox = new Inbox(inboxMails, sentMails);
 
         CardLayout cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
