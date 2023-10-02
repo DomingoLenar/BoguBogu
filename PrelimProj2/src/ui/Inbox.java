@@ -67,7 +67,7 @@ public class Inbox {
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
-                searchFilter(searchField.getText());
+                searchFilter(searchField.getText()); // TODO: filter search
             }
         });
 
