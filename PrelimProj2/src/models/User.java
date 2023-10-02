@@ -86,7 +86,7 @@ public class User {
     }
 
 
-    public SingleLinkedList<SingleLinkedList<Email>> fetchMails(String type){
+    public SingleLinkedList<SingleLinkedList<Email>> fetchMails(String type, String username){
 
         Scanner dataScanner = null;
 
@@ -121,7 +121,7 @@ public class User {
         return listOfThreads;
     }
 
-    public void saveRuntimeMails(SingleLinkedList<SingleLinkedList<Email>> listOfThreads, String type){
+    public void saveRuntimeMails(SingleLinkedList<SingleLinkedList<Email>> listOfThreads, String type, String username){
         FileHandling handler = new FileHandling();
         if(handler.directoryExists("PrelimProj2/src/data/"+username)){
             File inboxFile = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
@@ -151,6 +151,29 @@ public class User {
                 outputError.printStackTrace();
             }
         }
+    }
+
+
+    public void updateThreadOfReceiver(SingleLinkedList<Email> thread, String receiver){
+        SingleLinkedList<SingleLinkedList<Email>> listOfThreads = fetchMails("inbox", receiver);
+        SingleNode<SingleLinkedList<Email>> pointer = listOfThreads.getHead();
+        SingleNode<Email> iP;
+        SingleNode<Email> inputPointer = thread.getHead();
+        while(pointer.getLink()!= null){
+            if(pointer.getData().getHead().getData().getSubject().equals(thread.getHead().getData().getSubject())){
+                iP = pointer.getData().getHead();
+                while(inputPointer.getLink()!= null){
+                    if(iP.getLink() != null) {
+                        iP.setData(inputPointer.getData());
+                        iP = iP.getLink();
+                    }else{
+                        iP.setLink(inputPointer);
+                    }
+                    inputPointer = inputPointer.getLink();
+                }
+            }
+        }
+        saveRuntimeMails(listOfThreads, "inbox", receiver);
     }
 
     public static void main(String[] args) {
