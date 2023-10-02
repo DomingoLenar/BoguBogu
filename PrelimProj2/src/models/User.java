@@ -4,6 +4,9 @@ import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
+
+import datastruc.SingleLinkedList;
+import datastruc.SingleNode;
 import tools.FileHandling;
 
 public class User {
@@ -41,9 +44,12 @@ public class User {
     }
 
 
-    public boolean isPassValid(String pass) {
-        String hashedPass = hashString(pass);
-        return hashedPass.equals(this.password);
+    public boolean isPassValid() throws FileNotFoundException {
+        FileHandling handler = new FileHandling();
+        File creds = new File("PrelimProj2/src/data/" + username + "/credentials.txt");
+        Scanner in = new Scanner(creds);
+        String[] data = in.nextLine().split(",");
+        return (password.equals(data[1]));
     }
 
     public String getUsername() {
@@ -79,25 +85,64 @@ public class User {
             }
     }
 
-    // Test Code
-    public static void main(String[] args) {
-        User user1 = new User("user1", "");
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Password: ");
-        String password = scanner.nextLine();
-        user1.setPassword(password);
+    public SingleLinkedList<SingleLinkedList<Email>> fetchMails(String user, String type){
 
-        System.out.println("User 1 Hash: " + user1.password);
+        Scanner dataScanner = null;
 
-        System.out.print("Verify Password: ");
-        String inputPassword = scanner.nextLine();
+        SingleLinkedList<Email> thread = new SingleLinkedList<>();
+        SingleLinkedList<SingleLinkedList<Email>> listOfThreads = new SingleLinkedList<>();
 
-        if (user1.isPassValid(inputPassword)) {
-            System.out.println("Password is Valid.");
-            user1.createUserFile();
-        } else {
-            System.out.println("Password is Invalid. User File is not Created.");
+        File data = new File("PrelimProj2/src/data/"+user+"/"+type+".txt");
+        try{
+            dataScanner = new Scanner(data);
+        }catch(FileNotFoundException fNFE){
+            fNFE.printStackTrace();
+        }
+        String currentS = null;
+        while(dataScanner.hasNext()){
+            String[] rawData = dataScanner.nextLine().split(",");
+            String sender, reciever, subject, body;
+            sender = rawData[0];
+            reciever = rawData[1];
+            subject = rawData[2];
+            body = rawData[3];
+            Email mail = new Email(sender, reciever,subject, body);
+            if(!subject.equals(currentS) || currentS == null){
+                thread.add(mail);
+                currentS = subject;
+            }else{
+                listOfThreads.add(thread);
+                currentS = subject;
+                thread = null;
+                thread.add(mail);
+            }
+        }
+        return listOfThreads;
+    }
+
+    public void saveRuntimeMails(SingleLinkedList<SingleLinkedList<Email>> listOfThreads, String type){
+        FileHandling handler = new FileHandling();
+        if(handler.directoryExists("PrelimProj2/src/data/"+username)){
+            File dataFile = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
+            try{
+                PrintWriter output = new PrintWriter(dataFile);
+                if(dataFile.exists()){
+                    SingleNode<SingleLinkedList<Email>> currentThreadNode = listOfThreads.getHead();
+                    SingleNode<Email> threadPointer = currentThreadNode.getData().getHead();
+                    for(int x = 0; x < listOfThreads.getSize();x++){
+                        for(int y = 0; y < currentThreadNode.getData().getSize(); y++){
+                            output.println(threadPointer.getData().toString());
+                            output.flush();
+                            threadPointer = threadPointer.getLink();
+                        }
+                        currentThreadNode = currentThreadNode.getLink();
+                    }
+                    output.close();
+                }
+            }catch(FileNotFoundException outputError){
+                outputError.printStackTrace();
+            }
         }
     }
 }

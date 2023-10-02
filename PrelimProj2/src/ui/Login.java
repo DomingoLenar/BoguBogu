@@ -67,5 +67,16 @@ public class Login {
     public JPanel getMainPanel() {
         return mainPanel;
     }
+    public String getUsernameFieldString(){
+        return usernameTextField.getText();
+    }
+    public String getPasswordFieldString(){
+        char[] passwordChar = passwordPasswordField.getPassword();
+        StringBuilder passwordString = new StringBuilder();
+        for(int x = 0; x < passwordChar.length; x++){
+            passwordString.append(passwordChar[x]);
+        }
+        return passwordString.toString();
+    }
 
 }
