@@ -4,7 +4,7 @@
  */
 package datastruc;
 
-public class SingleLinkedList <T> implements List {
+public class SingleLinkedList<T> implements List<T> {
 
     /**
      * Fields
