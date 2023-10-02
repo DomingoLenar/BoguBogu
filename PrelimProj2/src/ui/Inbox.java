@@ -26,6 +26,7 @@ public class Inbox {
     private final String sentID = "sent_ID";
     private final String settingsID = "settings_ID";
     private final String replyID = "reply_ID";
+    private final String forwardID = "forward_ID";
     private JPanel mainPanel;
     private JButton inboxButton;
     private JButton sentButton;
@@ -54,13 +55,17 @@ public class Inbox {
     private JPanel sentLetterPanel;
     private JScrollPane sentScrollPane;
     private JPanel replyPanel;
-    private JTextArea receiver;
-    private JTextArea subject;
-    private JLabel receiverLabel;
-    private JLabel subjectLabel;
-    private JLabel bodyLabel;
-    private JTextArea body;
+    private JTextArea replyTo;
+    private JTextArea subjectReply;
+    private JLabel replyToLabel;
+    private JLabel subjectReplyLabel;
+    private JLabel replyToBodyLabel;
+    private JTextArea replyToBody;
     private JButton sentReplyButton;
+    private JPanel forwardPanel;
+    private JTextField forwardTo;
+    private JTextArea forwardToBody;
+    private JButton sentForwardButton;
     private DefaultTableModel model;
     private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
 
@@ -78,6 +83,7 @@ public class Inbox {
 
         // show the main panel
         ((CardLayout) cardPanel.getLayout()).show(cardPanel, inboxID);
+
 
 
     }
@@ -103,11 +109,27 @@ public class Inbox {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e); // TODO: reply to clicked mail in inbox
 
-                if (receiver.getText() == null && subject.getText() == null && body.getText() == null){
+                if (replyTo.getText() == null && subjectReply.getText() == null && replyToBody.getText() == null){
+                    // error message
+                } else {
                     // save the data
                 }
             }
         });
+
+        sentForwardButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (forwardTo.getText() == null && forwardToBody.getText() == null){
+                    // error message
+                } else {
+                    // save the data
+                }
+            }
+        });
+
+
         replyButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -125,6 +147,7 @@ public class Inbox {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                displayForwardComponents();
             }
 
             @Override
@@ -174,6 +197,7 @@ public class Inbox {
             }
         });
     }
+
     private void initTables() {
 
         receivedMailsTable.addMouseListener(new MouseAdapter() {
@@ -233,7 +257,7 @@ public class Inbox {
                 false, false, true
         };
 
-        fetchSentMails(sentMails);
+//        fetchSentMails(sentMails);
         model = new DefaultTableModel(sampleData, columnTitle) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -267,7 +291,7 @@ public class Inbox {
                 false, false, true
         };
 
-        fetchReceivedMails(inboxMails);
+//        fetchReceivedMails(inboxMails);
 
         // DefaultTableModel with column names
         model = new DefaultTableModel(sampleData, columnTitle) {
@@ -314,6 +338,7 @@ public class Inbox {
         cardPanel.add(sentContactsPanel, sentID);
         cardPanel.add(settingsPanel, settingsID);
         cardPanel.add(replyPanel, replyID);
+        cardPanel.add(forwardPanel, forwardID);
     }
 
     private void displaySettingsComponents() {
@@ -329,6 +354,9 @@ public class Inbox {
     }
     private void displayReplyComponents() {
         changeScreen(replyID);
+    }
+    private void displayForwardComponents() {
+        changeScreen(forwardID);
     }
 
     private void changeScreen(String screen) {
