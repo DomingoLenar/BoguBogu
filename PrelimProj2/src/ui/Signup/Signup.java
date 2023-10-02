@@ -1,6 +1,10 @@
 package ui.Signup;
+import models.User;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.File;
@@ -101,6 +105,14 @@ public class Signup {
         JButton signUpButton = new JButton("Sign-Up");
         signUpButton.setFont(customFont.deriveFont(Font.PLAIN, 16f));
         signUpButton.setBackground(new Color(0xffd55a));
+        signUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                User newUser = new User(emailField.getText(), passwordField.getText());
+                newUser.createUserFile();
+            }
+
+        });
         footerPanel.add(signUpButton);
 
         // Add the header, body, and footer panels to the main panel
