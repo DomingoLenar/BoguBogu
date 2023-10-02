@@ -45,7 +45,6 @@ public class Signup {
         emailField.setHorizontalAlignment(JTextField.LEFT);
         passwordField.setHorizontalAlignment(JTextField.LEFT);
         emailField.setBorder(null);
-        passwordField.setBorder(null);
         emailField.setBackground(new Color(0x6dd47e));
         passwordField.setBackground(new Color(0x6dd47e));
 
