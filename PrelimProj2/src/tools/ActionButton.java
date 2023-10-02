@@ -8,11 +8,16 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
 
 public class ActionButton extends JButton {
-    private boolean mousePress;
-
+    private boolean mousePress; // Flag to track mouse press state
+    
+    /**
+     * Initializes a new ActionButton.
+     */
     public ActionButton() {
-        setContentAreaFilled(false);
+        setContentAreaFilled(false); // Make the button transparent and remove border
         setBorder(new EmptyBorder(3, 3, 3, 3));
+
+        // Add mouse listeners to track mouse events
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -27,7 +32,11 @@ public class ActionButton extends JButton {
             }
         });
     }
-
+     /**
+     * Custom painting of the button with an elliptical shape.
+     *
+     * @param grphcs The Graphics context for painting.
+     */
     @Override
     public void paintComponent(Graphics grphcs) {
         super.paintComponent(grphcs);
@@ -38,12 +47,14 @@ public class ActionButton extends JButton {
         int size = Math.min(width, height);
         int x = (width - size) / 2;
         int y = (height - size) / 2;
+
+        // Set button color based on mouse press state
         if (mousePress) {
-            g2.setColor(new Color(158, 158, 158));
+            g2.setColor(new Color(158, 158, 158)); // Gray color when pressed
         } else {
-            g2.setColor(new Color(199, 199, 199));
+            g2.setColor(new Color(199, 199, 199)); // Light gray color when not pressed
         }
-        g2.fill(new Ellipse2D.Double(x, y, size, size));
+        g2.fill(new Ellipse2D.Double(x, y, size, size)); // Draw an elliptical shape to represent the button
         g2.dispose();
     }
 }
