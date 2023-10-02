@@ -1,4 +1,5 @@
 package ui.Signup;
+import ui.TitleBar.TitleBar;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
@@ -6,15 +7,13 @@ import java.awt.event.FocusListener;
 import java.io.File;
 import java.io.IOException;
 
-public class Signup {
+public class Signup extends TitleBar {
 
-    public static void main(String[] args) throws IOException, FontFormatException {
-        // JFrame container
-        JFrame frame = new JFrame("Sign Up");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public Signup() throws IOException, FontFormatException {
+        super(); // Call the constructor of the TitleBar class
 
         // Load the custom font
-        Font customFont = loadCustomFont("PrelimProj2/src/JosefinSans-Regular.ttf");
+        Font customFont = loadCustomFont("PrelimProj2/src/font/JosefinSans-Regular.ttf");
 
         // Panel to hold the UI components
         JPanel panel = new JPanel();
@@ -109,11 +108,12 @@ public class Signup {
         panel.add(footerPanel, BorderLayout.SOUTH);
 
         // Add the panel to the frame
-        frame.add(panel);
+        add(panel);
 
         // Pack the frame and make it visible
-        frame.pack();
-        frame.setVisible(true);
+        pack();
+        setLocationRelativeTo(null); // Center the frame
+        setVisible(true);
 
     }  // End of main method
 
@@ -122,5 +122,15 @@ public class Signup {
             File fontFile = new File(fontPath);
             return Font.createFont(Font.TRUETYPE_FONT, fontFile);
     }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            try {
+                new Signup(); // Create an instance of Signup with the custom title bar
+            } catch (IOException | FontFormatException e) {
+                e.printStackTrace();
+            }
+        });
+    }  // End of main method
 
 }  // End of Signup class
