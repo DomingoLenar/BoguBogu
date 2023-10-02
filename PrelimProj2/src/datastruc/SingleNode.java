@@ -3,13 +3,13 @@
  */
 package datastruc;
 
-public class SingleNode <T> {
+public class SingleNode<T> {
 
     /**
      * Fields
      */
     private T data;
-    private SingleNode <T> link;
+    private SingleNode<T> link;
 
     /**
      * Default constructor

@@ -1,3 +1,5 @@
+import datastruc.SingleLinkedList;
+import models.Email;
 import models.User;
 import ui.Inbox;
 import ui.Login;
@@ -17,6 +19,8 @@ public class EmailServiceInterface extends JFrame {
     private Login login;
     private Inbox inbox;
     private JPanel cardPanel;
+    private User currentUser;
+    private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
 
     EmailServiceInterface()
     {
@@ -29,13 +33,15 @@ public class EmailServiceInterface extends JFrame {
                 super.mouseClicked(e);
                 String username = login.getUsernameFieldString();
                 String password = login.getPasswordFieldString();
-                User currentUser = new User(username, password);
+                currentUser = new User(username, password);
                 try {
                     if(currentUser.isPassValid()) {
                         // validation processing
                         initComponents();
                         setUpSubFrame();
                         changeScreen(mainID);
+                        inboxMails = currentUser.fetchMails("inbox", currentUser.getUsername());
+                        sentMails = currentUser.fetchMails("sent", currentUser.getUsername());
                     }else{
                         //display invalid credentials
                     }

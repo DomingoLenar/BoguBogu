@@ -74,7 +74,7 @@ public class User {
                 File file = new File(userFolder+"/credentials.txt");
                 if (file.createNewFile()) {
                     FileWriter writer = new FileWriter(file);
-                    writer.write(this.username + " , " + this.password);
+                    writer.write(this.username + "," + this.password);
                     writer.close();
                     System.out.println("User file created: " + file.getName());
                 } else {
@@ -86,14 +86,14 @@ public class User {
     }
 
 
-    public SingleLinkedList<SingleLinkedList<Email>> fetchMails(String user, String type){
+    public SingleLinkedList<SingleLinkedList<Email>> fetchMails(String type, String username){
 
         Scanner dataScanner = null;
 
         SingleLinkedList<Email> thread = new SingleLinkedList<>();
         SingleLinkedList<SingleLinkedList<Email>> listOfThreads = new SingleLinkedList<>();
 
-        File data = new File("PrelimProj2/src/data/"+user+"/"+type+".txt");
+        File data = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
         try{
             dataScanner = new Scanner(data);
         }catch(FileNotFoundException fNFE){
@@ -102,12 +102,12 @@ public class User {
         String currentS = null;
         while(dataScanner.hasNext()){
             String[] rawData = dataScanner.nextLine().split(",");
-            String sender, reciever, subject, body;
+            String sender, receiver, subject, body;
             sender = rawData[0];
-            reciever = rawData[1];
+            receiver = rawData[1];
             subject = rawData[2];
             body = rawData[3];
-            Email mail = new Email(sender, reciever,subject, body);
+            Email mail = new Email(sender, receiver,subject, body);
             if(!subject.equals(currentS) || currentS == null){
                 thread.add(mail);
                 currentS = subject;
@@ -121,28 +121,63 @@ public class User {
         return listOfThreads;
     }
 
-    public void saveRuntimeMails(SingleLinkedList<SingleLinkedList<Email>> listOfThreads, String type){
+    public void saveRuntimeMails(SingleLinkedList<SingleLinkedList<Email>> listOfThreads, String type, String username){
         FileHandling handler = new FileHandling();
         if(handler.directoryExists("PrelimProj2/src/data/"+username)){
-            File dataFile = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
+            File inboxFile = new File("PrelimProj2/src/data/"+username+"/"+type+".txt");
+            File sentFile = new File("PrelimProj2/src/data/"+username+"/sent.txt");
             try{
-                PrintWriter output = new PrintWriter(dataFile);
-                if(dataFile.exists()){
+                PrintWriter inboxOutput = new PrintWriter(inboxFile);
+                PrintWriter sentOutput = new PrintWriter(sentFile);
+                if(inboxFile.exists()){
                     SingleNode<SingleLinkedList<Email>> currentThreadNode = listOfThreads.getHead();
                     SingleNode<Email> threadPointer = currentThreadNode.getData().getHead();
                     for(int x = 0; x < listOfThreads.getSize();x++){
                         for(int y = 0; y < currentThreadNode.getData().getSize(); y++){
-                            output.println(threadPointer.getData().toString());
-                            output.flush();
+                            inboxOutput.println(threadPointer.getData().toString());
+                            inboxOutput.flush();
+                            if(threadPointer.getData().getSender().equals(username)){
+                                sentOutput.println(threadPointer.getData().toString());
+                                sentOutput.flush();
+                            }
                             threadPointer = threadPointer.getLink();
                         }
                         currentThreadNode = currentThreadNode.getLink();
                     }
-                    output.close();
+                    sentOutput.close();
+                    inboxOutput.close();
                 }
             }catch(FileNotFoundException outputError){
                 outputError.printStackTrace();
             }
         }
+    }
+
+
+    public void updateThreadOfReceiver(SingleLinkedList<Email> thread, String receiver){
+        SingleLinkedList<SingleLinkedList<Email>> listOfThreads = fetchMails("inbox", receiver);
+        SingleNode<SingleLinkedList<Email>> pointer = listOfThreads.getHead();
+        SingleNode<Email> iP;
+        SingleNode<Email> inputPointer = thread.getHead();
+        while(pointer.getLink()!= null){
+            if(pointer.getData().getHead().getData().getSubject().equals(thread.getHead().getData().getSubject())){
+                iP = pointer.getData().getHead();
+                while(inputPointer.getLink()!= null){
+                    if(iP.getLink() != null) {
+                        iP.setData(inputPointer.getData());
+                        iP = iP.getLink();
+                    }else{
+                        iP.setLink(inputPointer);
+                    }
+                    inputPointer = inputPointer.getLink();
+                }
+            }
+        }
+        saveRuntimeMails(listOfThreads, "inbox", receiver);
+    }
+
+    public static void main(String[] args) {
+        User testUser = new User("Lestat","Lestat10");
+        testUser.createUserFile();
     }
 }

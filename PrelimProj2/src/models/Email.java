@@ -8,9 +8,13 @@ public class Email {
 
     public Email() {
         // Default constructor
+        sender = null;
+        receiver = null;
+        subject = null;
+        body = null;
     }
 
-    public Email(String sender, String receiver,String subject, String body) {
+    public Email(String sender, String receiver, String subject, String body) {
         this.sender = sender;
         this.receiver = receiver;
         this.subject = subject;
@@ -31,6 +35,13 @@ public class Email {
 
     public String getBody() {
         return body;
+    }
+
+    public String getSender(){
+        return sender;
+    }
+    public String getReceiver(){
+        return receiver;
     }
 
     @Override
