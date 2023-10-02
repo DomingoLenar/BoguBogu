@@ -8,6 +8,10 @@ public class Email {
 
     public Email() {
         // Default constructor
+        sender = null;
+        receiver = null;
+        subject = null;
+        body = null;
     }
 
     public Email(String sender, String receiver,String subject, String body) {
