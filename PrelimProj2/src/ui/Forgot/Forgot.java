@@ -1,4 +1,5 @@
 package ui.Forgot;
+import ui.TitleBar.TitleBar;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
@@ -8,15 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class Forgot {
+public class Forgot extends TitleBar {
 
-    public static void main(String[] args) throws IOException, FontFormatException {
-        // JFrame container
-        JFrame frame = new JFrame("Forgot Password");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public Forgot() throws IOException, FontFormatException {
+        super(); // Call the constructor of the TitleBar class
 
         // Load the custom font
-        Font customFont = loadCustomFont("PrelimProj2/src/JosefinSans-Regular.ttf");
+        Font customFont = loadCustomFont("PrelimProj2/src/font/JosefinSans-Regular.ttf");
 
         // Panel to hold the UI components
         JPanel panel = new JPanel();
@@ -30,7 +29,7 @@ public class Forgot {
         // Logo
         JLabel imageLabel = new JLabel();
         try {
-            BufferedImage image = ImageIO.read(new File("PrelimProj2/src/logo.png"));
+            BufferedImage image = ImageIO.read(new File("PrelimProj2/src/resources/icons/Bogu Mail 1.jpg"));
             Image resizedImage = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(resizedImage));
         } catch (IOException e) {
@@ -103,11 +102,12 @@ public class Forgot {
         panel.add(footerPanel, BorderLayout.SOUTH);
 
         // Add the panel to the frame
-        frame.add(panel);
+        add(panel);
 
         // Pack the frame and make it visible
-        frame.pack();
-        frame.setVisible(true);
+        pack();
+        setLocationRelativeTo(null); // Center the frame
+        setVisible(true);
 
     } // End of main method
 
@@ -116,5 +116,15 @@ public class Forgot {
         File fontFile = new File(fontPath);
         return Font.createFont(Font.TRUETYPE_FONT, fontFile);
     }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            try {
+                new ui.Forgot.Forgot(); // Create an instance of Signup with the custom title bar
+            } catch (IOException | FontFormatException e) {
+                e.printStackTrace();
+            }
+        });
+    }  // End of main method
 
 } // End of Forgot class
