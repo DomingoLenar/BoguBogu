@@ -96,7 +96,7 @@ public class Inbox {
     }
 
     private void initComponents() {
-        displayReceivedMails();
+        displayReceivedMails(inboxMails);
         initTables();
         initButtons();
 
@@ -312,7 +312,6 @@ public class Inbox {
                 false, false, true
         };
 
-        fetchReceivedMails(inboxMails);
 
         // DefaultTableModel with column names
         model = new DefaultTableModel() {
@@ -328,6 +327,8 @@ public class Inbox {
 
         TableColumn column = receivedMailsTable.getColumnModel().getColumn(1);
         column.setPreferredWidth(600);
+        displayReceivedMails(inboxMails);
+
     }
 
     private void displayReceivedMails(SingleLinkedList<SingleLinkedList<Email>> inboxMail) {
