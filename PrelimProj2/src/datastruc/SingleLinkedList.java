@@ -64,6 +64,19 @@ public class SingleLinkedList<T> implements List<T> {
         }
     }
 
+    public void addAtHead(T data){
+        SingleNode<T> newNode = new SingleNode<>(data);
+        if(head == null){
+            head = newNode;
+            tail = head;
+            size++;
+        }{
+            newNode.setLink(head);
+            head = newNode;
+            size++;
+        }
+    }
+
     /**
      * Method to delete an element at a specific index.
      * September 20, 2023
