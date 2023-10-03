@@ -1,11 +1,14 @@
 package ui;
 
+import ui.Signup.Signup;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class Login {
     private JButton sign_up_buttn;
@@ -27,9 +30,14 @@ public class Login {
         sign_up_buttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                JOptionPane.showMessageDialog(null, "lol");
-                displaySignUpComponent();
+                Signup signup = new Signup();
+                try {
+                    signup.show();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (FontFormatException ex) {
+                    ex.printStackTrace();
+                }
 
             }
         });
