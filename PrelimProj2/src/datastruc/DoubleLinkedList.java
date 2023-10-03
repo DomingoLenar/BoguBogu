@@ -9,7 +9,8 @@ package datastruc;
  *
  * @param <T> The type of elements stored in the linked list.
  */
-public class DoubleLinkedList <T> implements List {
+public class DoubleLinkedList<T> implements List {
+
 
     /**
      * Fields

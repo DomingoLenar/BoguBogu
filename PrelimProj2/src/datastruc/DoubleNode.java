@@ -8,7 +8,7 @@
  */
 package datastruc;
 
-public class DoubleNode <T>{
+public class DoubleNode<T>{
 
     /**
      * Fields

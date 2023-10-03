@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class FileHandling {
     public String[] fileRead(String fileName) throws FileNotFoundException{
-        File file = new File(fileName); //creating a file object using the provided fileName.
+        File file = new File("/PrelimProj1/data/"+fileName); //creating a file object using the provided fileName.
         Scanner reader = new Scanner(file); //initializing a scanner to read a data from file
         int size = countLines(file); // Count the number of lines in the file using the countLines method.
         String[] data = new String[size]; // Create a string to store the read data, with the size calculated earlier.
@@ -48,7 +48,7 @@ public class FileHandling {
      * to read data from the file. After it uses the loop it will close the 'reader' scanner.
      */
     public void fileRead(String fileName, ArrayList<String[]> arrayList) throws FileNotFoundException{
-        File file = new File(fileName);
+        File file = new File("PrelimProj1/data/"+fileName);
         Scanner reader = new Scanner(file); //initializing a scanner to read a data from file
         while(reader.hasNext()){
             arrayList.add(reader.nextLine().split(","));

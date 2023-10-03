@@ -6,13 +6,13 @@
  */
 package datastruc;
 
-public interface List <T>{
-
     /**
      * Adds an element to the end of the list.
      *
      * @param data The data to be added to the list.
      */
+
+public interface List<T>{
     void add(T data);
     
     /**

@@ -10,14 +10,14 @@
  */
 package datastruc;
 
-public class SingleLinkedList <T> implements List {
+public class SingleLinkedList<T> implements List<T> {
 
     /**
      * Fields
      * September 20, 2023
      */
-    private SingleNode <T> head;
-    private SingleNode <T> tail;
+    private SingleNode<T> head;
+    private SingleNode<T> tail;
 
     private int size;
 
