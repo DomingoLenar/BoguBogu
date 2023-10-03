@@ -114,8 +114,10 @@ public class User {
             }else{
                 listOfThreads.add(thread);
                 currentS = subject;
-                thread = null;
+
                 thread.add(mail);
+                thread = null;
+
             }
         }
         return listOfThreads;

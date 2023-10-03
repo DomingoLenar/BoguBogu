@@ -2,7 +2,6 @@ package ui;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
@@ -10,8 +9,6 @@ import java.util.Arrays;
 import datastruc.SingleLinkedList;
 import datastruc.SingleNode;
 import models.Email;
-import tools.TableActionCellEditor;
-import tools.TableActionCellRender;
 import tools.TableActionEvent;
 
 
@@ -230,18 +227,6 @@ public class Inbox {
             }
         });
 
-        receivedMailsTable.getColumnModel().getColumn(2).setCellRenderer(new TableActionCellRender());
-        receivedMailsTable.getColumnModel().getColumn(2).setCellEditor(new TableActionCellEditor());
-
-        sentMailsTable.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-            }
-        });
-
-        sentMailsTable.getColumnModel().getColumn(2).setCellRenderer(new TableActionCellRender());
-        sentMailsTable.getColumnModel().getColumn(2).setCellEditor(new TableActionCellEditor());
 
         TableActionEvent event = new TableActionEvent(){
             @Override
@@ -287,8 +272,8 @@ public class Inbox {
         };
         sentMailsTable = new JTable(model);
 
-        TableColumn column = sentMailsTable.getColumnModel().getColumn(1);
-        column.setPreferredWidth(600);
+//        TableColumn column = sentMailsTable.getColumnModel().getColumn(1);
+//        column.setPreferredWidth(600);
     }
 
     private void fetchSentMails(SingleLinkedList<SingleLinkedList<Email>> sentMails) {
@@ -307,27 +292,21 @@ public class Inbox {
 
     }
 
-    private void setUpReceivedMailsTable() {
-        boolean[] canEdit = new boolean[]{
-                false, false, true
-        };
+    private void setUpReceivedMailsTable(SingleLinkedList<SingleLinkedList<Email>> inboxMails) {
 
 
         // DefaultTableModel with column names
-        model = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return canEdit[column]; // set JTable column non-editable
-            }
-        };
-        //         SingleLinkedList<SingleLinkedList<Email>> linkedListOfLists = new SingleLinkedList<>();
-
-
+        model = new DefaultTableModel();
+        model.addColumn("Sender");
+        model.addColumn("Receiver");
+        model.addColumn("Subject");
+        model.addColumn("Body");
         receivedMailsTable = new JTable(model);
 
-        TableColumn column = receivedMailsTable.getColumnModel().getColumn(1);
-        column.setPreferredWidth(600);
-        displayReceivedMails(inboxMails);
+        displayReceivedMails(inboxMails); // Populate the table with data
+        int counter = model.getRowCount();
+//        TableColumn column = receivedMailsTable.getColumnModel().getColumn(1);
+//        column.setPreferredWidth(600);
 
     }
 
@@ -339,19 +318,11 @@ public class Inbox {
            SingleNode<Email> emailSingleNode = emailSingleLinkedList.getHead();
            while (emailSingleNode != null) {
                Email email = emailSingleNode.getData();
-               model.addRow(new Object[]{email.getSubject(), email.getSender()});
+               model.addRow(new Object[]{email.getSender(), email.getReceiver(), email.getSubject(), email.getBody()});
                emailSingleNode = emailSingleNode.getLink();
            }
            currentNode = currentNode.getLink();
         }
-
-//        while (currentList != null){
-//            SingleNode<Email> currentNode = currentList.ge;
-//            while (currentNode != null){
-//                Email email = currentNode.getData();
-//                model.addRow(new Object[]{email.getSubject(), email.getBody()});
-//            }
-//        }
 
     }
 
@@ -413,8 +384,7 @@ public class Inbox {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        displayReceivedMails(this.inboxMails);
-        setUpReceivedMailsTable();
+        setUpReceivedMailsTable(this.inboxMails);
         setUpSentMailsTable();
 
     }
