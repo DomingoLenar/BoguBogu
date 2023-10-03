@@ -1,6 +1,12 @@
 /**
- * Class for the singly linked list
- * September 15 | 20 | 27, 2023
+ * A singly linked list implementation.
+ * 
+ * This class represents a singly linked list with common operations for adding,
+ * deleting, and managing elements. It also provides methods for checking the
+ * existence of an element and accessing the size of the list.
+ *
+ * @param <T> The type of elements stored in the linked list.
+ * @since September 15 | 20 | 27, 2023
  */
 package datastruc;
 
@@ -17,6 +23,7 @@ public class SingleLinkedList<T> implements List<T> {
 
     /**
      * Default constructor
+     * Initializes an empty singly linked list.
      * September 20, 2023
      */
     public SingleLinkedList() {
@@ -26,6 +33,9 @@ public class SingleLinkedList<T> implements List<T> {
 
     /**
      * Parameterized Constructor
+     * Initializes a singly linked list with a single element.
+     *
+     * @param data The data to initialize the list with.
      * September 20, 2023
      */
     public SingleLinkedList(T data) {
@@ -35,8 +45,10 @@ public class SingleLinkedList<T> implements List<T> {
     }
 
     /**
-     * Method to add an element
+     * Method to add an element to the end of the list.
      * September 20, 2023
+     *
+     * @param data The data to be added to the list.
      */
     @Override
     public void add(Object data) {
@@ -53,8 +65,11 @@ public class SingleLinkedList<T> implements List<T> {
     }
 
     /**
-     * Method to delete an element at a specific index
+     * Method to delete an element at a specific index.
      * September 20, 2023
+     *
+     * @param index The index of the element to be deleted.
+     * @throws IndexOutOfBoundsException if the index is out of bounds.
      */
     @Override
     public void deleteAt(int index) {
@@ -136,8 +151,10 @@ public class SingleLinkedList<T> implements List<T> {
     }
 
     /**
-     * Method to return size of the linked list
+     * Method to return the size (number of elements) of the linked list.
      * September 27, 2023
+     *
+     * @return The size of the linked list.
      */
     @Override
     public int getSize(){
@@ -145,8 +162,11 @@ public class SingleLinkedList<T> implements List<T> {
     }
 
     /**
-     * Method to check if a specified element is within the list
+     * Method to check if a specified element exists within the list.
      * September 20, 2023
+     *
+     * @param data The element to check for existence.
+     * @return True if the element exists in the list; otherwise, false.
      */
     @Override
     public boolean contains(Object T) {
@@ -159,6 +179,11 @@ public class SingleLinkedList<T> implements List<T> {
         return false;
     }
 
+    /**
+     * Method to retrieve the head node of the linked list.
+     *
+     * @return The head node of the linked list.
+     */
     public SingleNode<T> getHead(){
         return head;
     }

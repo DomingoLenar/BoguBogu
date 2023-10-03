@@ -3,7 +3,14 @@
  */
 package datastruc;
 
+/**
+ * A generic doubly linked list implementation.
+ * This class provides methods for adding, deleting, and managing elements in a doubly linked list.
+ *
+ * @param <T> The type of elements stored in the linked list.
+ */
 public class DoubleLinkedList<T> implements List {
+
 
     /**
      * Fields
@@ -15,7 +22,9 @@ public class DoubleLinkedList<T> implements List {
 
     /**
      * Default constructor
+     * Initializes an empty doubly linked list.
      * September 20, 2023
+     
      */
     public DoubleLinkedList() {
         head = null;
@@ -24,6 +33,9 @@ public class DoubleLinkedList<T> implements List {
 
     /**
      * Parameterized Constructor
+     * Initializes a doubly linked list with a single element.
+     *
+     * @param data The data to initialize the list with.
      * September 20, 2023
      */
     public DoubleLinkedList (T data){
@@ -35,6 +47,7 @@ public class DoubleLinkedList<T> implements List {
     /**
      * Method that adds an element
      * September 20 | 28, 2023
+     * @param data The data to be added to the list.
      */
     @Override
     public void add(Object data) {
@@ -54,6 +67,8 @@ public class DoubleLinkedList<T> implements List {
     /**
      * Method that deletes an element at a specific index
      * September 20 | 28, 2023
+     * @param index The index of the element to be deleted.
+     * @throws IndexOutOfBoundsException if the index is out of bounds.
      */
     @Override
     public void deleteAt(int index) {
@@ -83,6 +98,9 @@ public class DoubleLinkedList<T> implements List {
     /**
      * Method that deletes an element at the head
      * September 20 | 23, 2023
+     *
+     * @param index The index of the element to be deleted.
+     * @throws IndexOutOfBoundsException if the index is out of bounds.
      */
     @Override
     public void deleteAtHead() {
@@ -136,6 +154,8 @@ public class DoubleLinkedList<T> implements List {
     /**
      * Method for checking if specified element is within list
      * September 20 | 27, 2023
+     * @param data The element to check for existence.
+     * @return True if the element exists in the list; otherwise, false.
      */
     @Override
     public boolean contains(Object data) {
