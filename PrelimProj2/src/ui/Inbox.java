@@ -27,6 +27,7 @@ public class Inbox {
     private final String settingsID = "settings_ID";
     private final String replyID = "reply_ID";
     private final String forwardID = "forward_ID";
+    private final String composeID = "compose_ID";
     private JPanel mainPanel;
     private JButton inboxButton;
     private JButton sentButton;
@@ -190,6 +191,15 @@ public class Inbox {
             }
         });
 
+        composeButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                displayComposeComponents();
+            }
+        });
+
+
         settingsButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -202,6 +212,10 @@ public class Inbox {
                 super.mousePressed(e);
             }
         });
+    }
+
+    private void displayComposeComponents() {
+        changeScreen(composeID);
     }
 
     private void initTables() {
@@ -342,6 +356,7 @@ public class Inbox {
     private void setUpFrame() {
         cardPanel.add(inboxPanel, inboxID);
         cardPanel.add(sentContactsPanel, sentID);
+        cardPanel.add(composePanel, composeID);
         cardPanel.add(settingsPanel, settingsID);
         cardPanel.add(replyPanel, replyID);
         cardPanel.add(forwardPanel, forwardID);
