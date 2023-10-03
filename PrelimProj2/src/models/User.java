@@ -178,6 +178,8 @@ public class User {
 
     public static void main(String[] args) {
         User testUser = new User("Lestat","Lestat10");
+        SingleLinkedList<SingleLinkedList<Email>> testData = new SingleLinkedList<>();
+        SingleLinkedList<Email> testThread = new SingleLinkedList<>();
         testUser.createUserFile();
     }
 }
