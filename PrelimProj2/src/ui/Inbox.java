@@ -66,6 +66,12 @@ public class Inbox {
     private JTextField forwardTo;
     private JTextArea forwardToBody;
     private JButton sentForwardButton;
+    private JButton composeButton;
+    private JPanel composePanel;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextArea textArea1;
+    private JButton sendButton;
     private DefaultTableModel model;
     private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
 
@@ -258,7 +264,7 @@ public class Inbox {
         };
 
 //        fetchSentMails(sentMails);
-        model = new DefaultTableModel(sampleData, columnTitle) {
+        model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return canEdit[column]; // set JTable column non-editable
@@ -291,10 +297,10 @@ public class Inbox {
                 false, false, true
         };
 
-//        fetchReceivedMails(inboxMails);
+        fetchReceivedMails(inboxMails);
 
         // DefaultTableModel with column names
-        model = new DefaultTableModel(sampleData, columnTitle) {
+        model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return canEdit[column]; // set JTable column non-editable
