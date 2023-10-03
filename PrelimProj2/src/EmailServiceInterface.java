@@ -38,11 +38,13 @@ public class EmailServiceInterface extends JFrame {
                 try {
                     if(currentUser.isPassValid()) {
                         // validation processing
+                        inboxMails = currentUser.fetchMails("inbox", currentUser.getUsername());
+                        sentMails = currentUser.fetchMails("sent", currentUser.getUsername());
+                        inbox = new Inbox(inboxMails, sentMails);
                         initComponents();
                         setUpSubFrame();
                         changeScreen(mainID);
-                        inboxMails = currentUser.fetchMails("inbox", currentUser.getUsername());
-                        sentMails = currentUser.fetchMails("sent", currentUser.getUsername());
+
                     }else{
                         //display invalid credentials
                     }
@@ -53,7 +55,6 @@ public class EmailServiceInterface extends JFrame {
             }
         });
 
-        this.inbox = new Inbox(inboxMails, sentMails);
 
         CardLayout cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
