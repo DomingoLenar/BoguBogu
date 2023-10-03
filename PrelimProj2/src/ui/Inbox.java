@@ -309,7 +309,7 @@ public class Inbox {
         column.setPreferredWidth(600);
     }
 
-    private void fetchReceivedMails(SingleLinkedList<SingleLinkedList<Email>> inboxMail) {
+    private void displayReceivedMails(SingleLinkedList<SingleLinkedList<Email>> inboxMail) {
         SingleNode<SingleLinkedList<Email>> currentNode = inboxMail.getHead(); // outer first pointer
 
         while (currentNode != null) {
@@ -390,6 +390,7 @@ public class Inbox {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+        displayReceivedMails(this.inboxMails);
         setUpReceivedMailsTable();
         setUpSentMailsTable();
 
