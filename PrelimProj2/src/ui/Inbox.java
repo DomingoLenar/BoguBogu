@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import datastruc.SingleLinkedList;
 import datastruc.SingleNode;
-import models.Email;
+import models.*;
 import tools.TableActionEvent;
 
 
@@ -72,9 +72,11 @@ public class Inbox {
     private JButton sendButton;
     private DefaultTableModel model;
     private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
+    private User user;
 
-    public Inbox(SingleLinkedList<SingleLinkedList<Email>> inboxMails, SingleLinkedList<SingleLinkedList<Email>> sentMails)
+    public Inbox(SingleLinkedList<SingleLinkedList<Email>> inboxMails, SingleLinkedList<SingleLinkedList<Email>> sentMails, User user)
     {
+        this.user = user;
         this.inboxMails = inboxMails;
         this.sentMails = sentMails;
 
@@ -117,7 +119,27 @@ public class Inbox {
                 if (replyTo.getText() == null && subjectReply.getText() == null && replyToBody.getText() == null){
                     // error message
                 } else {
-                    // save the data
+                    Email reply = new Email(user.getUsername(), replyTo.getText(), replySubject.getText(), replyToBody.getText());
+                    SingleLinkedList<Email> thread = new SingleLinkedList<>();
+                    SingleNode<SingleLinkedList<Email>> pointer = inboxMails.getHead();
+                    if (pointer.getLink() == null) {
+                        thread = pointer.getData();
+                        thread.add(reply);
+                        user.updateThreadOfReceiver(thread, replyTo.getText());
+                        user.saveRuntimeMails(inboxMails, "inbox",user.getUsername());
+                    } else {
+                        while (pointer.getLink().getLink() != null) {
+                            if (pointer.getData().getHead().getData().getSubject().equals(replySubject.getText())) {
+                                thread = pointer.getData();
+                                thread.add(reply);
+                                break;
+                            } else {
+                                pointer = pointer.getLink();
+                            }
+                        }
+                        user.updateThreadOfReceiver(thread, replyTo.getText());
+                        user.saveRuntimeMails(inboxMails,"inbox",user.getUsername());
+                    }
                 }
             }
         });
@@ -139,6 +161,10 @@ public class Inbox {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                int row = receivedMailsTable.getSelectedRow();
+                replyTo.setText(receivedMailsTable.getValueAt(row, 0).toString());
+                replySubject.setText(receivedMailsTable.getValueAt(row, 2).toString());
+
                 displayReplyComponents();
             }
 
