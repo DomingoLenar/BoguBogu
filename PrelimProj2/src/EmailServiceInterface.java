@@ -40,17 +40,19 @@ public class EmailServiceInterface extends JFrame {
                         // validation processing
                         inboxMails = currentUser.fetchMails("inbox", currentUser.getUsername());
                         sentMails = currentUser.fetchMails("sent", currentUser.getUsername());
-                        inbox = new Inbox(inboxMails, sentMails);
+                        inbox = new Inbox(inboxMails, sentMails, currentUser);
                         initComponents();
                         setUpSubFrame();
                         changeScreen(mainID);
 
                     }else{
                         //display invalid credentials
+                        JOptionPane.showMessageDialog(null, "Invalid Credentials", "Invalid User or Password", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                     // display no such user
+                    JOptionPane.showMessageDialog(null, "User does not exist", "No user found", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
