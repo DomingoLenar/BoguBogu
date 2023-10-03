@@ -72,6 +72,10 @@ public class User {
         }
             try {
                 File file = new File(userFolder+"/credentials.txt");
+                File inboxFile = new File(userFolder+"/inbox.txt");
+                inboxFile.createNewFile();
+                File sentFile = new File(userFolder+"/sent.txt");
+                sentFile.createNewFile();
                 if (file.createNewFile()) {
                     FileWriter writer = new FileWriter(file);
                     writer.write(this.username + "," + this.password);
@@ -119,6 +123,7 @@ public class User {
                 thread = null;
 
             }
+            listOfThreads.add(thread);
         }
         return listOfThreads;
     }
@@ -161,27 +166,38 @@ public class User {
         SingleNode<SingleLinkedList<Email>> pointer = listOfThreads.getHead();
         SingleNode<Email> iP;
         SingleNode<Email> inputPointer = thread.getHead();
-        while(pointer.getLink()!= null){
-            if(pointer.getData().getHead().getData().getSubject().equals(thread.getHead().getData().getSubject())){
-                iP = pointer.getData().getHead();
-                while(inputPointer.getLink()!= null){
-                    if(iP.getLink() != null) {
-                        iP.setData(inputPointer.getData());
-                        iP = iP.getLink();
-                    }else{
-                        iP.setLink(inputPointer);
+        if(pointer == null){
+            SingleLinkedList<SingleLinkedList<Email>> newListOfThreads = new SingleLinkedList<>();
+            newListOfThreads.add(thread);
+            saveRuntimeMails(newListOfThreads, "inbox",receiver);
+        }else {
+            for(int x = 0; x < listOfThreads.getSize(); x++) {
+                if (pointer.getData().getHead().getData().getSubject().equals(thread.getHead().getData().getSubject())) {
+                    iP = pointer.getData().getHead();
+                    while (inputPointer.getLink() != null) {
+                        if (iP.getLink() != null) {
+                            iP.setData(inputPointer.getData());
+                            iP = iP.getLink();
+                        } else {
+                            iP.setLink(inputPointer);
+                        }
+                        inputPointer = inputPointer.getLink();
                     }
-                    inputPointer = inputPointer.getLink();
                 }
             }
+            saveRuntimeMails(listOfThreads, "inbox", receiver);
         }
-        saveRuntimeMails(listOfThreads, "inbox", receiver);
+
     }
 
     public static void main(String[] args) {
         User testUser = new User("Lestat","Lestat10");
         SingleLinkedList<SingleLinkedList<Email>> testData = new SingleLinkedList<>();
         SingleLinkedList<Email> testThread = new SingleLinkedList<>();
+        Email testMail = new Email("test","Lestat","Test Mail","This is a test body");
+        testThread.add(testMail);
+        testData.add(testThread);
+        testUser.saveRuntimeMails(testData, "inbox", testUser.username);
         testUser.createUserFile();
     }
 }
