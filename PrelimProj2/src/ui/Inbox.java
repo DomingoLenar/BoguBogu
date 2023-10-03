@@ -27,6 +27,7 @@ public class Inbox {
     private final String settingsID = "settings_ID";
     private final String replyID = "reply_ID";
     private final String forwardID = "forward_ID";
+    private final String composeID = "compose_ID";
     private JPanel mainPanel;
     private JButton inboxButton;
     private JButton sentButton;
@@ -66,6 +67,12 @@ public class Inbox {
     private JTextField forwardTo;
     private JTextArea forwardToBody;
     private JButton sentForwardButton;
+    private JButton composeButton;
+    private JPanel composePanel;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextArea textArea1;
+    private JButton sendButton;
     private DefaultTableModel model;
     private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
 
@@ -185,6 +192,15 @@ public class Inbox {
             }
         });
 
+        composeButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                displayComposeComponents();
+            }
+        });
+
+
         settingsButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -197,6 +213,10 @@ public class Inbox {
                 super.mousePressed(e);
             }
         });
+    }
+
+    private void displayComposeComponents() {
+        changeScreen(composeID);
     }
 
     private void initTables() {
@@ -259,7 +279,7 @@ public class Inbox {
         };
 
 //        fetchSentMails(sentMails);
-        model = new DefaultTableModel(sampleData, columnTitle) {
+        model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return canEdit[column]; // set JTable column non-editable
@@ -292,10 +312,10 @@ public class Inbox {
                 false, false, true
         };
 
-//        fetchReceivedMails(inboxMails);
+        fetchReceivedMails(inboxMails);
 
         // DefaultTableModel with column names
-        model = new DefaultTableModel(sampleData, columnTitle) {
+        model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return canEdit[column]; // set JTable column non-editable
@@ -337,6 +357,7 @@ public class Inbox {
     private void setUpFrame() {
         cardPanel.add(inboxPanel, inboxID);
         cardPanel.add(sentContactsPanel, sentID);
+        cardPanel.add(composePanel, composeID);
         cardPanel.add(settingsPanel, settingsID);
         cardPanel.add(replyPanel, replyID);
         cardPanel.add(forwardPanel, forwardID);
