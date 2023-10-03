@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class Signup {
 
-    public static void main(String[] args) throws IOException, FontFormatException {
+    public static void show() throws IOException, FontFormatException {
         // JFrame container
         JFrame frame = new JFrame("Sign Up");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -110,6 +110,7 @@ public class Signup {
             public void actionPerformed(ActionEvent e) {
                 User newUser = new User(emailField.getText(), passwordField.getText());
                 newUser.createUserFile();
+                frame.dispose();
             }
 
         });
