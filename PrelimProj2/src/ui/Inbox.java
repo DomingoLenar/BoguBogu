@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 import datastruc.SingleLinkedList;
 import datastruc.SingleNode;
@@ -54,7 +55,7 @@ public class Inbox {
     private JScrollPane sentScrollPane;
     private JPanel replyPanel;
     private JTextArea replyTo;
-    private JTextArea subjectReply;
+    private JTextArea replySubject;
     private JLabel replyToLabel;
     private JLabel subjectReplyLabel;
     private JLabel replyToBodyLabel;
@@ -66,10 +67,13 @@ public class Inbox {
     private JButton sentForwardButton;
     private JButton composeButton;
     private JPanel composePanel;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextArea textArea1;
-    private JButton sendButton;
+    private JTextField composeTo;
+    private JTextField composeSubject;
+    private JTextArea composeBody;
+    private JButton sendComposeButton;
+    private JLabel composeToLabel;
+    private JLabel composeSubjectLabel;
+    private JLabel composeBodyLabel;
     private DefaultTableModel model;
     private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
     private User user;
@@ -90,12 +94,9 @@ public class Inbox {
         // show the main panel
         ((CardLayout) cardPanel.getLayout()).show(cardPanel, inboxID);
 
-
-
     }
 
     private void initComponents() {
-        displayReceivedMails(inboxMails);
         initTables();
         initButtons();
 
@@ -116,8 +117,9 @@ public class Inbox {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e); // TODO: reply to clicked mail in inbox
 
-                if (replyTo.getText() == null && subjectReply.getText() == null && replyToBody.getText() == null){
+                if (replyTo.getText() == null && replySubject.getText() == null && replyToBody.getText() == null){
                     // error message
+                    JOptionPane.showMessageDialog(null, "");
                 } else {
                     Email reply = new Email(user.getUsername(), replyTo.getText(), replySubject.getText(), replyToBody.getText());
                     SingleLinkedList<Email> thread = new SingleLinkedList<>();
@@ -205,7 +207,6 @@ public class Inbox {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                setUpSentMailsTable();
                 displaySentComponents();
             }
 
@@ -220,6 +221,23 @@ public class Inbox {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 displayComposeComponents();
+            }
+        });
+
+        sendComposeButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                if(composeTo.getText() == null && composeSubject.getText() == null && composeBody.getText() == null){
+                    // display error
+                }else{
+                    Email newMail = new Email(user.getUsername(), composeTo.getText(), composeSubject.getText(), composeBody.getText());
+                    SingleLinkedList<Email> newThread = new SingleLinkedList<>();
+                    newThread.add(newMail);
+                    sentMails.addAtHead(newThread);
+                    user.updateThreadOfReceiver(newThread,composeTo.getText());
+                }
             }
         });
 
@@ -238,21 +256,23 @@ public class Inbox {
         });
     }
 
-    private void displayComposeComponents() {
-        changeScreen(composeID);
-    }
-
     private void initTables() {
-
         receivedMailsTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                letterBody.append("LOLOLOLOLOL"); // TODO: display content of mail
+                int row = receivedMailsTable.getSelectedRow();
+
+                if (Objects.equals(letterBody.getText(), "")) {
+                    for (int i = 0; i < model.getColumnCount(); i++) {
+                        letterBody.append((String) receivedMailsTable.getValueAt(row, i)); // TODO: display content of mail
+                    }
+                } else {
+                    letterBody.setText("");
+                }
                 composeLetterPanel.setVisible(true);
             }
         });
-
 
         TableActionEvent event = new TableActionEvent(){
             @Override
@@ -269,7 +289,6 @@ public class Inbox {
 
     }
 
-
     private void searchFilter(String searchTerm) {
         DefaultTableModel filteredItems = new DefaultTableModel();
 
@@ -281,28 +300,31 @@ public class Inbox {
         });
 
         model = filteredItems;
+        model.fireTableDataChanged();
         receivedMailsTable.setModel(model);
     }
 
-    private void setUpSentMailsTable() {
-        boolean[] canEdit = new boolean[]{
-                false, false, true
-        };
+    private void setUpSentMailsTable(SingleLinkedList<SingleLinkedList<Email>> sentMails) {
 
-//        fetchSentMails(sentMails);
-        model = new DefaultTableModel() {
+        model = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
-                return canEdit[column]; // set JTable column non-editable
+                return false;
             }
         };
+        model.addColumn("Sender");
+        model.addColumn("Receiver");
+        model.addColumn("Subject");
+        model.addColumn("Body");
         sentMailsTable = new JTable(model);
+        displaySentMails(sentMails); // Populate the table with data
 
 //        TableColumn column = sentMailsTable.getColumnModel().getColumn(1);
 //        column.setPreferredWidth(600);
     }
 
-    private void fetchSentMails(SingleLinkedList<SingleLinkedList<Email>> sentMails) {
+
+    private void displaySentMails(SingleLinkedList<SingleLinkedList<Email>> sentMails) {
         SingleNode<SingleLinkedList<Email>> currentNode = sentMails.getHead(); // outer first pointer
 
         while (currentNode != null) {
@@ -310,7 +332,7 @@ public class Inbox {
             SingleNode<Email> emailSingleNode = emailSingleLinkedList.getHead();
             while (emailSingleNode != null) {
                 Email email = emailSingleNode.getData();
-                model.addRow(new Object[]{email.getSubject(), email.getSender()});
+                model.addRow(new Object[]{email.getSender(), email.getReceiver(), email.getSubject(), email.getBody()});
                 emailSingleNode = emailSingleNode.getLink();
             }
             currentNode = currentNode.getLink();
@@ -320,9 +342,13 @@ public class Inbox {
 
     private void setUpReceivedMailsTable(SingleLinkedList<SingleLinkedList<Email>> inboxMails) {
 
-
         // DefaultTableModel with column names
-        model = new DefaultTableModel();
+        model = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         model.addColumn("Sender");
         model.addColumn("Receiver");
         model.addColumn("Subject");
@@ -330,7 +356,7 @@ public class Inbox {
         receivedMailsTable = new JTable(model);
 
         displayReceivedMails(inboxMails); // Populate the table with data
-        int counter = model.getRowCount();
+
 //        TableColumn column = receivedMailsTable.getColumnModel().getColumn(1);
 //        column.setPreferredWidth(600);
 
@@ -364,11 +390,9 @@ public class Inbox {
     private void displaySettingsComponents() {
         changeScreen(settingsID);
     }
-
     private void displayInboxComponents() {
         changeScreen(inboxID);
     }
-
     private void displaySentComponents() {
         changeScreen(sentID);
     }
@@ -376,42 +400,39 @@ public class Inbox {
         changeScreen(replyID);
     }
     private void displayForwardComponents() {
+
         changeScreen(forwardID);
     }
-
+    private void displayComposeComponents() {
+        changeScreen(composeID);
+    }
     private void changeScreen(String screen) {
+
         ((CardLayout)cardPanel.getLayout()).show(cardPanel, screen); // -> show the appropriate panel
         // The arguments are the "parent panel" and the "id" of a child panel in a parent panel, respectively.
     }
-
     public JButton getInboxButton() {
         return inboxButton;
     }
-
     public JButton getSentButton() {
         return sentButton;
     }
-
     public JButton getSettingsButton() {
         return settingsButton;
     }
-
     public JPanel getCardPanel() {
         return cardPanel;
     }
-
     public JPanel getMainPanel() {
         return mainPanel;
     }
-
     public JPanel getSentPanel() {
         return sentContactsPanel;
     }
-
     private void createUIComponents() {
         // TODO: place custom component creation code here
         setUpReceivedMailsTable(this.inboxMails);
-        setUpSentMailsTable();
+        setUpSentMailsTable(this.sentMails);
 
     }
 }
