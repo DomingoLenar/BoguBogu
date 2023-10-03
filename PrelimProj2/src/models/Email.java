@@ -46,10 +46,7 @@ public class Email {
 
     @Override
     public String toString() {
-        return "Sender: " + sender + "\n" +
-                "Receiver: " + receiver + "\n" +
-                "Subject: " + subject + "\n" +
-                "Body: " + body;
+        return sender+","+receiver+","+subject+","+body;
     }
 }
 
