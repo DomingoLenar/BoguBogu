@@ -89,6 +89,7 @@ public class Inbox {
     }
 
     private void initComponents() {
+        displayReceivedMails();
         initTables();
         initButtons();
 
