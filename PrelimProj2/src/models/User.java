@@ -163,31 +163,28 @@ public class User {
 
     public void updateThreadOfReceiver(SingleLinkedList<Email> thread, String receiver){
         SingleLinkedList<SingleLinkedList<Email>> listOfThreads = fetchMails("inbox", receiver);
-        SingleNode<SingleLinkedList<Email>> pointer = listOfThreads.getHead();
-        SingleNode<Email> iP;
-        SingleNode<Email> inputPointer = thread.getHead();
-        if(pointer == null){
-            SingleLinkedList<SingleLinkedList<Email>> newListOfThreads = new SingleLinkedList<>();
-            newListOfThreads.add(thread);
-            saveRuntimeMails(newListOfThreads, "inbox",receiver);
-        }else {
-            for(int x = 0; x < listOfThreads.getSize(); x++) {
-                if (pointer.getData().getHead().getData().getSubject().equals(thread.getHead().getData().getSubject())) {
-                    iP = pointer.getData().getHead();
-                    while (inputPointer.getLink() != null) {
-                        if (iP.getLink() != null) {
-                            iP.setData(inputPointer.getData());
-                            iP = iP.getLink();
-                        } else {
-                            iP.setLink(inputPointer);
-                        }
-                        inputPointer = inputPointer.getLink();
+        SingleNode<SingleLinkedList<Email>> pointerLOT = listOfThreads.getHead();
+        SingleLinkedList<Email> currentThread = pointerLOT.getData();
+        SingleNode<Email> pointerOfCT = currentThread.getHead();
+        SingleNode<Email> pointerOfNT = thread.getHead();
+        String threadSubject = thread.getHead().getData().getSubject();
+        //Find the right thread
+        for(int x = 0; x < listOfThreads.getSize(); x++){
+            if(pointerLOT.getData().getHead().getData().getSubject().equals(threadSubject)){
+                // update thread
+                currentThread = pointerLOT.getData();
+                pointerOfCT = currentThread.getHead();
+                for(int y = 0; y < thread.getSize(); y++){
+                    if(pointerOfCT.getLink() == null){
+                        pointerOfCT.setLink(pointerOfNT.getLink());
                     }
+                    pointerOfCT = pointerOfCT.getLink();
+                    pointerOfNT = pointerOfNT.getLink();
                 }
             }
-            saveRuntimeMails(listOfThreads, "inbox", receiver);
+            pointerLOT = pointerLOT.getLink();
         }
-
+        saveRuntimeMails(listOfThreads,"inbox",receiver);
     }
 
     public static void main(String[] args) {
