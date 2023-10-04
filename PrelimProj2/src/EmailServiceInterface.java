@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.io.FileNotFoundException;
 
 public class EmailServiceInterface extends JFrame {
@@ -23,8 +24,7 @@ public class EmailServiceInterface extends JFrame {
     private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
 
 
-    EmailServiceInterface()
-    {
+    EmailServiceInterface() throws IOException, FontFormatException {
         this.login = new Login();
         JButton login_buttn = login.getLogin_buttn();
         initButton(login_buttn);
@@ -72,10 +72,6 @@ public class EmailServiceInterface extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
-    }
-
-    private void initComponents() {
-
     }
 
     private void displayInboxComponents() {
