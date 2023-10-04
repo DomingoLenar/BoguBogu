@@ -44,15 +44,14 @@ public class Login {
 
         sign_up_buttn.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                Signup signup = new Signup();
+            public void actionPerformed(ActionEvent e)  {
+                Signup signup = null;
                 try {
-                    signup.show();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (FontFormatException ex) {
-                    ex.printStackTrace();
+                    signup = new Signup();
+                } catch (IOException | FontFormatException ex) {
+                    throw new RuntimeException(ex);
                 }
+                signup.show();
 
             }
         });
