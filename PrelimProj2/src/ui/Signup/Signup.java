@@ -109,7 +109,7 @@ public class Signup extends TitleBar {
             public void actionPerformed(ActionEvent e) {
                 User newUser = new User(emailField.getText(), passwordField.getText());
                 newUser.createUserFile();
-                frame.dispose();
+                dispose();
             }
 
         });
