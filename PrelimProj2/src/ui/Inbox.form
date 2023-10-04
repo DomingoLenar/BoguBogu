@@ -184,23 +184,17 @@
                   </component>
                 </children>
               </grid>
-              <grid id="b3caf" binding="composeLetterPanel" layout-manager="GridBagLayout">
+              <grid id="b3caf" binding="composeInboxLetterPanel" layout-manager="GridBagLayout">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="1.0" weighty="1.0"/>
                 </constraints>
                 <properties>
                   <background color="-594740"/>
-                  <visible value="true"/>
+                  <visible value="false"/>
                 </properties>
                 <border type="none"/>
                 <children>
-                  <hspacer id="1c0ec">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                  </hspacer>
                   <grid id="82e8b" binding="attachImgPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -224,18 +218,7 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <component id="fec30" class="javax.swing.JButton" binding="replyButton" default-binding="true">
-                    <constraints>
-                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <background color="-10918"/>
-                      <label value="Reply"/>
-                      <text value="Reply"/>
-                    </properties>
-                  </component>
-                  <component id="e38bf" class="javax.swing.JButton" binding="forwardButton" default-binding="true">
+                  <component id="e38bf" class="javax.swing.JButton" binding="inboxForwardButton">
                     <constraints>
                       <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="0.0" weighty="0.0"/>
@@ -291,7 +274,7 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="34ae5" class="javax.swing.JTextArea" binding="letterBody">
+                          <component id="34ae5" class="javax.swing.JTextArea" binding="inboxLetterBody">
                             <constraints border-constraint="Center"/>
                             <properties>
                               <alignmentX value="0.5"/>
@@ -310,6 +293,23 @@
                       </grid>
                     </children>
                   </scrollpane>
+                  <component id="fec30" class="javax.swing.JButton" binding="replyButton" default-binding="true">
+                    <constraints>
+                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <background color="-10918"/>
+                      <label value="Reply"/>
+                      <text value="Reply"/>
+                    </properties>
+                  </component>
+                  <hspacer id="1c0ec">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </hspacer>
                 </children>
               </grid>
             </children>
@@ -393,15 +393,6 @@
                       <showVerticalLines value="false"/>
                     </properties>
                   </component>
-                  <grid id="d1d6b" layout-manager="GridBagLayout">
-                    <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties/>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
                 </children>
               </grid>
               <grid id="8c7e2" binding="composeSentLetterPanel" layout-manager="GridBagLayout">
@@ -417,56 +408,117 @@
                 <children>
                   <grid id="a877e" binding="sentImgPanel" layout-manager="GridBagLayout">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="1.0" weighty="0.2"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-2500135"/>
+                    </properties>
                     <border type="none"/>
                     <children/>
                   </grid>
                   <hspacer id="ac559">
                     <constraints>
-                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                   </hspacer>
-                  <vspacer id="175cc">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                  </vspacer>
                   <grid id="989d3" binding="sentFilePanel" layout-manager="GridBagLayout">
                     <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="1.0" weighty="0.2"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-2500135"/>
+                    </properties>
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <vspacer id="acc50">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                  </vspacer>
                   <scrollpane id="fa1ee" binding="sentScrollPane">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="1.0" weighty="0.5"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <grid id="49bd4" binding="sentLetterPanel" layout-manager="GridBagLayout">
+                      <grid id="49bd4" binding="sentLetterPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                         <constraints/>
                         <properties/>
                         <border type="none"/>
-                        <children/>
+                        <children>
+                          <component id="1a2f5" class="javax.swing.JTextArea" binding="sentLetterBody">
+                            <constraints border-constraint="Center"/>
+                            <properties>
+                              <background color="-2500135"/>
+                              <editable value="false"/>
+                              <foreground color="-3487030"/>
+                              <lineWrap value="true"/>
+                              <preferredSize width="160" height="252"/>
+                              <text value=""/>
+                              <wrapStyleWord value="true"/>
+                            </properties>
+                          </component>
+                        </children>
                       </grid>
                     </children>
                   </scrollpane>
+                  <component id="6d3ad" class="javax.swing.JButton" binding="sendButton" default-binding="true">
+                    <constraints>
+                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <background color="-10918"/>
+                      <text value="Send"/>
+                    </properties>
+                  </component>
+                  <hspacer id="a38">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </hspacer>
+                  <vspacer id="3dba0">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </vspacer>
+                  <hspacer id="28f39">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="dced0">
+                    <constraints>
+                      <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </hspacer>
+                  <vspacer id="f1386">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </vspacer>
+                  <vspacer id="eb308">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="8d4e5" class="javax.swing.JButton" binding="sentForwardButton">
+                    <constraints>
+                      <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <background color="-10918"/>
+                      <text value="Forward"/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
             </children>
@@ -647,7 +699,7 @@
                   <text value=""/>
                 </properties>
               </component>
-              <component id="9c78e" class="javax.swing.JButton" binding="sentForwardButton">
+              <component id="9c78e" class="javax.swing.JButton" binding="forwardButton">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag top="10" left="15" bottom="0" right="0" weightx="0.0" weighty="0.0"/>

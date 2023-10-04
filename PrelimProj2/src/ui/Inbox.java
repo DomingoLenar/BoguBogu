@@ -15,8 +15,6 @@ import tools.TableActionEvent;
 
 public class Inbox {
     private final String[] columnTitle = {"NAME", "MAIL", "CUSTOM"};
-    private final String[][] sampleData = {{"NAME-1", "Hi"},
-    {"NAME-2", "Hey"}, {"NAME-3", "Hello"}, {"NAME-4", "Hi"}};
     private final String mainPanelID = "main_ID";
 
     private final String inboxID = "inbox_ID";
@@ -31,11 +29,11 @@ public class Inbox {
     private JButton sentButton;
     private JButton settingsButton;
     private JButton replyButton;
-    private JButton forwardButton;
+    private JButton inboxForwardButton;
     private JPanel leftPanel;
     private JPanel inboxPanel;
     private JPanel contactsPanel;
-    private JPanel composeLetterPanel;
+    private JPanel composeInboxLetterPanel;
     private JPanel cardPanel;
     private JPanel letterPanel;
     private JPanel attachImgPanel;
@@ -45,7 +43,7 @@ public class Inbox {
     private JPanel settingsPanel;
     private JTable receivedMailsTable;
     private JTable sentMailsTable;
-    private JTextArea letterBody;
+    private JTextArea inboxLetterBody;
     private JScrollPane inboxScrollPane;
     private JPanel sentPanel;
     private JPanel composeSentLetterPanel;
@@ -64,7 +62,7 @@ public class Inbox {
     private JPanel forwardPanel;
     private JTextField forwardTo;
     private JTextArea forwardToBody;
-    private JButton sentForwardButton;
+    private JButton forwardButton;
     private JButton composeButton;
     private JPanel composePanel;
     private JTextField composeTo;
@@ -74,6 +72,9 @@ public class Inbox {
     private JLabel composeToLabel;
     private JLabel composeSubjectLabel;
     private JLabel composeBodyLabel;
+    private JButton sendButton;
+    private JTextArea sentLetterBody;
+    private JButton sentForwardButton;
     private DefaultTableModel model;
     private SingleLinkedList<SingleLinkedList<Email>> inboxMails, sentMails;
     private User user;
@@ -93,6 +94,7 @@ public class Inbox {
 
         // show the main panel
         ((CardLayout) cardPanel.getLayout()).show(cardPanel, inboxID);
+
 
     }
 
@@ -115,7 +117,7 @@ public class Inbox {
         sentReplyButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e); // TODO: reply to clicked mail in inbox
+                super.mouseClicked(e);
 
                 if (replyTo.getText() == null && replySubject.getText() == null && replyToBody.getText() == null){
                     // error message
@@ -146,7 +148,7 @@ public class Inbox {
             }
         });
 
-        sentForwardButton.addMouseListener(new MouseAdapter() {
+        forwardButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -176,7 +178,7 @@ public class Inbox {
             }
         });
 
-        forwardButton.addMouseListener(new MouseAdapter() {
+        inboxForwardButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -194,7 +196,7 @@ public class Inbox {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 displayInboxComponents();
-                composeLetterPanel.setVisible(false);
+                composeInboxLetterPanel.setVisible(false);
             }
 
             @Override
@@ -208,6 +210,7 @@ public class Inbox {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 displaySentComponents();
+                composeSentLetterPanel.setVisible(false);
             }
 
             @Override
@@ -263,14 +266,31 @@ public class Inbox {
                 super.mouseClicked(e);
                 int row = receivedMailsTable.getSelectedRow();
 
-                if (Objects.equals(letterBody.getText(), "")) {
+                if (Objects.equals(inboxLetterBody.getText(), "")) {
                     for (int i = 0; i < model.getColumnCount(); i++) {
-                        letterBody.append((String) receivedMailsTable.getValueAt(row, i)); // TODO: display content of mail
+                        inboxLetterBody.append((String) receivedMailsTable.getValueAt(row, i));
                     }
                 } else {
-                    letterBody.setText("");
+                    inboxLetterBody.setText("");
                 }
-                composeLetterPanel.setVisible(true);
+                composeInboxLetterPanel.setVisible(true);
+            }
+        });
+
+        sentMailsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                int row = sentMailsTable.getSelectedRow();
+
+                if (Objects.equals(sentLetterBody.getText(), "")) {
+                    for (int i = 0; i < model.getColumnCount(); i++) {
+                        sentLetterBody.append((String) sentMailsTable.getValueAt(row, i));
+                    }
+                } else {
+                    sentLetterBody.setText("");
+                }
+                composeSentLetterPanel.setVisible(true);
             }
         });
 
