@@ -41,7 +41,7 @@ public class EmailServiceInterface extends JFrame {
                         inboxMails = currentUser.fetchMails("inbox", currentUser.getUsername());
                         sentMails = currentUser.fetchMails("sent", currentUser.getUsername());
                         inbox = new Inbox(inboxMails, sentMails, currentUser);
-                        initComponents();
+//                        initComponents();
                         setUpSubFrame();
                         changeScreen(mainID);
 
