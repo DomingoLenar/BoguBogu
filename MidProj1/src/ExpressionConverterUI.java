@@ -10,6 +10,7 @@ public class ExpressionConverterUI extends JFrame {
     private InfixToPostfixConverter converter = new InfixToPostfixConverter();
 
     public ExpressionConverterUI() {
+        // Set up the main frame
         setTitle("BoguBogu Expression Converter");
         setSize(600, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,21 +33,25 @@ public class ExpressionConverterUI extends JFrame {
         optionsMenu.add(convertToPostfixItem);
         optionsMenu.add(evaluatePostfixItem);
 
+        // Create a panel for user input and controls
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
 
+        // Components for user input and controls
         JLabel inputLabel = new JLabel("Enter Infix Expression:");
         inputField = new JTextField(20);
         JButton performAction = new JButton("Convert to Postfix");
         outputArea = new JTextArea(10, 30);
         outputArea.setEditable(false);
 
+        // Add components to the panel
         panel.add(inputLabel);
         panel.add(inputField);
         panel.add(performAction);
         add(panel, BorderLayout.NORTH);
         add(new JScrollPane(outputArea), BorderLayout.CENTER);
 
+        // Action listener for "Convert to Postfix" menu item
         convertToPostfixItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,11 +60,12 @@ public class ExpressionConverterUI extends JFrame {
             }
         });
 
+        // Action listener for "Evaluate Postfix Expression" menu item
         evaluatePostfixItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String outputExp = outputArea.getText();
-                if(!(outputExp.equals(null))){
+                if (!(outputExp.equals(null))) {
                     inputField.setText(outputExp);
                     outputArea.setText("");
                 }
@@ -68,11 +74,13 @@ public class ExpressionConverterUI extends JFrame {
             }
         });
 
+        // Action listener for the main action button
         performAction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String inputExpression = inputField.getText();
                 if (performAction.getText().equals("Convert to Postfix")) {
+                    // Convert infix to postfix
                     String postfixExpression = null;
                     try {
                         postfixExpression = converter.convert(inputExpression);
@@ -81,6 +89,7 @@ public class ExpressionConverterUI extends JFrame {
                     }
                     outputArea.setText(postfixExpression);
                 } else {
+                    // Evaluate postfix expression
                     double result = PostfixEvaluator.evaluatePostfixExpression(inputExpression);
                     outputArea.setText("Result: " + result);
                 }
@@ -88,6 +97,7 @@ public class ExpressionConverterUI extends JFrame {
         });
     }
 
+    // Placeholder methods for additional functionality
     private double evaluatePostfix(String inputExpression) {
         return 0;
     }
@@ -98,6 +108,7 @@ public class ExpressionConverterUI extends JFrame {
 
     // Implement infixToPostfix and evaluatePostfix methods here
 
+    // Main method to launch the GUI
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
