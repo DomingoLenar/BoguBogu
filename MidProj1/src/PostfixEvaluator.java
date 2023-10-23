@@ -1,33 +1,32 @@
-import java.util.Stack;
+import java.util.*;
 
 public class PostfixEvaluator {
-    private final Operators execute;
-
-    public PostfixEvaluator() {
-        execute = new Operators();
-    }
-
-    public double evaluate(String prefixExpression) throws StackUnderflowException {
-        Stack<Double> operandStack = new Stack<>();
-        String[] charArray = prefixExpression.split(" ");
-        execute.reverseArray(charArray);
-
-        double result = 0;
-
-        for (String s : charArray) {
-            String token = String.valueOf(s);
-            if (execute.isAnOperand(token)) {
-                operandStack.push(Double.valueOf(token));
-
-            } else {
-                double secondOperand = operandStack.pop();
-                double firstOperand = operandStack.pop();
-                result = execute.evaluateOperands(firstOperand, secondOperand, token);
-                operandStack.push(result);
-
-            }
+        private static boolean isOperand(String token) {
+        try {
+            Double.parseDouble(token);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
-        return result;
+    }
+    private static boolean isOperator(String token) {
+        return "+".equals(token) || "-".equals(token) || "*".equals(token) || "/".equals(token) || "$".equals(token);
+    }
+    private static double applyOperator(String operator, double operand1, double operand2) {
+        switch (operator) {
+            case "+":
+                return operand1 + operand2;
+            case "-":
+                return operand1 - operand2;
+            case "*":
+                return operand1 * operand2;
+            case "/":
+                if (operand2 == 0) {
+                    throw new ArithmeticException("Division by zero is not allowed.");
+                }
+                return operand1 / operand2;
+            default:
+                throw new IllegalArgumentException("Unsupported operator: " + operator);
+        }
     }
 }
-
