@@ -10,8 +10,6 @@ public class PostfixEvaluator {
         int operand2 = 0;
         int ansHolder = 0;
 
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s", "Symbol", "Operand 1", "Operand 2", "Value", "Operand Stack");
-
         for (int i = 0; i < exp.length(); i++) {
             c = exp.charAt(i);
             characters = c;
@@ -54,8 +52,6 @@ public class PostfixEvaluator {
                         break;
                 }
             }
-            System.out.printf("\n%-20c%-20d%-20d%-20d", characters, operand2, operand1, ansHolder);
-            operandStackPrint(stack);
         }
         return stack.pop();
     }
