@@ -81,7 +81,7 @@ public class ExpressionConverterUI extends JFrame {
                     }
                     outputArea.setText(postfixExpression);
                 } else {
-                    double result = evaluatePostfix(inputExpression);
+                    double result = PostfixEvaluator.evaluatePostfixExpression(inputExpression);
                     outputArea.setText("Result: " + result);
                 }
             }
