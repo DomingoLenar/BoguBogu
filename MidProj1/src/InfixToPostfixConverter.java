@@ -11,14 +11,15 @@ public class InfixToPostfixConverter {
      * Problem: it does not give correct postfix when user input an infix that is factorized/simplified form (i.e., a-b(c+d))
      * Possible solution: use helper method to transform simplified infix to general infix expression or construct entirely new method that is capable converting any infix to postfix expression
      */
-    public String convert(String infixExpression) throws StackUnderflowException {
+    public String convert(String infixString) throws StackUnderflowException {
         StringBuilder postfixExpression = new StringBuilder();
+        String[] infixExpression = infixString.split(" ");
         Stack<String> operatorStack = new Stack<>();
 
-        for (int i = 0; i < infixExpression.length(); i++) {
-            String token = String.valueOf(infixExpression.charAt(i));
+        for (int i = 0; i < infixExpression.length; i++) {
+            String token = String.valueOf(infixExpression[i]);
             if (execute.isAnOperand(token)) {
-                postfixExpression.append(token);
+                postfixExpression.append(token+" ");
             } else {
                 while (!operatorStack.isEmpty() && execute.precedence(operatorStack.peek(), token)) {
                     postfixExpression.append(operatorStack.pop());
