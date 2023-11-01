@@ -29,30 +29,11 @@ public class HuffmanTest implements Runnable{
      * @param args
      */
     public static void main(String[] args) {
-        char[] symbolArray = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-        int[] symbolFrequency = {30, 12, 13, 20, 45, 2, 2, 7};
-
-        PriorityQueue<TreeNode> huffmanTree = new PriorityQueue<>();
-
-        createTree(symbolArray, symbolFrequency, huffmanTree);
-
-        TreeNode root = null;
-
-        while (huffmanTree.size() > 1) { // construct the complete binary tree (huffman tree) to obtain huffman coding scheme
-            TreeNode t = huffmanTree.peek();
-            huffmanTree.poll();
-
-            TreeNode u = huffmanTree.peek();
-            huffmanTree.poll();
-
-            TreeNode v = new TreeNode();
-            v.setCount(t.getCount() + u.getCount());
-            v.setSymbol('-');
-            v.setLeft(t);
-            v.setRight(u);
-            root = v;
-
-            huffmanTree.add(v);
+        try {
+            HuffmanTest obj = new HuffmanTest();
+            obj.run();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         System.out.println(" Char }| Huffman code ");
         System.out.println("---------------------");
@@ -95,5 +76,36 @@ public class HuffmanTest implements Runnable{
 
         printCode(root.getLeft(), edge + "0");
         printCode(root.getRight(), edge + "1");
+    }
+
+    @Override
+    public void run() {
+        String user_input = promptMessage();
+        Character[] set = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','?','’','!',','};
+//        if (user_input.matches()) // # TODO: create a regex that satisfies the requirement
+        LinkedList<CustomNode> letter_frequency = processor.getFrequency(user_input);
+        createTree(letter_frequency, huffmanTree);
+
+        TreeNode root = null;
+
+        while (huffmanTree.size() > 1) { // construct the complete binary tree (huffman tree) to obtain huffman coding scheme
+            TreeNode t = huffmanTree.peek();
+            huffmanTree.poll();
+
+            TreeNode u = huffmanTree.peek();
+            huffmanTree.poll();
+
+            TreeNode v = new TreeNode();
+            v.setCount(t.getCount() + u.getCount());
+            v.setSymbol('-');
+            v.setLeft(t);
+            v.setRight(u);
+            root = v;
+
+            huffmanTree.add(v);
+        }
+        System.out.println(" Char | Huffman code ");
+        System.out.println("---------------------");
+        printCode(root, "");
     }
 }
