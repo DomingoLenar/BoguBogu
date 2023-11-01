@@ -49,13 +49,13 @@ public class HuffmanTest implements Runnable{
         return null;
     }
 
-    private static void createTree(char[] symbolArray, int[] symbolFrequency, PriorityQueue<TreeNode> huffmanTree ) {
+    private static void createTree(LinkedList<CustomNode> letter_frequency, PriorityQueue<TreeNode> huffmanTree ) {
         // arrange each node in huffman tree
-        for (int i = 0; i < symbolArray.length; i++){
+        for (CustomNode customNode : letter_frequency) {
             TreeNode huffmanNode = new TreeNode();
 
-            huffmanNode.setSymbol(symbolArray[i]);
-            huffmanNode.setCount(symbolFrequency[i]);
+            huffmanNode.setSymbol(customNode.getCharac().charAt(0));
+            huffmanNode.setCount(customNode.getFrequency());
             huffmanNode.setLeft(null);
             huffmanNode.setRight(null);
 
