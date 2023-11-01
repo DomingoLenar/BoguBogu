@@ -35,9 +35,7 @@ public class HuffmanTest implements Runnable{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(" Char }| Huffman code ");
-        System.out.println("---------------------");
-        printCode(root, "");
+    }
 
     private String promptMessage() {
         try {
