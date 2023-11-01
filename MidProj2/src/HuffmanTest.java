@@ -1,25 +1,12 @@
-import javax.swing.tree.TreeNode;
-import java.util.PriorityQueue;
 
-/**
- * Name: Morados, Lou Diamond, T.
- * Class: 9342 | 9:00 - 10:30 am
- *
- * Program output:
- * Char }| Huffman code
- * ---------------------
- * F | 00000
- * G | 00001
- * H | 0001
- * B | 001
- * A | 01
- * C | 100
- * D | 101
- * E | 11
- *
- * Tested By: Morados, Lou Diamond, T.
- */
-public class HuffmanTest {
+import java.util.*;
+
+// TODO: consider all possible characters in a given set {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,space,.,?,’,!,,}
+public class HuffmanTest implements Runnable{
+    PriorityQueue<TreeNode> huffmanTree = new PriorityQueue<>();
+
+    StringProcessor processor = new StringProcessor();
+    Scanner kyb = new Scanner(System.in);
 
     /**
      *
@@ -27,10 +14,9 @@ public class HuffmanTest {
      * @param s
      */
     public static void printCode(TreeNode root, String s){
-        if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getSymbol())){
+        if (root.getLeft() == null && root.getRight() == null){
             System.out.println(root.getSymbol() + " | " + s);
             return;
-
         }
 
 
@@ -72,8 +58,14 @@ public class HuffmanTest {
         System.out.println("---------------------");
         printCode(root, "");
 
-        System.out.println();
-        System.out.println("Tested By: Morados, Lou Diamond, T.");
+    private String promptMessage() {
+        try {
+            System.out.println("Input a text: ");
+            return kyb.nextLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private static void createTree(char[] symbolArray, int[] symbolFrequency, PriorityQueue<TreeNode> huffmanTree ) {
@@ -88,7 +80,6 @@ public class HuffmanTest {
 
             huffmanTree.add(huffmanNode);
         }
-
     }
 
     public void createTable(TreeNode root, String edge){
