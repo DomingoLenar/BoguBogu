@@ -13,17 +13,23 @@ public class StringProcessor {
     public LinkedList<CustomNode> getFrequency(String text){
         int length = text.length();
         LinkedList<CustomNode> characterFrequency = new LinkedList<>();
-        CustomNode pointer = null;
-        for(int x = 0; x < length; x++){
+        CustomNode pointer;
+
+        CustomNode newNode = new CustomNode(String.valueOf(text.charAt(0)), 1);
+        characterFrequency.add(newNode);
+
+        for(int x = 1; x < length; x++){
             String character = String.valueOf(text.charAt(x));
-            if(characterFrequency.isEmpty()){
-                CustomNode newNode = new CustomNode(String.valueOf(text.charAt(x)), 1);
-                characterFrequency.add(newNode);
-            }
-            else if(search(character, characterFrequency) != -1){
-                pointer = characterFrequency.get(search(character, characterFrequency));
-                int i = pointer.getFrequency();
-                pointer.setFrequency(i++);
+            if (!characterFrequency.isEmpty()) {
+                int pos = search(character, characterFrequency);
+                if(pos != -1){ // character exist in linked list
+                    pointer = characterFrequency.get(pos);
+                    int i = pointer.getFrequency();
+                    pointer.setFrequency(i+1);
+                }
+                else { // character does not exist in linked list
+                    characterFrequency.add(new CustomNode(String.valueOf(text.charAt(x)), 1));
+                }
             }
             else{
                 throw new RuntimeException("Linked List error character");
@@ -33,7 +39,7 @@ public class StringProcessor {
         return characterFrequency;
     }
 
-    //a custom search method to look into the character of the custom node and returns the index
+    // a custom search method to look into the character of the custom node and returns the index
     private int search(String searchKey, LinkedList<CustomNode> linkedList){
        int outerSize = linkedList.size();
        for(int x = 0; x < outerSize; x++){
