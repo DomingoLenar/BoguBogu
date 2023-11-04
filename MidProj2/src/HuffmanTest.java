@@ -14,15 +14,19 @@ public class HuffmanTest implements Runnable{
      * @param root
      * @param s
      */
-    public static void printCode(TreeNode root, String s){
+    public void huffmanCode(TreeNode root, String s){
         if (root.getLeft() == null && root.getRight() == null){
-            System.out.println(root.getSymbol() + " | " + s);
+            System.out.println(root.getSymbol() + " | " + s + " | " + s.length());
+            characters_no_bits.put(root.getSymbol(), s.length());
+            characters_huffman_code.put(root.getSymbol(), s);
+            huffmanCode += s;
             return;
         }
 
 
-        printCode(root.getLeft(), s + "0");
-        printCode(root.getRight(), s + "1");
+        huffmanCode(root.getLeft(), s + "0");
+        huffmanCode(root.getRight(), s + "1");
+
     }
 
     /**
