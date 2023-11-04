@@ -42,22 +42,12 @@ public class HuffmanTest implements Runnable{
         }
     }
 
-    private String promptMessage() {
-        try {
-            System.out.println("Input a text: ");
-            return kyb.nextLine();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private static void createTree(LinkedList<CustomNode> letter_frequency, PriorityQueue<TreeNode> huffmanTree ) {
-        // arrange each node in huffman tree
+    private static void createTreeSkeleton(LinkedList<CustomNode> letter_frequency, PriorityQueue<TreeNode> huffmanTree ) {
+        // attach each node in huffman tree
         for (CustomNode customNode : letter_frequency) {
             TreeNode huffmanNode = new TreeNode();
 
-            huffmanNode.setSymbol(customNode.getCharac().charAt(0));
+            huffmanNode.setSymbol(customNode.getCharacter().charAt(0));
             huffmanNode.setCount(customNode.getFrequency());
             huffmanNode.setLeft(null);
             huffmanNode.setRight(null);
@@ -77,8 +67,8 @@ public class HuffmanTest implements Runnable{
 
         }
 
-        printCode(root.getLeft(), edge + "0");
-        printCode(root.getRight(), edge + "1");
+        huffmanCode(root.getLeft(), edge + "0");
+        huffmanCode(root.getRight(), edge + "1");
     }
 
     @Override
@@ -208,4 +198,5 @@ public class HuffmanTest implements Runnable{
         storagePercentage = ((ASCII_bits - huffman_bits)/ASCII_bits) * 100;
         System.out.println("Percentage of storage savings: " + storagePercentage);
     }
+
 }
