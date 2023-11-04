@@ -1,10 +1,11 @@
 
 import java.util.*;
 
-// TODO: consider all possible characters in a given set {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,space,.,?,’,!,,}
 public class HuffmanTest implements Runnable{
     PriorityQueue<TreeNode> huffmanTree = new PriorityQueue<>();
-
+    HashMap<Character, Integer> characters_no_bits = new HashMap<>();
+    HashMap<Character, String> characters_huffman_code = new HashMap<>();
+    String huffmanCode = "";
     StringProcessor processor = new StringProcessor();
     Scanner kyb = new Scanner(System.in);
 
