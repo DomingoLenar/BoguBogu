@@ -15,8 +15,8 @@ public class StringProcessor {
         LinkedList<CustomNode> characterFrequency = new LinkedList<>();
         CustomNode pointer;
 
-        CustomNode newNode = new CustomNode(String.valueOf(text.charAt(0)), 1);
-        characterFrequency.add(newNode);
+        CustomNode head = new CustomNode(String.valueOf(text.charAt(0)), 1);
+        characterFrequency.add(head);
 
         for(int x = 1; x < length; x++){
             String character = String.valueOf(text.charAt(x));
@@ -28,7 +28,20 @@ public class StringProcessor {
                     pointer.setFrequency(i+1);
                 }
                 else { // character does not exist in linked list
-                    characterFrequency.add(new CustomNode(String.valueOf(text.charAt(x)), 1));
+                    CustomNode newNode = new CustomNode(String.valueOf(text.charAt(x)), 1);
+
+//                    if (head.getNextNode() == null) {
+//                        head.setNextNode(newNode);
+//                    } else {
+//                        while (head.getNextNode() != null) {
+//                            if (head.getNextNode() == null) {
+//                                newNode.setNextNode(head);
+//                                head.getNextNode().setNextNode(newNode);
+//                            }
+//                            head = head.getNextNode();
+//                        }
+//                    }
+                    characterFrequency.add(newNode);
                 }
             }
             else{
@@ -44,7 +57,7 @@ public class StringProcessor {
        int outerSize = linkedList.size();
        for(int x = 0; x < outerSize; x++){
            CustomNode curNode = linkedList.get(x);
-           if(curNode.getCharac().equals(searchKey)){
+           if(curNode.getCharacter().equals(searchKey)){
                return x;
            }
        }
@@ -55,16 +68,26 @@ public class StringProcessor {
 class CustomNode{
     private String character;
     private int frequency;
+    private CustomNode nextNode;
     public CustomNode(String c, int f){
         character = c;
         frequency = f;
+        nextNode = null;
     }
-    public String getCharac(){
+    public String getCharacter(){
         return character;
     }
 
-    public void setCharac(String c){
+    public void setCharacter(String c){
         character = c;
+    }
+
+    public CustomNode getNextNode() {
+        return nextNode;
+    }
+
+    public void setNextNode(CustomNode nextNode) {
+        this.nextNode = nextNode;
     }
 
     public int getFrequency(){
