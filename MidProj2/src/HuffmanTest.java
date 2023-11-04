@@ -83,27 +83,32 @@ public class HuffmanTest implements Runnable{
 
     @Override
     public void run() {
-        String user_input = promptMessage();
-        Character[] set = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','?','’','!',','};
-//        if (user_input.matches()) // # TODO: create a regex that satisfies the requirement
-        LinkedList<CustomNode> letter_frequency = processor.getFrequency(user_input);
-        createTree(letter_frequency, huffmanTree);
+        String user_input_string = promptMessage1();
+        LinkedList<CustomNode> letter_frequency = null;
 
-        TreeNode root = null;
+        if (user_input_string == null){
+            // #TODO: add prompt message
+            System.exit(0);
+        }
+        else if (user_input_string.matches("^[a-z .?‘!,']+$")){ // determine whether the string only contain letters and other special characters
+             letter_frequency = processor.getFrequency(user_input_string);
+            createTreeSkeleton(letter_frequency, huffmanTree);
 
-        while (huffmanTree.size() > 1) { // construct the complete binary tree (huffman tree) to obtain huffman coding scheme
-            TreeNode t = huffmanTree.peek();
-            huffmanTree.poll();
+            TreeNode root = null;
 
-            TreeNode u = huffmanTree.peek();
-            huffmanTree.poll();
+            while (huffmanTree.size() > 1) { // construct the complete binary tree (huffman tree) to obtain huffman coding scheme
+                TreeNode t = huffmanTree.peek();
+                huffmanTree.poll();
 
-            TreeNode v = new TreeNode();
-            v.setCount(t.getCount() + u.getCount());
-            v.setSymbol('-');
-            v.setLeft(t);
-            v.setRight(u);
-            root = v;
+                TreeNode u = huffmanTree.peek();
+                huffmanTree.poll();
+
+                TreeNode v = new TreeNode();
+                v.setCount(t.getCount() + u.getCount());
+                v.setSymbol('-');
+                v.setLeft(t);
+                v.setRight(u);
+                root = v;
 
                 huffmanTree.add(v);
             }
