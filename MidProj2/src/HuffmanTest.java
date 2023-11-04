@@ -105,10 +105,102 @@ public class HuffmanTest implements Runnable{
             v.setRight(u);
             root = v;
 
-            huffmanTree.add(v);
+                huffmanTree.add(v);
+            }
+            System.out.println(" Character | Huffman code | Number of Bits");
+            System.out.println("---------------------");
+            huffmanCode(root, "");
+            memorySave(letter_frequency);
+            huffmanTreeSkeleton();
+        } else {
+            // #TODO: add prompt message
+            System.out.println("ERROR");
+            System.exit(0);
         }
-        System.out.println(" Char | Huffman code ");
-        System.out.println("---------------------");
-        printCode(root, "");
+
+        String user_input_code = promptMessage2();
+        System.out.println(huffmanCode);
+
+        if (user_input_code == null)
+            System.exit(0);
+            // #TODO: add prompt message
+        else if (user_input_code.matches("^[0-9]+$")) {
+            String s = "";
+            int i = 0;
+            while (!letter_frequency.isEmpty()) {
+                if ( i > letter_frequency.size() - 1) {
+                    i = 0;
+                } else {
+                    CustomNode customNode = letter_frequency.get(i);
+                    String character_code = characters_huffman_code.get(customNode.getCharacter().charAt(0));
+
+                    if (user_input_code.isEmpty())
+                        break;
+
+                    if (user_input_code.contains(character_code) && user_input_code.startsWith(character_code)) {
+                        user_input_code = user_input_code.substring(character_code.length());
+                        s += customNode.getCharacter();
+                    }
+                    i++;
+                }
+//                pattern = Pattern.compile(character_code);
+//                matcher = pattern.matcher(user_input_code);
+//
+//                if (!matcher.find()) {
+//                    System.out.println("ERROR");
+//                } else {
+//                    Matcher matcher1 = pattern.matcher(huffmanCode);
+//                    while (matcher1.find()) {
+//                        s = customNode.getCharacter();
+//                    }
+//                }
+
+            }
+// 000100101
+// HAAHAABAAACACAAAABABABEBEBBAABEEBBCCCCCAAAAAAACCCDDDDDDAAADDDDDEEEEEEDDADDDADDEEEEEEEECCCEEEEEEEEEEDDEEEEEEEEEEBBEEEEEFFGGHAHHEEHHA
+
+            System.out.println(s);
+        } else {
+            // #TODO: add prompt message
+            System.out.println("ERROR");
+            System.exit(0);
+        }
+
+    }
+    public String promptMessage1() {
+        try {
+            System.out.println("Input a string: ");
+            return kyb.nextLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    private String promptMessage2() {
+        try {
+            System.out.println("Input a code: ");
+            return kyb.nextLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void huffmanTreeSkeleton() {
+    }
+
+    private void memorySave(LinkedList<CustomNode> letter_frequency) {
+        CustomNode tNode;
+        double ASCII_bits = 0, huffman_bits = 0, storagePercentage = 0;
+        for (int i = 0; i < letter_frequency.size(); i++){
+            tNode = letter_frequency.get(i);
+            huffman_bits += tNode.getFrequency() * characters_no_bits.get(tNode.getCharacter().charAt(0));
+            ASCII_bits += tNode.getFrequency();
+        }
+
+        ASCII_bits = ASCII_bits * 7;
+
+        storagePercentage = ((ASCII_bits - huffman_bits)/ASCII_bits) * 100;
+        System.out.println("Percentage of storage savings: " + storagePercentage);
     }
 }
