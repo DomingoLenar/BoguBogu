@@ -2,10 +2,26 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
 
 public class ExecutePythonScript {
     public static void main(String[] args) {
+        try{
+            ExecutePythonScript program = new ExecutePythonScript();
+            StringProcessor processor = new StringProcessor();
+            LinkedList<CustomNode> charFrequency = new LinkedList<>();
+            charFrequency = processor.getFrequency("hello");
+            program.run(charFrequency);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public static void run(LinkedList<CustomNode> charFrequency){
         try {
+
+            // Convert the linked list to a JSON string
+
+
             // Path to the virtual environment's Python executable
             String pythonExecutable = "MidProj2/PythonScripts/venv/Scripts/python.exe"; // Replace with the actual path
 
