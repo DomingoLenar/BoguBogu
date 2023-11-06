@@ -47,7 +47,7 @@ public class HuffmanTest implements Runnable{
         for (CustomNode customNode : letter_frequency) {
             TreeNode huffmanNode = new TreeNode();
 
-            huffmanNode.setSymbol(customNode.getCharacter().charAt(0));
+            huffmanNode.setSymbol(customNode.getCharac().charAt(0));
             huffmanNode.setCount(customNode.getFrequency());
             huffmanNode.setLeft(null);
             huffmanNode.setRight(null);
@@ -127,14 +127,14 @@ public class HuffmanTest implements Runnable{
                     i = 0;
                 } else {
                     CustomNode customNode = letter_frequency.get(i);
-                    String character_code = characters_huffman_code.get(customNode.getCharacter().charAt(0));
+                    String character_code = characters_huffman_code.get(customNode.getCharac().charAt(0));
 
                     if (user_input_code.isEmpty())
                         break;
 
                     if (user_input_code.contains(character_code) && user_input_code.startsWith(character_code)) {
                         user_input_code = user_input_code.substring(character_code.length());
-                        s += customNode.getCharacter();
+                        s += customNode.getCharac();
                     }
                     i++;
                 }
@@ -189,7 +189,7 @@ public class HuffmanTest implements Runnable{
         double ASCII_bits = 0, huffman_bits = 0, storagePercentage = 0;
         for (int i = 0; i < letter_frequency.size(); i++){
             tNode = letter_frequency.get(i);
-            huffman_bits += tNode.getFrequency() * characters_no_bits.get(tNode.getCharacter().charAt(0));
+            huffman_bits += tNode.getFrequency() * characters_no_bits.get(tNode.getCharac().charAt(0));
             ASCII_bits += tNode.getFrequency();
         }
 
