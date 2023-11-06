@@ -10,6 +10,7 @@ public class HuffmanTest implements Runnable {
 
     private boolean isFirstRun = true;
 
+    // Method to generate Huffman codes for each leaf node in the Huffman tree
     public void huffmanCode(TreeNode root, String s) {
         if (root.getLeft() == null && root.getRight() == null) {
             System.out.println(root.getSymbol() + " | " + s + " | " + s.length());
@@ -23,6 +24,7 @@ public class HuffmanTest implements Runnable {
         huffmanCode(root.getRight(), s + "1");
     }
 
+    // Main method
     public static void main(String[] args) {
         try {
             HuffmanTest obj = new HuffmanTest();
@@ -32,6 +34,7 @@ public class HuffmanTest implements Runnable {
         }
     }
 
+    // Method to create the initial tree structure from letter frequencies
     private static void createTreeSkeleton(LinkedList<CustomNode> letter_frequency, PriorityQueue<TreeNode> huffmanTree) {
         for (CustomNode customNode : letter_frequency) {
             TreeNode huffmanNode = new TreeNode();
@@ -45,6 +48,7 @@ public class HuffmanTest implements Runnable {
         }
     }
 
+    // Method to display the Huffman code table
     public void createTable(TreeNode root, String edge) {
         if (root == null)
             return;
@@ -58,6 +62,7 @@ public class HuffmanTest implements Runnable {
         huffmanCode(root.getRight(), edge + "1");
     }
 
+    // Run method to execute the Huffman coding program
     @Override
     public void run() {
         while (true) {
@@ -140,6 +145,7 @@ public class HuffmanTest implements Runnable {
         }
     }
 
+    // Prompt user to input a string
     public String promptMessage1() {
         try {
             System.out.print("Input a String: ");
@@ -150,6 +156,7 @@ public class HuffmanTest implements Runnable {
         return null;
     }
 
+    // Prompt user to input a code
     private String promptMessage2() {
         try {
             System.out.print("Input a Code: ");
@@ -160,10 +167,12 @@ public class HuffmanTest implements Runnable {
         return null;
     }
 
+    // Placeholder for Huffman tree visualization (to be implemented)
     private void huffmanTreeSkeleton() {
         // TODO: Implement huffmanTreeSkeleton method
     }
 
+    // Method to calculate and display memory savings using Huffman coding
     private void memorySave(LinkedList<CustomNode> letter_frequency) {
         CustomNode tNode;
         double ASCII_bits = 0, huffman_bits = 0, storagePercentage = 0;
