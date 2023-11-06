@@ -45,6 +45,18 @@ public class StringProcessor {
        }
        return -1;
     }
+
+    public String frequencyToJSON(LinkedList<CustomNode> linkedList){
+        String JSON = "{\n";
+        CustomNode pointer = new CustomNode();
+        int size = linkedList.size();
+        for(int x = 0; x < size; x++){
+            pointer = linkedList.get(x);
+            JSON += "   "+'"'+pointer.getCharac()+'"'+":"+'"'+pointer.getFrequency()+'"'+",\n";
+        }
+        return JSON += "}";
+    }
+
 }
 
 class CustomNode{
@@ -54,6 +66,11 @@ class CustomNode{
     public CustomNode(String c, int f){
         character = c;
         frequency = f;
+        nextNode = null;
+    }
+    public CustomNode(){
+        character = null;
+        frequency = 0;
         nextNode = null;
     }
     public String getCharac(){
