@@ -16,14 +16,15 @@ public class StringProcessor {
         CustomNode pointer = null;
         for(int x = 0; x < length; x++){
             String character = String.valueOf(text.charAt(x));
-            if(characterFrequency.isEmpty()){
+            if(search(character, characterFrequency) == -1){
                 CustomNode newNode = new CustomNode(String.valueOf(text.charAt(x)), 1);
                 characterFrequency.add(newNode);
             }
             else if(search(character, characterFrequency) != -1){
                 pointer = characterFrequency.get(search(character, characterFrequency));
                 int i = pointer.getFrequency();
-                pointer.setFrequency(i++);
+                i++;
+                pointer.setFrequency(i);
             }
             else{
                 throw new RuntimeException("Linked List error character");
