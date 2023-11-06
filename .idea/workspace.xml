@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+Json converter for frequency matrix" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="midterm_proj2_lou" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2XA7RQBOPotLweTXDlLxZhFyeQA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "openjdk-15",
+    "last_opened_file_path": "C:/Users/mlest/IdeaProjects/algorithmsprelims/MidProj2/src/PyScript/venv/Scripts/activate_this.py",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mlest\IdeaProjects\algorithmsprelims\MidProj2\src\python" />
+      <recent name="C:\Users\mlest\IdeaProjects\algorithmsprelims\MidProj1\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ExecutePythonScript" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExecutePythonScript" />
+      <module name="MidProj2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExpressionConverterUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExpressionConverterUI" />
+      <module name="MidProj1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="MidProj1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TreeGraphTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TreeGraphTest" />
+      <module name="MidProj2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ExecutePythonScript" />
+        <item itemvalue="Application.TreeGraphTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ExpressionConverterUI" />
+        <item itemvalue="Application.ExpressionConverterUI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="" />
+      <created>1698060026757</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698060026757</updated>
+      <workItem from="1698060027965" duration="6821000" />
+      <workItem from="1698375532896" duration="1643000" />
+      <workItem from="1699252762306" duration="14113000" />
+    </task>
+    <task id="LOCAL-00001" summary="-">
+      <created>1698060073936</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698060073936</updated>
+    </task>
+    <task id="LOCAL-00002" summary="+fixed directory">
+      <created>1698060230876</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698060230876</updated>
+    </task>
+    <task id="LOCAL-00003" summary="+implementation of converter class, added better ux">
+      <created>1698061382897</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698061382897</updated>
+    </task>
+    <task id="LOCAL-00004" summary="+implementation of evaluator">
+      <created>1698073383219</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698073383219</updated>
+    </task>
+    <task id="LOCAL-00005" summary="+fix for logical error of postfix conversion">
+      <created>1698073414993</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698073414993</updated>
+    </task>
+    <task id="LOCAL-00006" summary="+finished the getFrequency method, documentation for usage">
+      <created>1698376586075</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698376586075</updated>
+    </task>
+    <task id="LOCAL-00007" summary="+logical error fixed, classes complete,(ready for merging)">
+      <created>1699253540147</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699253540147</updated>
+    </task>
+    <task id="LOCAL-00008" summary="+">
+      <created>1699275118339</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699275118339</updated>
+    </task>
+    <task id="LOCAL-00009" summary="+class to execute the python script to generate a graphical representation of a tree">
+      <created>1699278926067</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699278926067</updated>
+    </task>
+    <task id="LOCAL-00010" summary="+initial commit of Tree image generator">
+      <created>1699278944762</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699278944762</updated>
+    </task>
+    <task id="LOCAL-00011" summary="+">
+      <created>1699278957213</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699278957213</updated>
+    </task>
+    <task id="LOCAL-00012" summary="+virtual environment for the python script, interpreter for the ide">
+      <created>1699280584224</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699280584224</updated>
+    </task>
+    <task id="LOCAL-00013" summary="+initial commit of main class">
+      <created>1699281096532</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699281096532</updated>
+    </task>
+    <task id="LOCAL-00014" summary="+small modifications for its usability">
+      <created>1699286322768</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699286322768</updated>
+    </task>
+    <task id="LOCAL-00015" summary="+">
+      <created>1699286337171</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1699286337171</updated>
+    </task>
+    <task id="LOCAL-00016" summary="+Json converter for frequency matrix">
+      <created>1699286354456</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1699286354456</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-" />
+    <MESSAGE value="+fixed directory" />
+    <MESSAGE value="+implementation of converter class, added better ux" />
+    <MESSAGE value="+implementation of evaluator" />
+    <MESSAGE value="+fix for logical error of postfix conversion" />
+    <MESSAGE value="+finished the getFrequency method, documentation for usage" />
+    <MESSAGE value="+logical error fixed, classes complete,(ready for merging)" />
+    <MESSAGE value="+class to execute the python script to generate a graphical representation of a tree" />
+    <MESSAGE value="+initial commit of Tree image generator" />
+    <MESSAGE value="+virtual environment for the python script, interpreter for the ide" />
+    <MESSAGE value="+initial commit of main class" />
+    <MESSAGE value="+small modifications for its usability" />
+    <MESSAGE value="+" />
+    <MESSAGE value="+Json converter for frequency matrix" />
+    <option name="LAST_COMMIT_MESSAGE" value="+Json converter for frequency matrix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MidProj1/src/PostfixEvaluator.java</url>
+          <line>16</line>
+          <properties class="PostfixEvaluator" method="evaluatePostfixExpression">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanTest.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
