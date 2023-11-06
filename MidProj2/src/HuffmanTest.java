@@ -107,6 +107,7 @@ public class HuffmanTest implements Runnable{
             huffmanCode(root, "");
             memorySave(letter_frequency);
             huffmanTreeSkeleton();
+            //ExecutePythonScript.run();
         } else {
             // #TODO: add prompt message
             System.out.println("ERROR");
