@@ -13,36 +13,18 @@ public class StringProcessor {
     public LinkedList<CustomNode> getFrequency(String text){
         int length = text.length();
         LinkedList<CustomNode> characterFrequency = new LinkedList<>();
-        CustomNode pointer;
-
-        CustomNode head = new CustomNode(String.valueOf(text.charAt(0)), 1);
-        characterFrequency.add(head);
-
-        for(int x = 1; x < length; x++){
+        CustomNode pointer = null;
+        for(int x = 0; x < length; x++){
             String character = String.valueOf(text.charAt(x));
-            if (!characterFrequency.isEmpty()) {
-                int pos = search(character, characterFrequency);
-                if(pos != -1){ // character exist in linked list
-                    pointer = characterFrequency.get(pos);
-                    int i = pointer.getFrequency();
-                    pointer.setFrequency(i+1);
-                }
-                else { // character does not exist in linked list
-                    CustomNode newNode = new CustomNode(String.valueOf(text.charAt(x)), 1);
-
-//                    if (head.getNextNode() == null) {
-//                        head.setNextNode(newNode);
-//                    } else {
-//                        while (head.getNextNode() != null) {
-//                            if (head.getNextNode() == null) {
-//                                newNode.setNextNode(head);
-//                                head.getNextNode().setNextNode(newNode);
-//                            }
-//                            head = head.getNextNode();
-//                        }
-//                    }
-                    characterFrequency.add(newNode);
-                }
+            if(search(character, characterFrequency) == -1){
+                CustomNode newNode = new CustomNode(String.valueOf(text.charAt(x)), 1);
+                characterFrequency.add(newNode);
+            }
+            else if(search(character, characterFrequency) != -1){
+                pointer = characterFrequency.get(search(character, characterFrequency));
+                int i = pointer.getFrequency();
+                i++;
+                pointer.setFrequency(i);
             }
             else{
                 throw new RuntimeException("Linked List error character");
@@ -52,12 +34,12 @@ public class StringProcessor {
         return characterFrequency;
     }
 
-    // a custom search method to look into the character of the custom node and returns the index
+    //a custom search method to look into the character of the custom node and returns the index
     private int search(String searchKey, LinkedList<CustomNode> linkedList){
        int outerSize = linkedList.size();
        for(int x = 0; x < outerSize; x++){
            CustomNode curNode = linkedList.get(x);
-           if(curNode.getCharacter().equals(searchKey)){
+           if(curNode.getCharac().equals(searchKey)){
                return x;
            }
        }
@@ -74,11 +56,11 @@ class CustomNode{
         frequency = f;
         nextNode = null;
     }
-    public String getCharacter(){
+    public String getCharac(){
         return character;
     }
 
-    public void setCharacter(String c){
+    public void setCharac(String c){
         character = c;
     }
 
