@@ -83,6 +83,10 @@ public class TreeNode implements Comparable<TreeNode>{
         return right;
     }
 
+    public String getData(){
+        return String.valueOf(count)+","+String.valueOf(symbol);
+    }
+
     /**
      *
      * @param o the object to be compared.
