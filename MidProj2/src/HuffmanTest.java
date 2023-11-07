@@ -1,5 +1,3 @@
-
-
 import java.util.*;
 
 public class HuffmanTest implements Runnable{
@@ -12,6 +10,11 @@ public class HuffmanTest implements Runnable{
     StringProcessor processor = new StringProcessor();
     Scanner kyb = new Scanner(System.in);
 
+    private boolean isFirstRun = true;
+
+    // Method to generate Huffman codes for each leaf node in the Huffman tree
+    public void huffmanCode(TreeNode root, String s) {
+        if (root.getLeft() == null && root.getRight() == null) {
     /**
      *
      * @param root
@@ -32,10 +35,7 @@ public class HuffmanTest implements Runnable{
 
     }
 
-    /**
-     *
-     * @param args
-     */
+    // Main method
     public static void main(String[] args) {
         try {
             HuffmanTest obj = new HuffmanTest();
@@ -45,8 +45,8 @@ public class HuffmanTest implements Runnable{
         }
     }
 
-    private static void createTreeSkeleton(LinkedList<CustomNode> letter_frequency, PriorityQueue<TreeNode> huffmanTree ) {
-        // attach each node in huffman tree
+    // Method to create the initial tree structure from letter frequencies
+    private static void createTreeSkeleton(LinkedList<CustomNode> letter_frequency, PriorityQueue<TreeNode> huffmanTree) {
         for (CustomNode customNode : letter_frequency) {
             TreeNode huffmanNode = new TreeNode();
 
@@ -59,9 +59,9 @@ public class HuffmanTest implements Runnable{
         }
     }
 
-    public void createTable(TreeNode root, String edge){
-        // TODO: display the table using hashmap another data structure
-        if (root == null) // empty tree
+    // Method to display the Huffman code table
+    public void createTable(TreeNode root, String edge) {
+        if (root == null)
             return;
 
         if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getSymbol())){
@@ -74,19 +74,25 @@ public class HuffmanTest implements Runnable{
         huffmanCode(root.getRight(), edge + "1");
     }
 
+    // Run method to execute the Huffman coding program
     @Override
     public void run() {
-        String user_input_string = promptMessage1();
-        LinkedList<CustomNode> letter_frequency = null;
+        while (true) {
+            if (isFirstRun) {
+                System.out.println("Welcome to Huffman Coding Scheme.");
+                isFirstRun = false;
+            }
 
-        if (user_input_string == null){
-            // #TODO: add prompt message
-            System.exit(0);
-        }
-        else if (user_input_string.matches("^[a-z .?‘!,']+$")){ // determine whether the string only contain letters and other special characters
-             letter_frequency = processor.getFrequency(user_input_string);
-            createTreeSkeleton(letter_frequency, huffmanTree);
+            String user_input_string = promptMessage1();
+            LinkedList<CustomNode> letter_frequency = null;
 
+            if (user_input_string == null) {
+                System.exit(0);
+            } else if (user_input_string.matches("^[a-z .?‘!,']+$")) {
+                letter_frequency = processor.getFrequency(user_input_string);
+                createTreeSkeleton(letter_frequency, huffmanTree);
+
+                TreeNode root = null;
 
             while (huffmanTree.size() > 1) { // construct the complete binary tree (huffman tree) to obtain huffman coding scheme
                 TreeNode t = huffmanTree.peek();
@@ -115,17 +121,21 @@ public class HuffmanTest implements Runnable{
             System.out.println("ERROR");
             System.exit(0);
         }
+                    huffmanTree.add(v);
+                }
+
+                System.out.println(" Character | Huffman code | Number of Bits");
+                System.out.println("---------------------");
+                huffmanCode(root, "");
+                memorySave(letter_frequency);
+                huffmanTreeSkeleton();
 
         String user_input_code = promptMessage2();
         System.out.println(text_to_huffman);
 
         if (user_input_code == null)
             System.exit(0);
-            // #TODO: add prompt message
         else if (user_input_code.matches("^[0-9]+$")) {
-//            String letter_huffman_code = "";
-//            letter_huffman_code = huffmanCode_text_representation(letter_huffman_code, user_input_code, root);
-
             String huffman_to_text = "";
             int i = 0;
 
@@ -153,32 +163,14 @@ public class HuffmanTest implements Runnable{
             }
             System.out.println(huffman_to_text);
 
-//// 000100101
-//// HAAHAABAAACACAAAABABABEBEBBAABEEBBCCCCCAAAAAAACCCDDDDDDAAADDDDDEEEEEEDDADDDADDEEEEEEEECCCEEEEEEEEEEDDEEEEEEEEEEBBEEEEEFFGGHAHHEEHHA
-        }
-        else {
-            // #TODO: add prompt message
-            System.out.println("ERROR");
-            System.exit(0);
+            System.out.println(s);
+        } else {
+            System.out.println("ERROR: Invalid input. Please enter a valid string.");
         }
 
     }
 
-//    private String huffmanCode_text_representation(String letterHuffmanCode, String user_input_code, TreeNode root) {
-//
-//            if (root.getLeft() == null && root.getRight() == null) {
-//                letterHuffmanCode += characters_huffman_code.get(root.getSymbol());
-//
-//                if (letterHuffmanCode.startsWith(user_input_code)) {
-//                    user_input_code = user_input_code.substring(letterHuffmanCode.length() - 1);
-//                }
-//        }
-//            huffmanCode_text_representation(letterHuffmanCode, user_input_code, root.getLeft());
-//            huffmanCode_text_representation(letterHuffmanCode, user_input_code, root.getRight());
-//
-//            return letterHuffmanCode;
-//    }
-
+    // Prompt user to input a string
     public String promptMessage1() {
         try {
             System.out.println("Input a string: ");
@@ -188,9 +180,11 @@ public class HuffmanTest implements Runnable{
         }
         return null;
     }
+
+    // Prompt user to input a code
     private String promptMessage2() {
         try {
-            System.out.println("Input a code: ");
+            System.out.print("Input a Code: ");
             return kyb.nextLine();
         } catch (Exception e) {
             e.printStackTrace();
@@ -198,9 +192,7 @@ public class HuffmanTest implements Runnable{
         return null;
     }
 
-    private void huffmanTreeSkeleton() {
-    }
-
+    // Method to calculate and display memory savings using Huffman coding
     private void memorySave(LinkedList<CustomNode> letter_frequency) {
         CustomNode tNode;
         double ASCII_bits = 0, huffman_bits = 0, storagePercentage = 0;
