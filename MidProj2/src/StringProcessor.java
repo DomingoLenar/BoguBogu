@@ -46,15 +46,17 @@ public class StringProcessor {
        return -1;
     }
 
-    public String frequencyToJSON(LinkedList<CustomNode> linkedList){
-        String JSON = "{\n";
+    public String frequencyToDict(LinkedList<CustomNode> linkedList){
+        String dict = "";
         CustomNode pointer = new CustomNode();
         int size = linkedList.size();
-        for(int x = 0; x < size; x++){
+        pointer = linkedList.get(0);
+        dict += '"'+ pointer.getCharac()+'"'+":"+'"'+ pointer.getFrequency()+'"';
+        for(int x = 1; x < size; x++){
             pointer = linkedList.get(x);
-            JSON += "   "+'"'+pointer.getCharac()+'"'+":"+'"'+pointer.getFrequency()+'"'+",\n";
+            dict += ","+'"'+ pointer.getCharac()+'"'+":"+'"'+ pointer.getFrequency()+'"';
         }
-        return JSON += "}";
+        return dict;
     }
 
 }
