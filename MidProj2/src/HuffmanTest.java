@@ -96,6 +96,7 @@ public class HuffmanTest implements Runnable {
             System.out.println("---------------------");
             huffmanCode(root, "");
             memorySave(letter_frequency);
+            System.out.println("Text to Huffman code representation: " + text_to_huffman);
             //ExecutePythonScript.run();
         } else {
             System.out.println("ERROR");
@@ -103,7 +104,6 @@ public class HuffmanTest implements Runnable {
         }
 
         String user_input_code = promptMessage2();
-        System.out.println(text_to_huffman);
 
         if (user_input_code == null)
             System.exit(0);
@@ -133,7 +133,7 @@ public class HuffmanTest implements Runnable {
                     i++;
                 }
             }
-            System.out.println(huffman_to_text);
+            System.out.println("Huffman code to Text representation: " + huffman_to_text);
 
         } else {
             System.out.println("ERROR: Invalid input. Please enter a valid string.");
