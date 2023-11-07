@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 import java.lang.Runnable;
 
@@ -91,6 +92,12 @@ public class HuffmanTest implements Runnable {
                 root = v;
 
                 huffmanTree.add(v);
+            }
+            try {
+                GenerateDiagram diagramGenerator = new GenerateDiagram();
+                diagramGenerator.run(huffmanTree.peek());
+            }catch(IOException iE){
+                iE.printStackTrace();
             }
             System.out.println(" Character | Huffman code | Number of Bits");
             System.out.println("---------------------");
