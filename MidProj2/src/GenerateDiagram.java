@@ -11,31 +11,33 @@ import java.io.IOException;
 public class GenerateDiagram {
     public static void main(String[] args) {
         GenerateDiagram program = new GenerateDiagram();
+
     }
 
     public void run(TreeNode huffman) throws IOException{
         Parser parser = new Parser();
-        String dotString = "digraph {  ";
+        StringBuilder dotString = new StringBuilder("digraph {  ");
         huffmanToDotSetUpNodes(huffman, dotString,0);
-        String root, child;
-        dotString += "}";
-        MutableGraph g = parser.read(dotString);
+
+        MutableGraph g = parser.read(dotString.append("}").toString());
 
         Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("MidProj2/src/tree.png"));
 
     }
 
-    public void huffmanToDotSetUpNodes(TreeNode node, String dotString, int nodeCount){
+    public void huffmanToDotSetUpNodes(TreeNode node, StringBuilder dotString, int nodeCount){
         if(node != null){
             if(node.getSymbol() == '-'){
-                dotString += "Node"+nodeCount+"[label="+node.getCount()+"]\n";
+                dotString.append("Node"+nodeCount+"[label="+node.getCount()+"]\n");
             }else{
-                dotString += "Node"+nodeCount+"[label="+node.getCount()+" xlabel="+node.getSymbol()+"]\n";
+                dotString.append("Node"+nodeCount+"[label="+node.getCount()+" xlabel="+node.getSymbol()+"]\n");
             }
             //evaluate left
-            huffmanToDotSetUpNodes(node.getLeft(), dotString, nodeCount+1);
+            nodeCount += 1;
+            huffmanToDotSetUpNodes(node.getLeft(), dotString, nodeCount);
             //evaluate right
-            huffmanToDotSetUpNodes(node.getRight(), dotString, nodeCount+1);
+            nodeCount +=1;
+            huffmanToDotSetUpNodes(node.getRight(), dotString, nodeCount);
         }
     }
 
@@ -46,7 +48,7 @@ public class GenerateDiagram {
     }
 
     private String setLinkString(String root, String child){
-        String linkString = root +"->"+child;
+        String linkString = root +"->"+child+"\n";
         return linkString;
     }
 
