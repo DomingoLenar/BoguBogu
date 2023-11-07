@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="NOP" class="ch.qos.logback.core.sift.NoOpAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>OFF</level>
+        </filter>
+    </appender>
+    <root level="OFF">
+        <appender-ref ref="NOP"/>
+    </root>
+</configuration>

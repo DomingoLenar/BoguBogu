@@ -11,15 +11,14 @@ public class ExecutePythonScript {
             StringProcessor processor = new StringProcessor();
             LinkedList<CustomNode> charFrequency = new LinkedList<>();
             charFrequency = processor.getFrequency("hello");
-            program.run(charFrequency);
+            String json = processor.frequencyToDict(charFrequency);
+            program.run(json);
         }catch(Exception ex){
             ex.printStackTrace();
         }
     }
-    public static void run(LinkedList<CustomNode> charFrequency){
+    public static void run(String json){
         try {
-
-            // Convert the linked list to a JSON string
 
 
             // Path to the virtual environment's Python executable
@@ -29,7 +28,7 @@ public class ExecutePythonScript {
             String pythonScript = "MidProj2/PythonScripts/GenerateTreeImage.py"; // Replace with the actual path
 
             // Create a ProcessBuilder for the Python script within the virtual environment
-            ProcessBuilder processBuilder = new ProcessBuilder(pythonExecutable, pythonScript);
+            ProcessBuilder processBuilder = new ProcessBuilder(pythonExecutable, pythonScript, json);
 
             // Start the process
             Process process = processBuilder.start();
