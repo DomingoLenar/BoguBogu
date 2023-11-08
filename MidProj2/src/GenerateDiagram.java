@@ -15,8 +15,8 @@ public class GenerateDiagram {
     public void run(TreeNode huffman) throws IOException{
         Parser parser = new Parser();
         StringBuilder dotString = new StringBuilder("digraph {  ");
-        huffmanToDotSetUpNodes(huffman, dotString,0);
-        setNodeLinks(huffman, dotString, 0, 0);
+        huffmanToDotSetUpNodes(huffman, dotString,-1);
+        setNodeLinks(huffman, dotString, -1, 0);
 
         MutableGraph g = parser.read(dotString.append("}").toString());
 
@@ -24,48 +24,44 @@ public class GenerateDiagram {
 
     }
 
-    public void setNodeLinks(TreeNode node, StringBuilder dotString, int nodeCount, int rootNode){
-        if(nodeCount == 0){
-            //evaluate left
+    public int setNodeLinks(TreeNode node, StringBuilder dotString, int nodeCount, int rootNode){
+        if(node!=null){
             nodeCount += 1;
-            setNodeLinks(node.getLeft(), dotString, nodeCount,0);
-            //evaluate right
-            nodeCount += 1;
-            setNodeLinks(node.getRight(), dotString, nodeCount,0);
-        }
-        else if(node!=null){
             int curNode = nodeCount;
-            dotString.append(setLinkString("Node"+rootNode,"Node"+curNode));
-            //evaluate left
-            nodeCount += 1;
-            setNodeLinks(node.getLeft(), dotString, nodeCount,curNode);
-            //evaluate right
-            nodeCount += 1;
-            setNodeLinks(node.getRight(), dotString, nodeCount,curNode);
+            if(nodeCount!=0) {
+                dotString.append(setLinkString("Node" + rootNode, "Node" + nodeCount));
+                //Evaluate left
+                nodeCount = setNodeLinks(node.getLeft(), dotString, nodeCount, curNode);
+                //Evaluate right
+                nodeCount = setNodeLinks(node.getRight(), dotString, nodeCount, curNode);
+            }else{
+                //Evaluate left
+                nodeCount = setNodeLinks(node.getLeft(), dotString, nodeCount, curNode);
+                //Evaluate right
+                nodeCount = setNodeLinks(node.getRight(), dotString, nodeCount, curNode);
+            }
         }
+        return nodeCount;
     }
 
-    public void huffmanToDotSetUpNodes(TreeNode node, StringBuilder dotString, int nodeCount){
+    public int huffmanToDotSetUpNodes(TreeNode node, StringBuilder dotString, int nodeCount){
         if(node != null){
+            nodeCount+=1;
             if(node.getSymbol() == '-'){
                 dotString.append("Node"+nodeCount+"[label="+node.getCount()+"]\n");
+
             }else{
                 dotString.append("Node"+nodeCount+"[label="+node.getCount()+" xlabel="+node.getSymbol()+"]\n");
             }
             //evaluate left
-            nodeCount += 1;
-            huffmanToDotSetUpNodes(node.getLeft(), dotString, nodeCount);
+            nodeCount = huffmanToDotSetUpNodes(node.getLeft(), dotString, nodeCount);
             //evaluate right
-            nodeCount +=1;
-            huffmanToDotSetUpNodes(node.getRight(), dotString, nodeCount);
+            nodeCount = huffmanToDotSetUpNodes(node.getRight(), dotString, nodeCount);
         }
+        return nodeCount;
     }
 
-    public void huffmanToDotLinkNodes(TreeNode node, String dotString, int nodeCount, String root, String child){
-        for(int x = 1; x <= nodeCount; x++){
 
-        }
-    }
 
     private String setLinkString(String root, String child){
         String linkString = root +"->"+child+"\n";
