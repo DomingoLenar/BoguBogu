@@ -1,7 +1,6 @@
 
 import guru.nidi.graphviz.engine.Format;
 import guru.nidi.graphviz.engine.Graphviz;
-import guru.nidi.graphviz.model.Factory;
 import guru.nidi.graphviz.model.MutableGraph;
 import guru.nidi.graphviz.parse.Parser;
 
@@ -11,18 +10,39 @@ import java.io.IOException;
 public class GenerateDiagram {
     public static void main(String[] args) {
         GenerateDiagram program = new GenerateDiagram();
-
     }
 
     public void run(TreeNode huffman) throws IOException{
         Parser parser = new Parser();
         StringBuilder dotString = new StringBuilder("digraph {  ");
         huffmanToDotSetUpNodes(huffman, dotString,0);
+        setNodeLinks(huffman, dotString, 0, 0);
 
         MutableGraph g = parser.read(dotString.append("}").toString());
 
         Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("MidProj2/src/tree.png"));
 
+    }
+
+    public void setNodeLinks(TreeNode node, StringBuilder dotString, int nodeCount, int rootNode){
+        if(nodeCount == 0){
+            //evaluate left
+            nodeCount += 1;
+            setNodeLinks(node.getLeft(), dotString, nodeCount,0);
+            //evaluate right
+            nodeCount += 1;
+            setNodeLinks(node.getRight(), dotString, nodeCount,0);
+        }
+        else if(node!=null){
+            int curNode = nodeCount;
+            dotString.append(setLinkString("Node"+rootNode,"Node"+curNode));
+            //evaluate left
+            nodeCount += 1;
+            setNodeLinks(node.getLeft(), dotString, nodeCount,curNode);
+            //evaluate right
+            nodeCount += 1;
+            setNodeLinks(node.getRight(), dotString, nodeCount,curNode);
+        }
     }
 
     public void huffmanToDotSetUpNodes(TreeNode node, StringBuilder dotString, int nodeCount){
