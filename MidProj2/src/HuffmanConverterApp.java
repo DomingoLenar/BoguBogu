@@ -90,14 +90,12 @@ public class HuffmanConverterApp {
             }
         });
 
-        backButton.addActionListener(new ActionListener(){
-           public void actionPerformed(ActionEvent back){
-               int x = huffmanToTextFrame.getLocationOnScreen().x;
-               int y = huffmanToTextFrame.getLocationOnScreen().y;
-               menuFrame.setLocation(x,y);
-               huffmanToTextFrame.setVisible(false);
-               menuFrame.setVisible(true);
-           }
+        backButton.addActionListener(back -> {
+            int x1 = huffmanToTextFrame.getLocationOnScreen().x;
+            int y1 = huffmanToTextFrame.getLocationOnScreen().y;
+            menuFrame.setLocation(x1, y1);
+            huffmanToTextFrame.setVisible(false);
+            menuFrame.setVisible(true);
         });
 
         huffmanToTextFrame.setVisible(true);
@@ -146,7 +144,8 @@ public class HuffmanConverterApp {
                 String huffmanCode = encodeHuffman(textToHCInput, letterFrequency);
                 String output = "Character | Huffman code | Number of Bits\n";
                 output += "---------------------\n";
-                output += huffmanCode;
+                output += huffmanCode+"\n";
+                output += huffmanGenerator.memorySave(letterFrequency);
                 JOptionPane.showMessageDialog(textToHuffmanFrame, output);
             }
         });
