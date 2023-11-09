@@ -9,6 +9,8 @@ public class HuffmanGenerator implements Runnable {
     String text_to_huffman = "";
     StringProcessor processor = new StringProcessor();
     Scanner kyb = new Scanner(System.in);
+    LinkedList<CustomNode> letter_frequency = null;
+
 
     // Method to generate Huffman codes for each leaf node in the Huffman tree
     public void huffmanCode (TreeNode root, String s,StringBuilder output){
@@ -17,7 +19,6 @@ public class HuffmanGenerator implements Runnable {
             output.append(root.getSymbol() + " | " + s + " | " + s.length()+"\n");
             characters_no_bits.put(root.getSymbol(), s.length());
             characters_huffman_code.put(root.getSymbol(), s);
-            text_to_huffman += s;
             return;
         }
                 huffmanCode(root.getLeft(), s + "0",output);
@@ -58,16 +59,15 @@ public class HuffmanGenerator implements Runnable {
     @Override
     public void run () {
         String user_input_string = promptMessage1();
-        LinkedList<CustomNode> letter_frequency = null;
 
-        generateHuffmanCode(user_input_string,letter_frequency);
+        generateHuffmanCode(user_input_string);
 
         String user_input_code = promptMessage2();
 
-        huffmanToText(user_input_code, letter_frequency,user_input_string);
+        huffmanToText(user_input_code, letter_frequency, user_input_string);
     }
 
-    public String generateHuffmanCode(String textToConvert, LinkedList<CustomNode> letter_frequency){
+    public String generateHuffmanCode(String textToConvert){
         StringBuilder huffmanCodeString = new StringBuilder();
 
 
@@ -104,6 +104,8 @@ public class HuffmanGenerator implements Runnable {
             System.out.println(" Character | Huffman code | Number of Bits");
             System.out.println("---------------------");
             huffmanCode(root, "",huffmanCodeString);
+            memorySave(letter_frequency);
+            text_to_huffman = text_to_huffman(textToConvert);
             System.out.println("Text to Huffman code representation: " + text_to_huffman);
             //ExecutePythonScript.run();
         } else {
@@ -112,6 +114,28 @@ public class HuffmanGenerator implements Runnable {
         }
 
         return huffmanCodeString.toString();
+    }
+
+    private String text_to_huffman(String textToConvert) {
+        String convertedText = "";
+        int i = 0;
+        while (!letter_frequency.isEmpty()) {
+            if (letter_frequency.size() - 1 < i) {
+                break;
+            }
+
+            CustomNode customNode = letter_frequency.get(i);
+
+            for (int j = 0; j < textToConvert.length(); j++) {
+                if (customNode.getCharac().charAt(0) == textToConvert.charAt(j)) {
+                    convertedText += characters_huffman_code.get(customNode.getCharac().charAt(0));
+                    break;
+                }
+            }
+
+            i++;
+        }
+        return convertedText;
     }
 
     public String huffmanToText(String huffmanBinary, LinkedList<CustomNode> letter_frequency, String originalStringGiven){
