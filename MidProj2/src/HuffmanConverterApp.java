@@ -187,7 +187,7 @@ public class HuffmanConverterApp {
     private String decodeHuffman(String huffmanCode) {
         // Add Huffman decoding logic here
         // use the Huffman tree to decode the Huffman code back to the original text.
-        huffmanGenerator = new HuffmanGenerator();
+
         return huffmanGenerator.huffmanToText(huffmanCode,letterFrequency,textToHCInput); // Replace with actual code
     }
 

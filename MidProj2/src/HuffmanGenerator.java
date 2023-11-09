@@ -125,7 +125,7 @@ public class HuffmanGenerator implements Runnable {
                     i = 0;
                 } else {
                     CustomNode customNode = letter_frequency.get(i);
-                    String character_code = characters_huffman_code.get(customNode.getCharac().charAt(0));
+                    String character_code = String.valueOf(characters_huffman_code.get(customNode.getCharac().charAt(0)));
                     if (huffmanBinary.isEmpty())
                         break;
                     if (huffmanBinary.contains(character_code) && huffmanBinary.startsWith(character_code)) {

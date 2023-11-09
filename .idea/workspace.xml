@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+config update">
+    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+logical fix for a bug when creating a new huffman code in the same session">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -423,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699536128948</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="+logical fix for a bug when creating a new huffman code in the same session">
+      <created>1699539381123</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1699539381123</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +448,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="+class to execute the python script to generate a graphical representation of a tree" />
     <MESSAGE value="+initial commit of Tree image generator" />
     <MESSAGE value="+virtual environment for the python script, interpreter for the ide" />
     <MESSAGE value="+initial commit of main class" />
@@ -466,7 +472,8 @@
     <MESSAGE value="+fix huffman to text bug" />
     <MESSAGE value="+improved regex to accept capital letters as well" />
     <MESSAGE value="+config update" />
-    <option name="LAST_COMMIT_MESSAGE" value="+config update" />
+    <MESSAGE value="+logical fix for a bug when creating a new huffman code in the same session" />
+    <option name="LAST_COMMIT_MESSAGE" value="+logical fix for a bug when creating a new huffman code in the same session" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -496,14 +503,14 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="22" />
+          <line>130</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
