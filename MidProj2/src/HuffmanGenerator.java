@@ -11,16 +11,17 @@ public class HuffmanGenerator implements Runnable {
     Scanner kyb = new Scanner(System.in);
 
     // Method to generate Huffman codes for each leaf node in the Huffman tree
-    public void huffmanCode (TreeNode root, String s){
+    public void huffmanCode (TreeNode root, String s,StringBuilder output){
         if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.symbol)) {
             System.out.println(root.getSymbol() + " | " + s + " | " + s.length());
+            output.append(root.getSymbol() + " | " + s + " | " + s.length()+"\n");
             characters_no_bits.put(root.getSymbol(), s.length());
             characters_huffman_code.put(root.getSymbol(), s);
             text_to_huffman += s;
             return;
         }
-                huffmanCode(root.getLeft(), s + "0");
-                huffmanCode(root.getRight(), s + "1");
+                huffmanCode(root.getLeft(), s + "0",output);
+                huffmanCode(root.getRight(), s + "1",output);
 
     }
 
@@ -48,20 +49,7 @@ public class HuffmanGenerator implements Runnable {
         }
     }
 
-    // Method to display the Huffman code table
-    public void createTable (TreeNode root, String edge){
-        if (root == null)
-            return;
 
-        if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getSymbol())) {
-            System.out.println(root.getSymbol() + " | " + edge);
-            return;
-
-        }
-
-        huffmanCode(root.getLeft(), edge + "0");
-        huffmanCode(root.getRight(), edge + "1");
-    }
 
     // Run method to execute the Huffman coding program
     @Override
@@ -77,7 +65,7 @@ public class HuffmanGenerator implements Runnable {
     }
 
     public String generateHuffmanCode(String textToConvert, LinkedList<CustomNode> letter_frequency){
-        String huffmanCodeString="";
+        StringBuilder huffmanCodeString = new StringBuilder();
         letter_frequency = processor.getFrequency(textToConvert);
         createTreeSkeleton(letter_frequency,huffmanTree);
 
@@ -113,7 +101,7 @@ public class HuffmanGenerator implements Runnable {
             }
             System.out.println(" Character | Huffman code | Number of Bits");
             System.out.println("---------------------");
-            huffmanCode(root, huffmanCodeString);
+            huffmanCode(root, "",huffmanCodeString);
             memorySave(letter_frequency);
             System.out.println("Text to Huffman code representation: " + text_to_huffman);
             //ExecutePythonScript.run();
@@ -122,7 +110,7 @@ public class HuffmanGenerator implements Runnable {
             System.exit(0);
         }
 
-        return huffmanCodeString;
+        return huffmanCodeString.toString();
     }
 
     public String huffmanToText(String huffmanBinary, LinkedList<CustomNode> letter_frequency, String originalStringGiven){
