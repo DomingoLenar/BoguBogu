@@ -16,6 +16,9 @@ public class StringProcessor {
         CustomNode pointer = null;
         for(int x = 0; x < length; x++){
             String character = String.valueOf(text.charAt(x));
+            if(character.equals("\s")){
+                character = "space";
+            }
             if(search(character, characterFrequency) == -1){
                 CustomNode newNode = new CustomNode(String.valueOf(text.charAt(x)), 1);
                 characterFrequency.add(newNode);

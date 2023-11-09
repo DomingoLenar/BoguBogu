@@ -24,7 +24,7 @@ public class GenerateDiagram {
 
     }
 
-    public int setNodeLinks(TreeNode node, StringBuilder dotString, int nodeCount, int rootNode){
+    private int setNodeLinks(TreeNode node, StringBuilder dotString, int nodeCount, int rootNode){
         if(node!=null){
             nodeCount += 1;
             int curNode = nodeCount;
@@ -44,14 +44,19 @@ public class GenerateDiagram {
         return nodeCount;
     }
 
-    public int huffmanToDotSetUpNodes(TreeNode node, StringBuilder dotString, int nodeCount){
+    private int huffmanToDotSetUpNodes(TreeNode node, StringBuilder dotString, int nodeCount){
         if(node != null){
             nodeCount+=1;
             if(node.getSymbol() == '-'){
                 dotString.append("Node"+nodeCount+"[label="+node.getCount()+"]\n");
 
             }else{
-                dotString.append("Node"+nodeCount+"[label="+node.getCount()+" xlabel="+node.getSymbol()+"]\n");
+                String symbol = String.valueOf(node.getSymbol());
+                if(symbol.equals("\s")){
+                    dotString.append("Node"+nodeCount+"[label="+node.getCount()+" xlabel=space"+"]\n");
+                }else {
+                    dotString.append("Node" + nodeCount + "[label=" + node.getCount() + " xlabel=" + symbol + "]\n");
+                }
             }
             //evaluate left
             nodeCount = huffmanToDotSetUpNodes(node.getLeft(), dotString, nodeCount);

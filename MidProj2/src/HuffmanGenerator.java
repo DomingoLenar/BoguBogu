@@ -12,7 +12,7 @@ public class HuffmanGenerator implements Runnable {
 
     // Method to generate Huffman codes for each leaf node in the Huffman tree
     public void huffmanCode (TreeNode root, String s,StringBuilder output){
-        if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.symbol)) {
+        if (root.getLeft() == null && root.getRight() == null && (Character.isLetter(root.symbol) || String.valueOf(root.getSymbol()).equals("\s"))) {
             System.out.println(root.getSymbol() + " | " + s + " | " + s.length());
             output.append(root.getSymbol() + " | " + s + " | " + s.length()+"\n");
             characters_no_bits.put(root.getSymbol(), s.length());
@@ -40,6 +40,9 @@ public class HuffmanGenerator implements Runnable {
         for (CustomNode customNode : letter_frequency) {
             TreeNode huffmanNode = new TreeNode();
 
+            if(customNode.getCharac().equals("space")){
+                huffmanNode.setSymbol(' ');
+            }
             huffmanNode.setSymbol(customNode.getCharac().charAt(0));
             huffmanNode.setCount(customNode.getFrequency());
             huffmanNode.setLeft(null);
@@ -101,7 +104,6 @@ public class HuffmanGenerator implements Runnable {
             System.out.println(" Character | Huffman code | Number of Bits");
             System.out.println("---------------------");
             huffmanCode(root, "",huffmanCodeString);
-            memorySave(letter_frequency);
             System.out.println("Text to Huffman code representation: " + text_to_huffman);
             //ExecutePythonScript.run();
         } else {
@@ -171,7 +173,7 @@ public class HuffmanGenerator implements Runnable {
     }
 
     // Method to calculate and display memory savings using Huffman coding
-    private void memorySave (LinkedList < CustomNode > letter_frequency) {
+    public String memorySave (LinkedList < CustomNode > letter_frequency) {
         CustomNode tNode;
         double ASCII_bits = 0, huffman_bits = 0, storagePercentage = 0;
         for (int i = 0; i < letter_frequency.size(); i++) {
@@ -184,5 +186,6 @@ public class HuffmanGenerator implements Runnable {
 
         storagePercentage = ((ASCII_bits - huffman_bits) / ASCII_bits) * 100;
         System.out.println("Percentage of storage savings: " + storagePercentage);
+        return"Percentage of storage savings: "+storagePercentage;
     }
 }
