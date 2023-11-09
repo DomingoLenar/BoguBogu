@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+updated config" />
+    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+refactored to a more appropriate class name, applied some program decomposition to clean up the code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="midterm_proj2_lou" />
+        <entry key="$PROJECT_DIR$" value="midterm_proj2-geo" />
       </map>
     </option>
   </component>
@@ -32,6 +35,7 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2XA7RQBOPotLweTXDlLxZhFyeQA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,7 +73,7 @@
       <recent name="C:\Users\mlest\IdeaProjects\algorithmsprelims\MidProj1\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HuffmanTest">
+  <component name="RunManager" selected="Application.HuffmanConverterApp">
     <configuration name="ExecutePythonScript" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ExecutePythonScript" />
       <module name="MidProj2" />
@@ -77,8 +81,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HuffmanTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HuffmanTest" />
+    <configuration name="HuffmanConverterApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HuffmanConverterApp" />
+      <module name="MidProj2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HuffmanGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HuffmanGenerator" />
       <module name="MidProj2" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -90,28 +101,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="GenerateTreeImage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonScripts" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\mlest\IdeaProjects\algorithmsprelims\MidProj2\PythonScripts\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MidProj2/PythonScripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MidProj2/PythonScripts/GenerateTreeImage.py" />
-      <option name="PARAMETERS" value="'&quot;h&quot;:&quot;1&quot;,&quot;e&quot;:&quot;1&quot;,&quot;l&quot;:&quot;2&quot;,&quot;o&quot;:&quot;1&quot;'" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonScripts" />
@@ -137,15 +126,16 @@
     </configuration>
     <list>
       <item itemvalue="Application.GenerateDiagram" />
+      <item itemvalue="Application.HuffmanConverterApp" />
+      <item itemvalue="Application.HuffmanGenerator" />
       <item itemvalue="Application.test" />
       <item itemvalue="Application.ExecutePythonScript" />
-      <item itemvalue="Application.HuffmanTest" />
-      <item itemvalue="Python.GenerateTreeImage" />
       <item itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HuffmanTest" />
+        <item itemvalue="Application.HuffmanConverterApp" />
+        <item itemvalue="Application.HuffmanGenerator" />
         <item itemvalue="Application.test" />
         <item itemvalue="Python.test" />
         <item itemvalue="Application.ExecutePythonScript" />
@@ -363,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699446152526</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="+refactored to a more appropriate class name, applied some program decomposition to clean up the code">
+      <created>1699503977147</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1699503977147</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,7 +401,8 @@
     <MESSAGE value="+logical error fix in recursive method" />
     <MESSAGE value="+fixed setLinks method to generate diagram" />
     <MESSAGE value="+updated config" />
-    <option name="LAST_COMMIT_MESSAGE" value="+updated config" />
+    <MESSAGE value="+refactored to a more appropriate class name, applied some program decomposition to clean up the code" />
+    <option name="LAST_COMMIT_MESSAGE" value="+refactored to a more appropriate class name, applied some program decomposition to clean up the code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -412,7 +410,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/MidProj1/src/PostfixEvaluator.java</url>
           <line>16</line>
-          <properties class="PostfixEvaluator" method="evaluatePostfixExpression">
+          <properties class="PostfixEvaluator">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
