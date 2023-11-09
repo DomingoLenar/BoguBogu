@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+refactored to a more appropriate class name, applied some program decomposition to clean up the code">
+    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+update project config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -360,7 +361,21 @@
       <option name="project" value="LOCAL" />
       <updated>1699503977147</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="+minor logical error fix">
+      <created>1699504325644</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1699504325644</updated>
+    </task>
+    <task id="LOCAL-00031" summary="+update project config">
+      <created>1699504338049</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1699504338049</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +393,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-" />
     <MESSAGE value="+fixed directory" />
     <MESSAGE value="+implementation of converter class, added better ux" />
     <MESSAGE value="+implementation of evaluator" />
@@ -402,7 +416,9 @@
     <MESSAGE value="+fixed setLinks method to generate diagram" />
     <MESSAGE value="+updated config" />
     <MESSAGE value="+refactored to a more appropriate class name, applied some program decomposition to clean up the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="+refactored to a more appropriate class name, applied some program decomposition to clean up the code" />
+    <MESSAGE value="+minor logical error fix" />
+    <MESSAGE value="+update project config" />
+    <option name="LAST_COMMIT_MESSAGE" value="+update project config" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -410,7 +426,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/MidProj1/src/PostfixEvaluator.java</url>
           <line>16</line>
-          <properties class="PostfixEvaluator">
+          <properties class="PostfixEvaluator" method="evaluatePostfixExpression">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -425,6 +441,11 @@
           <url>file://$PROJECT_DIR$/MidProj2/src/ExecutePythonScript.java</url>
           <line>13</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
