@@ -84,8 +84,8 @@ public class HuffmanConverterApp {
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textToHCInput = huffmanCodeInput.getText();
-                String decodedText = decodeHuffman(textToHCInput);
+                String huffmanToText = huffmanCodeInput.getText();
+                String decodedText = decodeHuffman(huffmanToText);
                 JOptionPane.showMessageDialog(huffmanToTextFrame, "Decoded Text: " + decodedText);
             }
         });
@@ -139,7 +139,9 @@ public class HuffmanConverterApp {
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                textToHCInput = null; //
                 textToHCInput = textInput.getText();
+                letterFrequency = null;
                 letterFrequency = processor.getFrequency(textToHCInput);
                 String huffmanCode = encodeHuffman(textToHCInput, letterFrequency);
                 String output = "Character | Huffman code | Number of Bits\n";
