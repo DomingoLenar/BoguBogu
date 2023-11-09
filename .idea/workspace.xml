@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+implemented memorySave method">
+    <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+config update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,7 +402,28 @@
       <option name="project" value="LOCAL" />
       <updated>1699534736546</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="+fix huffman to text bug">
+      <created>1699536066771</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1699536066771</updated>
+    </task>
+    <task id="LOCAL-00037" summary="+improved regex to accept capital letters as well">
+      <created>1699536082092</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1699536082092</updated>
+    </task>
+    <task id="LOCAL-00038" summary="+config update">
+      <created>1699536128948</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1699536128948</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,9 +441,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="+fix for logical error of postfix conversion" />
-    <MESSAGE value="+finished the getFrequency method, documentation for usage" />
-    <MESSAGE value="+logical error fixed, classes complete,(ready for merging)" />
     <MESSAGE value="+class to execute the python script to generate a graphical representation of a tree" />
     <MESSAGE value="+initial commit of Tree image generator" />
     <MESSAGE value="+virtual environment for the python script, interpreter for the ide" />
@@ -446,7 +463,10 @@
     <MESSAGE value="+dependency" />
     <MESSAGE value="+fixed bug where program wouldn't take strings with spaces" />
     <MESSAGE value="+implemented memorySave method" />
-    <option name="LAST_COMMIT_MESSAGE" value="+implemented memorySave method" />
+    <MESSAGE value="+fix huffman to text bug" />
+    <MESSAGE value="+improved regex to accept capital letters as well" />
+    <MESSAGE value="+config update" />
+    <option name="LAST_COMMIT_MESSAGE" value="+config update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -472,8 +492,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java</url>
-          <line>176</line>
+          <line>190</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
