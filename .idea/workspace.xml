@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="+update project config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/GenerateDiagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/GenerateDiagram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/StringProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/StringProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -444,11 +446,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="15" />
+          <line>105</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="TreeNode" memberName="symbol" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/algorithmsprelims$test.coverage" NAME="test Coverage Results" MODIFIED="1699294445731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MidProj2/PythonScripts" />
