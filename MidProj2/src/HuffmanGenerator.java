@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.*;
 import java.lang.Runnable;
 
-public class HuffmanTest implements Runnable {
+public class HuffmanGenerator implements Runnable {
     PriorityQueue<TreeNode> huffmanTree = new PriorityQueue<>();
     HashMap<Character, Integer> characters_no_bits = new HashMap<>();
     HashMap<Character, String> characters_huffman_code = new HashMap<>();
@@ -27,7 +27,7 @@ public class HuffmanTest implements Runnable {
     // Main method
     public static void main (String[]args){
         try {
-            HuffmanTest obj = new HuffmanTest();
+            HuffmanGenerator obj = new HuffmanGenerator();
             obj.run();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,10 +69,22 @@ public class HuffmanTest implements Runnable {
         String user_input_string = promptMessage1();
         LinkedList<CustomNode> letter_frequency = null;
 
-        if (user_input_string == null) {
+        generateHuffmanCode(user_input_string,letter_frequency);
+
+        String user_input_code = promptMessage2();
+
+        huffmanToText(user_input_code, letter_frequency,user_input_string);
+    }
+
+    public String generateHuffmanCode(String textToConvert, LinkedList<CustomNode> letter_frequency){
+        String huffmanCodeString="";
+        letter_frequency = processor.getFrequency(textToConvert);
+        createTreeSkeleton(letter_frequency,huffmanTree);
+
+        if (textToConvert == null) {
             System.exit(0);
-        } else if (user_input_string.matches("^[a-z .?‘!,']+$")) {
-            letter_frequency = processor.getFrequency(user_input_string);
+        } else if (textToConvert.matches("^[a-z .?‘!,']+$")) {
+            letter_frequency = processor.getFrequency(textToConvert);
             createTreeSkeleton(letter_frequency, huffmanTree);
 
             TreeNode root = null;
@@ -101,7 +113,7 @@ public class HuffmanTest implements Runnable {
             }
             System.out.println(" Character | Huffman code | Number of Bits");
             System.out.println("---------------------");
-            huffmanCode(root, "");
+            huffmanCode(root, huffmanCodeString);
             memorySave(letter_frequency);
             System.out.println("Text to Huffman code representation: " + text_to_huffman);
             //ExecutePythonScript.run();
@@ -110,12 +122,12 @@ public class HuffmanTest implements Runnable {
             System.exit(0);
         }
 
-        String user_input_code = promptMessage2();
+        return huffmanCodeString;
+    }
 
-        if (user_input_code == null)
-            System.exit(0);
-        else if (user_input_code.matches("^[0-9]+$")) {
-            String huffman_to_text = "";
+    public String huffmanToText(String huffmanBinary, LinkedList<CustomNode> letter_frequency, String originalStringGiven){
+        String convertedText = "";
+        if (huffmanBinary.matches("^[0-9]+$")) {
             int i = 0;
 
             while (!letter_frequency.isEmpty()) {
@@ -124,15 +136,14 @@ public class HuffmanTest implements Runnable {
                 } else {
                     CustomNode customNode = letter_frequency.get(i);
                     String character_code = characters_huffman_code.get(customNode.getCharac().charAt(0));
-                    if (user_input_code.isEmpty())
+                    if (huffmanBinary.isEmpty())
                         break;
+                    if (huffmanBinary.contains(character_code) && huffmanBinary.startsWith(character_code)) {
 
-                    if (user_input_code.contains(character_code) && user_input_code.startsWith(character_code)) {
-
-                        for (int j = 0; j < user_input_string.length(); j++) {
-                            if (customNode.getCharac().charAt(0) == user_input_string.charAt(j)) {
-                                user_input_code = user_input_code.substring(character_code.length());
-                                huffman_to_text += customNode.getCharac();
+                        for (int j = 0; j < originalStringGiven.length(); j++) {
+                            if (customNode.getCharac().charAt(0) == originalStringGiven.charAt(j)) {
+                                huffmanBinary = huffmanBinary.substring(character_code.length());
+                                convertedText += customNode.getCharac();
                                 break;
                             }
                         }
@@ -140,11 +151,14 @@ public class HuffmanTest implements Runnable {
                     i++;
                 }
             }
-            System.out.println("Huffman code to Text representation: " + huffman_to_text);
+            System.out.println("Huffman code to Text representation: " + convertedText);
 
         } else {
             System.out.println("ERROR: Invalid input. Please enter a valid string.");
         }
+
+
+        return convertedText;
     }
 
     // Prompt user to input a string
