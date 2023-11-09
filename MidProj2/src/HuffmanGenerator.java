@@ -73,7 +73,7 @@ public class HuffmanGenerator implements Runnable {
 
         if (textToConvert == null) {
             System.exit(0);
-        } else if (textToConvert.matches("^[a-z .?‘!,']+$")) {
+        } else if (textToConvert.matches("(?i)^[a-z .?‘!,']+$")) {
             letter_frequency = processor.getFrequency(textToConvert);
             createTreeSkeleton(letter_frequency, huffmanTree);
 
@@ -116,6 +116,7 @@ public class HuffmanGenerator implements Runnable {
 
     public String huffmanToText(String huffmanBinary, LinkedList<CustomNode> letter_frequency, String originalStringGiven){
         String convertedText = "";
+
         if (huffmanBinary.matches("^[0-9]+$")) {
             int i = 0;
 
