@@ -66,8 +66,7 @@ public class HuffmanGenerator implements Runnable {
 
     public String generateHuffmanCode(String textToConvert, LinkedList<CustomNode> letter_frequency){
         StringBuilder huffmanCodeString = new StringBuilder();
-        letter_frequency = processor.getFrequency(textToConvert);
-        createTreeSkeleton(letter_frequency,huffmanTree);
+
 
         if (textToConvert == null) {
             System.exit(0);
