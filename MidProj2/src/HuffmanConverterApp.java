@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.LinkedList;
 
 public class HuffmanConverterApp {
     private JFrame frame;
@@ -9,6 +11,10 @@ public class HuffmanConverterApp {
     private JButton huffmanToTextButton;
     private JButton textToHuffmanButton;
     private JButton exitButton;
+    private HuffmanGenerator huffmanGenerator = new HuffmanGenerator();
+    private LinkedList<CustomNode>letterFrequency = null;
+    private StringProcessor processor = new StringProcessor();
+    String textToHCInput = null;
 
     public HuffmanConverterApp() {
         frame = new JFrame("Huffman Converter");
@@ -32,14 +38,14 @@ public class HuffmanConverterApp {
         huffmanToTextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                displayHuffmanToTextConverter();
+                displayHuffmanToTextConverter(frame);
             }
         });
 
         textToHuffmanButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                displayTextToHuffmanConverter();
+                displayTextToHuffmanConverter(frame);
             }
         });
 
@@ -53,60 +59,95 @@ public class HuffmanConverterApp {
         frame.setVisible(true);
     }
 
-    private void displayHuffmanToTextConverter() {
+    private void displayHuffmanToTextConverter(JFrame menuFrame) {
+        int x = menuFrame.getLocationOnScreen().x;
+        int y = menuFrame.getLocationOnScreen().y;
         JFrame huffmanToTextFrame = new JFrame("Huffman to Text Converter");
         huffmanToTextFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        huffmanToTextFrame.setSize(400, 150);
+        huffmanToTextFrame.setBounds(x,y,400, 150);
+        menuFrame.setVisible(false);
         huffmanToTextFrame.setLayout(new BorderLayout());
 
         JPanel huffmanToTextPanel = new JPanel();
-        huffmanToTextPanel.setLayout(new GridLayout(2, 1));
+        huffmanToTextPanel.setLayout(new GridLayout(3, 1));
 
         JTextField huffmanCodeInput = new JTextField();
         JButton convertButton = new JButton("Convert");
+        JButton backButton = new JButton("Back");
 
         huffmanToTextPanel.add(huffmanCodeInput);
         huffmanToTextPanel.add(convertButton);
+        huffmanToTextPanel.add(backButton);
 
         huffmanToTextFrame.add(huffmanToTextPanel, BorderLayout.CENTER);
 
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String huffmanCode = huffmanCodeInput.getText();
-                String decodedText = decodeHuffman(huffmanCode);
+                textToHCInput = huffmanCodeInput.getText();
+                String decodedText = decodeHuffman(textToHCInput);
                 JOptionPane.showMessageDialog(huffmanToTextFrame, "Decoded Text: " + decodedText);
             }
+        });
+
+        backButton.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent back){
+               int x = huffmanToTextFrame.getLocationOnScreen().x;
+               int y = huffmanToTextFrame.getLocationOnScreen().y;
+               menuFrame.setLocation(x,y);
+               huffmanToTextFrame.setVisible(false);
+               menuFrame.setVisible(true);
+           }
         });
 
         huffmanToTextFrame.setVisible(true);
     }
 
-    private void displayTextToHuffmanConverter() {
+    private void displayTextToHuffmanConverter(JFrame menuFrame) {
+        int x = menuFrame.getLocationOnScreen().x;
+        int y = menuFrame.getLocationOnScreen().y;
         JFrame textToHuffmanFrame = new JFrame("Text to Huffman Converter");
         textToHuffmanFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        textToHuffmanFrame.setSize(400, 200); // Increased the frame height
+        textToHuffmanFrame.setBounds(x,y,400, 200); // Increased the frame height, and sets the location based on where the menu is
+        menuFrame.setVisible(false);    // Hides the menu
         textToHuffmanFrame.setLayout(new BorderLayout());
 
         JPanel textToHuffmanPanel = new JPanel();
-        textToHuffmanPanel.setLayout(new GridLayout(3, 1)); // Added one more row
+        textToHuffmanPanel.setLayout(new GridLayout(4, 1)); // Added one more row
 
         JTextField textInput = new JTextField();
         JButton convertButton = new JButton("Convert");
-        JButton checkHuffmanButton = new JButton("Check Huffman Representation"); // New button
+        JButton checkHuffmanButton = new JButton("Check Huffman Diagram"); // New button
+        JButton backButton = new JButton("Back");
 
         textToHuffmanPanel.add(textInput);
         textToHuffmanPanel.add(convertButton);
         textToHuffmanPanel.add(checkHuffmanButton); // Added the new button
+        textToHuffmanPanel.add(backButton);
 
         textToHuffmanFrame.add(textToHuffmanPanel, BorderLayout.CENTER);
 
+        backButton.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent back){
+               int x = textToHuffmanFrame.getLocationOnScreen().x;
+               int y = textToHuffmanFrame.getLocationOnScreen().y;
+               menuFrame.setLocation(x, y);
+               textToHuffmanFrame.setVisible(false);
+               menuFrame.setVisible(true);
+           }
+        });
+
+        // Displays converted text to huffman
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String text = textInput.getText();
-                String huffmanCode = encodeHuffman(text);
-                JOptionPane.showMessageDialog(textToHuffmanFrame, "Huffman Code: " + huffmanCode);
+                textToHCInput = textInput.getText();
+                letterFrequency = processor.getFrequency(textToHCInput);
+                String huffmanCode = encodeHuffman(textToHCInput, letterFrequency);
+                String output = "Character | Huffman code | Number of Bits\n";
+                output += "---------------------\n";
+                output += huffmanCode;
+                JOptionPane.showMessageDialog(textToHuffmanFrame, output);
             }
         });
 
@@ -114,7 +155,8 @@ public class HuffmanConverterApp {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Add your logic to check the Huffman tree representation here
-                JOptionPane.showMessageDialog(textToHuffmanFrame, "Checking Huffman Tree Representation...");
+                ImageIcon diagram = new ImageIcon("MidProj2/src/tree.png");
+                JOptionPane.showMessageDialog(textToHuffmanFrame, diagram);
             }
         });
 
@@ -122,17 +164,18 @@ public class HuffmanConverterApp {
     }
 
     // Huffman encoding function
-    private String encodeHuffman(String text) {
+    private String encodeHuffman(String text, LinkedList<CustomNode> letterFrequency) {
         // Add Huffman encoding logic here
         // build a Huffman tree and generate the Huffman codes for the characters in the input text.
-        return "Encoded Huffman Code"; // Replace with actual code
+
+        return huffmanGenerator.generateHuffmanCode(text,letterFrequency); // Replace with actual code
     }
 
     // Huffman decoding function
     private String decodeHuffman(String huffmanCode) {
         // Add Huffman decoding logic here
         // use the Huffman tree to decode the Huffman code back to the original text.
-        return "Decoded Text"; // Replace with actual code
+        return huffmanGenerator.huffmanToText(huffmanCode,letterFrequency,textToHCInput); // Replace with actual code
     }
 
     public static void main(String[] args) {
