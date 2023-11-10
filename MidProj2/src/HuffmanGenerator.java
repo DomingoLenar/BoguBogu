@@ -12,7 +12,9 @@ public class HuffmanGenerator implements Runnable {
     LinkedList<CustomNode> letter_frequency = null;
 
 
-    // Method to generate Huffman codes for each leaf node in the Huffman tree
+    /**
+     * This method recursively generates Huffman codes for characters in a Huffman tree.
+     */
     public void huffmanCode (TreeNode root, String s,StringBuilder output){
         if (root.getLeft() == null && root.getRight() == null && (Character.isLetter(root.symbol) || String.valueOf(root.getSymbol()).equals("\s"))) {
             System.out.println(root.getSymbol() + " | " + s + " | " + s.length());
@@ -24,7 +26,7 @@ public class HuffmanGenerator implements Runnable {
                 huffmanCode(root.getLeft(), s + "0",output);
                 huffmanCode(root.getRight(), s + "1",output);
 
-    }
+    }//end of huffmanCode
 
     // Main method
     public static void main (String[]args){
@@ -34,9 +36,11 @@ public class HuffmanGenerator implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }//end of main
 
-    // Method to create the initial tree structure from letter frequencies
+    /**
+     * This method populates a priority queue with initial nodes for a Huffman tree based on letter frequencies.
+     */
     private static void createTreeSkeleton(LinkedList < CustomNode > letter_frequency, PriorityQueue < TreeNode > huffmanTree){
         for (CustomNode customNode : letter_frequency) {
             TreeNode huffmanNode = new TreeNode();
@@ -51,7 +55,7 @@ public class HuffmanGenerator implements Runnable {
 
             huffmanTree.add(huffmanNode);
         }
-    }
+    }//end of createTreeSkeleton
 
 
 
@@ -65,7 +69,7 @@ public class HuffmanGenerator implements Runnable {
         String user_input_code = promptMessage2();
 
         huffmanToText(user_input_code, letter_frequency, user_input_string);
-    }
+    }//end of run
 
     public String generateHuffmanCode(String textToConvert){
         StringBuilder huffmanCodeString = new StringBuilder();
@@ -114,8 +118,13 @@ public class HuffmanGenerator implements Runnable {
         }
 
         return huffmanCodeString.toString();
-    }
+    }//end of generateHuffmancode
 
+    /**
+     * This method HUffman-codes a given text and returns the result.
+     * It iterates through characters, appends their Huffman codes,
+     * and stops when the character frequency list is empty.
+     */
     private String text_to_huffman(String textToConvert) {
         String convertedText = "";
         int i = 0;
@@ -136,8 +145,11 @@ public class HuffmanGenerator implements Runnable {
             i++;
         }
         return convertedText;
-    }
+    }//end of text_to_huffman
 
+    /**
+     * This method decodes a Huffman binary string, using a character frequency list and the original string.
+     */
     public String huffmanToText(String huffmanBinary, LinkedList<CustomNode> letter_frequency, String originalStringGiven){
         String convertedText = "";
 
@@ -173,9 +185,11 @@ public class HuffmanGenerator implements Runnable {
 
 
         return convertedText;
-    }
+    }//end of huffmanToText
 
-    // Prompt user to input a string
+    /**
+     * Prompt user to input a string
+     */
     public String promptMessage1 () {
         try {
             System.out.println("Input a string: ");
@@ -184,9 +198,11 @@ public class HuffmanGenerator implements Runnable {
             e.printStackTrace();
         }
         return null;
-    }
+    }//end of promptMessage1
 
-    // Prompt user to input a code
+    /**
+     * Prompt user to input a code
+     */
     private String promptMessage2 () {
         try {
             System.out.print("Input a Code: ");
@@ -195,9 +211,12 @@ public class HuffmanGenerator implements Runnable {
             e.printStackTrace();
         }
         return null;
-    }
+    }//end of promptMessage2
 
-    // Method to calculate and display memory savings using Huffman coding
+    /**
+     * This method computes the storage savings percentage achieved
+     * by Huffman coding over ASCII encoding for a given character frequency list.
+     */
     public String memorySave (LinkedList < CustomNode > letter_frequency) {
         CustomNode tNode;
         double ASCII_bits = 0, huffman_bits = 0, storagePercentage = 0;
@@ -212,5 +231,5 @@ public class HuffmanGenerator implements Runnable {
         storagePercentage = ((ASCII_bits - huffman_bits) / ASCII_bits) * 100;
         System.out.println("Percentage of storage savings: " + storagePercentage);
         return"Percentage of storage savings: "+storagePercentage;
-    }
-}
+    }//end of memorySave
+}//end of class
