@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MidProj1/MidProj1.iml" filepath="$PROJECT_DIR$/MidProj1/MidProj1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MidProj2/MidProj2.iml" filepath="$PROJECT_DIR$/MidProj2/MidProj2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PrelimProj1/PrelimProj1.iml" filepath="$PROJECT_DIR$/PrelimProj1/PrelimProj1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PrelimProj2/PrelimProj2.iml" filepath="$PROJECT_DIR$/PrelimProj2/PrelimProj2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/algorithmsprelims.iml" filepath="$PROJECT_DIR$/.idea/algorithmsprelims.iml" />
+    </modules>
+  </component>
+</project>

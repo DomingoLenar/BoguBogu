@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="19b08bdb-c80e-4812-8ec2-0fac957aebc3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="midterm_proj2-geo" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2XA7RQBOPotLweTXDlLxZhFyeQA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-15&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mlest/IdeaProjects/algorithmsprelims/MidProj2/resources/graphviz-java-0.18.1.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mlest\IdeaProjects\algorithmsprelims\MidProj2\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mlest\IdeaProjects\algorithmsprelims\MidProj2\src" />
+      <recent name="C:\Users\mlest\IdeaProjects\algorithmsprelims\MidProj2\src\python" />
+      <recent name="C:\Users\mlest\IdeaProjects\algorithmsprelims\MidProj1\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.HuffmanGenerator">
+    <configuration name="ExecutePythonScript" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExecutePythonScript" />
+      <module name="MidProj2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HuffmanConverterApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HuffmanConverterApp" />
+      <module name="MidProj2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HuffmanGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HuffmanGenerator" />
+      <module name="MidProj2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="MidProj2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="PrelimProj2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="PrelimProj2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonScripts" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MidProj2/PythonScripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MidProj2/PythonScripts/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.GenerateDiagram" />
+      <item itemvalue="Application.HuffmanConverterApp" />
+      <item itemvalue="Application.HuffmanGenerator" />
+      <item itemvalue="Application.test" />
+      <item itemvalue="Application.ExecutePythonScript" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HuffmanGenerator" />
+        <item itemvalue="Application.HuffmanConverterApp" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.ExecutePythonScript" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="" />
+      <created>1698060026757</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698060026757</updated>
+      <workItem from="1698060027965" duration="6821000" />
+      <workItem from="1698375532896" duration="1643000" />
+      <workItem from="1699252762306" duration="22252000" />
+      <workItem from="1699331340551" duration="2610000" />
+      <workItem from="1699352412631" duration="21570000" />
+      <workItem from="1699439147534" duration="6350000" />
+    </task>
+    <task id="LOCAL-00001" summary="-">
+      <created>1698060073936</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698060073936</updated>
+    </task>
+    <task id="LOCAL-00002" summary="+fixed directory">
+      <created>1698060230876</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698060230876</updated>
+    </task>
+    <task id="LOCAL-00003" summary="+implementation of converter class, added better ux">
+      <created>1698061382897</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698061382897</updated>
+    </task>
+    <task id="LOCAL-00004" summary="+implementation of evaluator">
+      <created>1698073383219</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698073383219</updated>
+    </task>
+    <task id="LOCAL-00005" summary="+fix for logical error of postfix conversion">
+      <created>1698073414993</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698073414993</updated>
+    </task>
+    <task id="LOCAL-00006" summary="+finished the getFrequency method, documentation for usage">
+      <created>1698376586075</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698376586075</updated>
+    </task>
+    <task id="LOCAL-00007" summary="+logical error fixed, classes complete,(ready for merging)">
+      <created>1699253540147</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699253540147</updated>
+    </task>
+    <task id="LOCAL-00008" summary="+">
+      <created>1699275118339</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699275118339</updated>
+    </task>
+    <task id="LOCAL-00009" summary="+class to execute the python script to generate a graphical representation of a tree">
+      <created>1699278926067</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699278926067</updated>
+    </task>
+    <task id="LOCAL-00010" summary="+initial commit of Tree image generator">
+      <created>1699278944762</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699278944762</updated>
+    </task>
+    <task id="LOCAL-00011" summary="+">
+      <created>1699278957213</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699278957213</updated>
+    </task>
+    <task id="LOCAL-00012" summary="+virtual environment for the python script, interpreter for the ide">
+      <created>1699280584224</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699280584224</updated>
+    </task>
+    <task id="LOCAL-00013" summary="+initial commit of main class">
+      <created>1699281096532</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699281096532</updated>
+    </task>
+    <task id="LOCAL-00014" summary="+small modifications for its usability">
+      <created>1699286322768</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699286322768</updated>
+    </task>
+    <task id="LOCAL-00015" summary="+">
+      <created>1699286337171</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1699286337171</updated>
+    </task>
+    <task id="LOCAL-00016" summary="+Json converter for frequency matrix">
+      <created>1699286354456</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1699286354456</updated>
+    </task>
+    <task id="LOCAL-00017" summary="+config files">
+      <created>1699286567073</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1699286567073</updated>
+    </task>
+    <task id="LOCAL-00018" summary="+Class to generate diagram of tree (incomplete)">
+      <created>1699369838693</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1699369838693</updated>
+    </task>
+    <task id="LOCAL-00019" summary="+dependencies config">
+      <created>1699369997779</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1699369997779</updated>
+    </task>
+    <task id="LOCAL-00020" summary="+completion of frequency to dict(originally for python script that was discontinued)">
+      <created>1699370089208</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1699370089208</updated>
+    </task>
+    <task id="LOCAL-00021" summary="+added getter method">
+      <created>1699370141016</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1699370141016</updated>
+    </task>
+    <task id="LOCAL-00022" summary="+">
+      <created>1699370168846</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1699370168846</updated>
+    </task>
+    <task id="LOCAL-00023" summary="+">
+      <created>1699370197340</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1699370197340</updated>
+    </task>
+    <task id="LOCAL-00024" summary="+Exception handling">
+      <created>1699376048324</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1699376048324</updated>
+    </task>
+    <task id="LOCAL-00025" summary="+logical error fix in recursive method">
+      <created>1699376067507</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1699376067507</updated>
+    </task>
+    <task id="LOCAL-00026" summary="+fixed setLinks method to generate diagram">
+      <created>1699445612616</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1699445612617</updated>
+    </task>
+    <task id="LOCAL-00027" summary="+updated config">
+      <created>1699446016885</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1699446016885</updated>
+    </task>
+    <task id="LOCAL-00028" summary="+updated config">
+      <created>1699446152525</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1699446152526</updated>
+    </task>
+    <task id="LOCAL-00029" summary="+refactored to a more appropriate class name, applied some program decomposition to clean up the code">
+      <created>1699503977147</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1699503977147</updated>
+    </task>
+    <task id="LOCAL-00030" summary="+minor logical error fix">
+      <created>1699504325644</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1699504325644</updated>
+    </task>
+    <task id="LOCAL-00031" summary="+update project config">
+      <created>1699504338049</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1699504338049</updated>
+    </task>
+    <task id="LOCAL-00032" summary="+update project config">
+      <created>1699534622503</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1699534622503</updated>
+    </task>
+    <task id="LOCAL-00033" summary="+dependency">
+      <created>1699534665031</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1699534665031</updated>
+    </task>
+    <task id="LOCAL-00034" summary="+fixed bug where program wouldn't take strings with spaces">
+      <created>1699534713294</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1699534713294</updated>
+    </task>
+    <task id="LOCAL-00035" summary="+implemented memorySave method">
+      <created>1699534736546</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1699534736546</updated>
+    </task>
+    <task id="LOCAL-00036" summary="+fix huffman to text bug">
+      <created>1699536066771</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1699536066771</updated>
+    </task>
+    <task id="LOCAL-00037" summary="+improved regex to accept capital letters as well">
+      <created>1699536082092</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1699536082092</updated>
+    </task>
+    <task id="LOCAL-00038" summary="+config update">
+      <created>1699536128948</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1699536128948</updated>
+    </task>
+    <task id="LOCAL-00039" summary="+logical fix for a bug when creating a new huffman code in the same session">
+      <created>1699539381123</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1699539381123</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="+initial commit of Tree image generator" />
+    <MESSAGE value="+virtual environment for the python script, interpreter for the ide" />
+    <MESSAGE value="+initial commit of main class" />
+    <MESSAGE value="+small modifications for its usability" />
+    <MESSAGE value="+Json converter for frequency matrix" />
+    <MESSAGE value="+config files" />
+    <MESSAGE value="+Class to generate diagram of tree (incomplete)" />
+    <MESSAGE value="+dependencies config" />
+    <MESSAGE value="+completion of frequency to dict(originally for python script that was discontinued)" />
+    <MESSAGE value="+added getter method" />
+    <MESSAGE value="+" />
+    <MESSAGE value="+Exception handling" />
+    <MESSAGE value="+logical error fix in recursive method" />
+    <MESSAGE value="+fixed setLinks method to generate diagram" />
+    <MESSAGE value="+updated config" />
+    <MESSAGE value="+refactored to a more appropriate class name, applied some program decomposition to clean up the code" />
+    <MESSAGE value="+minor logical error fix" />
+    <MESSAGE value="+update project config" />
+    <MESSAGE value="+dependency" />
+    <MESSAGE value="+fixed bug where program wouldn't take strings with spaces" />
+    <MESSAGE value="+implemented memorySave method" />
+    <MESSAGE value="+fix huffman to text bug" />
+    <MESSAGE value="+improved regex to accept capital letters as well" />
+    <MESSAGE value="+config update" />
+    <MESSAGE value="+logical fix for a bug when creating a new huffman code in the same session" />
+    <option name="LAST_COMMIT_MESSAGE" value="+logical fix for a bug when creating a new huffman code in the same session" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MidProj1/src/PostfixEvaluator.java</url>
+          <line>16</line>
+          <properties class="PostfixEvaluator">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/ExecutePythonScript.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/ExecutePythonScript.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
+          <line>139</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="TreeNode" memberName="symbol" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>
