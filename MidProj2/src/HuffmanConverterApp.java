@@ -153,7 +153,8 @@ public class HuffmanConverterApp {
                 String output = "Character | Huffman code | Number of Bits\n";
                 output += "---------------------\n";
                 output += huffmanCode+"\n";
-                output += huffmanGenerator.memorySave(letterFrequency);
+                output += huffmanGenerator.memorySave(letterFrequency)+"\n";
+                output += "Text to Huffman code representation:"+huffmanGenerator.text_to_huffman(textToHCInput,letterFrequency);
                 JOptionPane.showMessageDialog(textToHuffmanFrame, output);
             }
         });

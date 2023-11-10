@@ -63,15 +63,15 @@ public class HuffmanGenerator implements Runnable {
     @Override
     public void run () {
         String user_input_string = promptMessage1();
-
-        generateHuffmanCode(user_input_string);
+        letter_frequency = processor.getFrequency(user_input_string);
+        generateHuffmanCode(user_input_string, letter_frequency);
 
         String user_input_code = promptMessage2();
 
         huffmanToText(user_input_code, letter_frequency, user_input_string);
     }//end of run
 
-    public String generateHuffmanCode(String textToConvert){
+    public String generateHuffmanCode(String textToConvert, LinkedList<CustomNode> letter_frequency){
         StringBuilder huffmanCodeString = new StringBuilder();
 
 
@@ -109,7 +109,7 @@ public class HuffmanGenerator implements Runnable {
             System.out.println("---------------------");
             huffmanCode(root, "",huffmanCodeString);
             memorySave(letter_frequency);
-            text_to_huffman = text_to_huffman(textToConvert);
+            text_to_huffman = text_to_huffman(textToConvert, letter_frequency);
             System.out.println("Text to Huffman code representation: " + text_to_huffman);
             //ExecutePythonScript.run();
         } else {
@@ -125,7 +125,7 @@ public class HuffmanGenerator implements Runnable {
      * It iterates through characters, appends their Huffman codes,
      * and stops when the character frequency list is empty.
      */
-    private String text_to_huffman(String textToConvert) {
+    String text_to_huffman(String textToConvert, LinkedList<CustomNode> letter_frequency) {
         String convertedText = "";
         int i = 0;
         while (!letter_frequency.isEmpty()) {
