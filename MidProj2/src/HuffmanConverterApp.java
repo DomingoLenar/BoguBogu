@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 public class HuffmanConverterApp {
+    // Instance variables for GUI components and data processing
     private JFrame frame;
     private JPanel mainPanel;
     private JButton huffmanToTextButton;
@@ -16,6 +17,7 @@ public class HuffmanConverterApp {
     private StringProcessor processor = new StringProcessor();
     String textToHCInput = null;
 
+    // Constructor for initializing the main GUI
     public HuffmanConverterApp() {
         frame = new JFrame("Huffman Converter");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,6 +37,7 @@ public class HuffmanConverterApp {
 
         frame.add(mainPanel, BorderLayout.CENTER);
 
+        // Action listeners for each button
         huffmanToTextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,6 +55,7 @@ public class HuffmanConverterApp {
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Delete a file and exit the application
                 File diagramFile = new File("MidProj2/src/tree.png");
                 diagramFile.delete();
                 System.exit(0);
@@ -59,9 +63,12 @@ public class HuffmanConverterApp {
         });
 
         frame.setVisible(true);
-    }
 
+    } // end of HuffmanConverterApp constructor
+
+    // Method for displaying the Huffman to Text Converter GUI
     private void displayHuffmanToTextConverter(JFrame menuFrame) {
+        // Get the location of the menu frame
         int x = menuFrame.getLocationOnScreen().x;
         int y = menuFrame.getLocationOnScreen().y;
         JFrame huffmanToTextFrame = new JFrame("Huffman to Text Converter");
@@ -73,6 +80,7 @@ public class HuffmanConverterApp {
         JPanel huffmanToTextPanel = new JPanel();
         huffmanToTextPanel.setLayout(new GridLayout(3, 1));
 
+        // Components for the Huffman to Text Converter GUI
         JTextField huffmanCodeInput = new JTextField();
         JButton convertButton = new JButton("Convert");
         JButton backButton = new JButton("Back");
@@ -83,12 +91,15 @@ public class HuffmanConverterApp {
 
         huffmanToTextFrame.add(huffmanToTextPanel, BorderLayout.CENTER);
 
+        // Action listener for the convert button
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Check if the letterFrequency is null
                 if(letterFrequency==null){
                     JOptionPane.showMessageDialog(huffmanToTextFrame,"Please execute text to huffman first");
                 }else {
+                    // Decode the Huffman code and display the result
                     String huffmanToText = huffmanCodeInput.getText();
                     String decodedText = decodeHuffman(huffmanToText);
                     JOptionPane.showMessageDialog(huffmanToTextFrame, "Decoded Text: " + decodedText);
@@ -96,6 +107,7 @@ public class HuffmanConverterApp {
             }
         });
 
+        // Action listener for the back button
         backButton.addActionListener(back -> {
             int x1 = huffmanToTextFrame.getLocationOnScreen().x;
             int y1 = huffmanToTextFrame.getLocationOnScreen().y;
@@ -105,7 +117,8 @@ public class HuffmanConverterApp {
         });
 
         huffmanToTextFrame.setVisible(true);
-    }
+
+    } // end of displayHuffmanToTextConverter method
 
     private void displayTextToHuffmanConverter(JFrame menuFrame) {
         int x = menuFrame.getLocationOnScreen().x;
