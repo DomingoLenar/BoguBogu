@@ -68,7 +68,7 @@ public class HuffmanGenerator implements Runnable {
 
         String user_input_code = promptMessage2();
 
-        huffmanToText(user_input_code, letter_frequency, user_input_string);
+        huffmanToTextV2(user_input_code, letter_frequency, user_input_string);
     }//end of run
 
     public String generateHuffmanCode(String textToConvert, LinkedList<CustomNode> letter_frequency){
@@ -138,7 +138,6 @@ public class HuffmanGenerator implements Runnable {
             for (int j = 0; j < textToConvert.length(); j++) {
                 if (customNode.getCharac().charAt(0) == textToConvert.charAt(j)) {
                     convertedText += characters_huffman_code.get(customNode.getCharac().charAt(0));
-                    break;
                 }
             }
 
@@ -170,7 +169,6 @@ public class HuffmanGenerator implements Runnable {
                             if (customNode.getCharac().charAt(0) == originalStringGiven.charAt(j)) {
                                 huffmanBinary = huffmanBinary.substring(character_code.length());
                                 convertedText += customNode.getCharac();
-                                break;
                             }
                         }
                     }
@@ -186,6 +184,26 @@ public class HuffmanGenerator implements Runnable {
 
         return convertedText;
     }//end of huffmanToText
+
+    public String huffmanToTextV2(String huffmanBinary, LinkedList<CustomNode> letterFrequency,String originalGivenString){
+        String convertedText = "";
+        String currentBinaryCode ="";
+        if(huffmanBinary.equals(null)){
+            return "ERROR";
+        }else{
+            for(int x = 0; x < huffmanBinary.length(); x++){
+                currentBinaryCode += huffmanBinary.charAt(x);
+                for(int y = 0; y < letterFrequency.size(); y++){
+                    String binary = characters_huffman_code.get(letterFrequency.get(y).getCharac().charAt(0));
+                    if(binary.equals(currentBinaryCode)){
+                        convertedText += letterFrequency.get(y).getCharac();
+                        currentBinaryCode = "";
+                    }
+                }
+            }
+        }
+        return convertedText;
+    }
 
     /**
      * Prompt user to input a string

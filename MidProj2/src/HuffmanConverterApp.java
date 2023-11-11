@@ -158,6 +158,8 @@ public class HuffmanConverterApp {
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                File treeDiagram = new File("MidProj2/src/tree.png");
+                treeDiagram.delete();
                 textToHCInput = null; //
                 textToHCInput = textInput.getText();
                 letterFrequency = null;
@@ -177,12 +179,14 @@ public class HuffmanConverterApp {
             public void actionPerformed(ActionEvent e) {
                 // Add your logic to check the Huffman tree representation here
                 File diagramFile = new File("MidProj2/src/tree.png");
+
                 if(diagramFile.exists()) {
                     ImageIcon diagram = new ImageIcon("MidProj2/src/tree.png");
                     JOptionPane.showMessageDialog(textToHuffmanFrame, diagram);
                 }else{
                     JOptionPane.showMessageDialog(textToHuffmanFrame, "Please convert a text to huffman code first");
                 }
+                diagramFile.deleteOnExit();
             }
         });
 
@@ -202,7 +206,7 @@ public class HuffmanConverterApp {
         // Add Huffman decoding logic here
         // use the Huffman tree to decode the Huffman code back to the original text.
 
-        return huffmanGenerator.huffmanToText(huffmanCode,letterFrequency,textToHCInput); // Replace with actual code
+        return huffmanGenerator.huffmanToTextV2(huffmanCode,letterFrequency,textToHCInput); // Replace with actual code
     }
 
     public static void main(String[] args) {

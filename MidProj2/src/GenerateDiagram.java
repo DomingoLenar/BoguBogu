@@ -5,7 +5,9 @@ import guru.nidi.graphviz.model.MutableGraph;
 import guru.nidi.graphviz.parse.Parser;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 public class GenerateDiagram {
 
@@ -32,7 +34,19 @@ public class GenerateDiagram {
 
         MutableGraph g = parser.read(dotString.append("}").toString()); // Append the closing curly brace to the DOT string.
 
-        Graphviz.fromGraph(g).render(Format.PNG).toFile(new File("MidProj2/src/tree.png")); // Render the Graphviz graph to a PNG image and save it to the file `tree.png`.
+        File output = new File("MidProj2/src/tree.png");
+        if(output.exists()){
+            output.delete();
+        }
+        try {
+            // Create a FileOutputStream for the desired output file
+            try (OutputStream outputStream = new FileOutputStream("MidProj2/src/tree.png")) {
+                // Render the Graphviz graph to a PNG image and save it to the file `tree.png`
+                Graphviz.fromGraph(g).render(Format.PNG).toOutputStream(outputStream);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } // Render the Graphviz graph to a PNG image and save it to the file `tree.png`.
 
     }
 

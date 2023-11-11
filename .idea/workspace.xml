@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="19b08bdb-c80e-4812-8ec2-0fac957aebc3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/GenerateDiagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/GenerateDiagram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanConverterApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +148,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8968381d-326e-4496-a1da-a76ac47bde67" name="Changes" comment="" />
+      <changelist id="19b08bdb-c80e-4812-8ec2-0fac957aebc3" name="Changes" comment="" />
       <created>1698060026757</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -157,6 +159,7 @@
       <workItem from="1699331340551" duration="2610000" />
       <workItem from="1699352412631" duration="21570000" />
       <workItem from="1699439147534" duration="6350000" />
+      <workItem from="1699668028244" duration="4033000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1698060073936</created>
@@ -500,13 +503,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
-          <line>163</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MidProj2/src/HuffmanGenerator.java</url>
-          <line>166</line>
-          <option name="timeStamp" value="24" />
+          <line>103</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
