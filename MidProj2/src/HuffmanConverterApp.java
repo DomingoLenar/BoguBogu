@@ -169,7 +169,7 @@ public class HuffmanConverterApp {
                 output += "---------------------\n";
                 output += huffmanCode+"\n";
                 output += huffmanGenerator.memorySave(letterFrequency)+"\n";
-                output += "Text to Huffman code representation:"+huffmanGenerator.text_to_huffman(textToHCInput,letterFrequency);
+                output += "Text to Huffman code representation:"+huffmanGenerator.textToHuffman(textToHCInput);
                 JOptionPane.showMessageDialog(textToHuffmanFrame, output);
             }
         });

@@ -109,7 +109,7 @@ public class HuffmanGenerator implements Runnable {
             System.out.println("---------------------");
             huffmanCode(root, "",huffmanCodeString);
             memorySave(letter_frequency);
-            text_to_huffman = text_to_huffman(textToConvert, letter_frequency);
+            text_to_huffman = textToHuffman(textToConvert);
             System.out.println("Text to Huffman code representation: " + text_to_huffman);
             //ExecutePythonScript.run();
         } else {
@@ -145,6 +145,14 @@ public class HuffmanGenerator implements Runnable {
         }
         return convertedText;
     }//end of text_to_huffman
+
+    public String textToHuffman(String textToConvert){
+        String convertedText = "";
+        for(int x = 0 ; x < textToConvert.length(); x++){
+            convertedText += characters_huffman_code.get(textToConvert.charAt(x));
+        }
+        return convertedText;
+    }
 
     /**
      * This method decodes a Huffman binary string, using a character frequency list and the original string.
