@@ -16,6 +16,7 @@ public class HuffmanConverterApp {
     private LinkedList<CustomNode>letterFrequency = null;
     private StringProcessor processor = new StringProcessor();
     String textToHCInput = null;
+    private int noConversion;
 
     // Constructor for initializing the main GUI
     public HuffmanConverterApp() {
@@ -158,6 +159,7 @@ public class HuffmanConverterApp {
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                noConversion += 1;
                 File treeDiagram = new File("MidProj2/src/tree.png");
                 treeDiagram.delete();
                 textToHCInput = null; //
@@ -170,6 +172,7 @@ public class HuffmanConverterApp {
                 output += huffmanCode+"\n";
                 output += huffmanGenerator.memorySave(letterFrequency)+"\n";
                 output += "Text to Huffman code representation:"+huffmanGenerator.textToHuffman(textToHCInput);
+                treeDiagram.renameTo(new File("MidProj2/src/"+noConversion+".png"));
                 JOptionPane.showMessageDialog(textToHuffmanFrame, output);
             }
         });
@@ -178,10 +181,11 @@ public class HuffmanConverterApp {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Add your logic to check the Huffman tree representation here
-                File diagramFile = new File("MidProj2/src/tree.png");
+                File diagramFile = new File("MidProj2/src/"+noConversion+".png");
 
                 if(diagramFile.exists()) {
-                    ImageIcon diagram = new ImageIcon("MidProj2/src/tree.png");
+                    ImageIcon diagram = new ImageIcon("MidProj2/src/"+noConversion+".png");
+
                     JOptionPane.showMessageDialog(textToHuffmanFrame, diagram);
                 }else{
                     JOptionPane.showMessageDialog(textToHuffmanFrame, "Please convert a text to huffman code first");
